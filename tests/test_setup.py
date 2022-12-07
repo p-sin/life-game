@@ -69,11 +69,11 @@ def test_body_slot_enum_defined(enum, number, body, stage, slot_1, slot_2, slot_
         assert False 
 
 
-def test_number_cards():
+def test_card_number():
     assert len(cards) == 60
 
     
-def test_cards_by_board_slot():
+def test_board_slot_number():
 
     expected_dict = {
         1: 27,
@@ -83,10 +83,83 @@ def test_cards_by_board_slot():
 
     actual_dict = {}
 
-    for key, dict in cards.items():
+    for _, dict in cards.items():
         if dict["board_slot"].value.number not in actual_dict.keys():
             actual_dict[dict["board_slot"].value.number] = 0
         actual_dict[dict["board_slot"].value.number] += 1
 
     assert actual_dict == expected_dict
 
+# Each card slot has correct board slot card slot value
+    # Matching board slot
+#Attribute
+
+@pytest.mark.parametrize(
+    "card_slot, values",
+    [
+        ("card_slot_1", [1, 4, 7, 9, 12, 15, 17, 20, 23]),
+        ("card_slot_2", [2, 5, 8, 10, 13, 16, 18, 21, 24]),
+        ("card_slot_3", [3, 6, 11, 14, 19, 22])
+    ]
+)
+def test_card_slot_valid(card_slot: str, values: list[int]) -> None:
+
+    for _, dict in cards.items():
+        if dict[card_slot]["slot_number"] is None:
+            assert True
+        else:
+            assert dict[card_slot]["slot_number"] in values
+
+
+@pytest.mark.parametrize(
+    "card_slot",
+    [
+        ("card_slot_1"),
+        ("card_slot_2"),
+        ("card_slot_3")
+    ]
+)
+def test_board_slot_match(card_slot: str) -> None:
+
+    for _, dict in cards.items():
+        if dict[card_slot]["slot_number"] is None:
+            assert True
+        else:
+            assert getattr(dict["board_slot"].value, card_slot) == dict[card_slot]["slot_number"]
+
+
+def test_cards_by_attribute():
+
+    expected_dict = {
+        "Sociability": 18,
+        "Intelligence": 18,
+        "Creativity": 18,
+        "Strength": 18,
+        "Constitution": 18,
+        "Co-ordination": 18,
+        "Empathy": 6,
+        "Determination": 6,
+
+    }
+
+    actual_dict = {}
+
+    for _, dict in cards.items():
+
+        if dict["card_slot_1"]["values"] is not None:
+
+            if dict["card_slot_1"]["values"].value.name not in actual_dict.keys():
+                actual_dict[dict["card_slot_1"]["values"].value.name] = 0
+            actual_dict[dict["card_slot_1"]["values"].value.name] += dict["card_slot_1"]["values"].value.value
+
+        if dict["card_slot_2"]["values"] is not None:
+            if dict["card_slot_2"]["values"].value.name not in actual_dict.keys():
+                actual_dict[dict["card_slot_2"]["values"].value.name] = 0
+            actual_dict[dict["card_slot_2"]["values"].value.name] += dict["card_slot_2"]["values"].value.value
+        
+        if dict["card_slot_3"]["values"] is not None:
+            if dict["card_slot_3"]["values"].value.name not in actual_dict.keys():
+                actual_dict[dict["card_slot_3"]["values"].value.name] = 0
+            actual_dict[dict["card_slot_3"]["values"].value.name] += dict["card_slot_3"]["values"].value.value
+
+    assert actual_dict == expected_dict

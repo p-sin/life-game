@@ -4,9 +4,9 @@ from life_game.setup.definitions import BoardSlots as B, Attributes as A
 CARDTYPE = dict[str,Union[B, dict[str, Union[int, A, None]]]]
 
 
-dict[int, CARDTYPE]
 
-cards = {
+
+cards: dict[int, CARDTYPE] = {
     1: 
         {
             "board_slot": B.BOARD_SLOT_ONE,
