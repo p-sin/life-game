@@ -70,7 +70,7 @@ def test_body_slot_enum_defined(enum, number, body, stage, slot_1, slot_2, slot_
 
 
 def test_card_number():
-    assert len(cards) == 60
+    assert len(cards) == 180
 
     
 def test_board_slot_number():
@@ -79,6 +79,12 @@ def test_board_slot_number():
         1: 27,
         2: 27,
         3: 6,
+        4: 27,
+        5: 27,
+        6: 6,
+        7: 27,
+        8: 27,
+        9: 6,
     }
 
     actual_dict = {}
@@ -89,10 +95,6 @@ def test_board_slot_number():
         actual_dict[dict["board_slot"].value.number] += 1
 
     assert actual_dict == expected_dict
-
-# Each card slot has correct board slot card slot value
-    # Matching board slot
-#Attribute
 
 @pytest.mark.parametrize(
     "card_slot, values",
@@ -129,16 +131,15 @@ def test_board_slot_match(card_slot: str) -> None:
 
 
 def test_cards_by_attribute():
-
     expected_dict = {
-        "Sociability": 18,
-        "Intelligence": 18,
-        "Creativity": 18,
-        "Strength": 18,
-        "Constitution": 18,
-        "Co-ordination": 18,
-        "Empathy": 6,
-        "Determination": 6,
+        "Sociability": 87,
+        "Intelligence": 87,
+        "Creativity": 87,
+        "Strength": 87,
+        "Constitution": 87,
+        "Co-ordination": 87,
+        "Empathy": 28,
+        "Determination": 28,
 
     }
 
