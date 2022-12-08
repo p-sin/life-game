@@ -1,5 +1,5 @@
 import pytest
-from life_game.setup.definitions import Attributes, BoardSlots
+from life_game.setup.concepts import Attributes, BoardSections
 from life_game.setup.cards import cards
 
 @pytest.mark.parametrize(
@@ -49,21 +49,21 @@ def test_attribute_enum_defined(enum, name, value):
 @pytest.mark.parametrize(
     "enum, number, body, stage, slot_1, slot_2, slot_3",
     [
-    ("BOARD_SLOT_ONE", 1, "mind", "child", 1, 2, 3),
-    ("BOARD_SLOT_TWO", 2, "body", "child", 4, 5, 6),
-    ("BOARD_SLOT_THREE", 3, "soul", "child", 7, 8, None),
-    ("BOARD_SLOT_FOUR", 4, "mind", "adolescent", 9, 10, 11),
-    ("BOARD_SLOT_FIVE", 5, "body", "adolescent", 12, 13, 14),
-    ("BOARD_SLOT_SIX", 6, "soul", "adolescent", 15, 16, None),
-    ("BOARD_SLOT_SEVEN", 7, "mind", "adult", 17, 18, 19),
-    ("BOARD_SLOT_EIGHT", 8, "body", "adult", 20, 21, 22),
-    ("BOARD_SLOT_NINE", 9, "soul", "adult", 23, 24, None),
+    ("BOARD_SECTION_ONE", 1, "mind", "child", 1, 2, 3),
+    ("BOARD_SECTION_TWO", 2, "body", "child", 4, 5, 6),
+    ("BOARD_SECTION_THREE", 3, "soul", "child", 7, 8, None),
+    ("BOARD_SECTION_FOUR", 4, "mind", "adolescent", 9, 10, 11),
+    ("BOARD_SECTION_FIVE", 5, "body", "adolescent", 12, 13, 14),
+    ("BOARD_SECTION_SIX", 6, "soul", "adolescent", 15, 16, None),
+    ("BOARD_SECTION_SEVEN", 7, "mind", "adult", 17, 18, 19),
+    ("BOARD_SECTION_EIGHT", 8, "body", "adult", 20, 21, 22),
+    ("BOARD_SECTION_NINE", 9, "soul", "adult", 23, 24, None),
     ]
 )
 
 def test_body_slot_enum_defined(enum, number, body, stage, slot_1, slot_2, slot_3):
     try:
-        assert BoardSlots[enum].value.number == number and BoardSlots[enum].value.body_part == body and BoardSlots[enum].value.life_stage == stage and BoardSlots[enum].value.card_slot_1 == slot_1 and BoardSlots[enum].value.card_slot_2 == slot_2 and BoardSlots[enum].value.card_slot_3 == slot_3
+        assert BoardSections[enum].value.number == number and BoardSections[enum].value.body_part == body and BoardSections[enum].value.life_stage == stage and BoardSections[enum].value.card_slot_1 == slot_1 and BoardSections[enum].value.card_slot_2 == slot_2 and BoardSections[enum].value.card_slot_3 == slot_3
     except Exception as e:
         print (e)
         assert False 
@@ -73,7 +73,7 @@ def test_card_number():
     assert len(cards) == 180
 
     
-def test_board_slot_number():
+def test_BOARD_SECTION_number():
 
     expected_dict = {
         1: 27,
@@ -90,9 +90,9 @@ def test_board_slot_number():
     actual_dict = {}
 
     for _, dict in cards.items():
-        if dict["board_slot"].value.number not in actual_dict.keys():
-            actual_dict[dict["board_slot"].value.number] = 0
-        actual_dict[dict["board_slot"].value.number] += 1
+        if dict["BOARD_SECTION"].value.number not in actual_dict.keys():
+            actual_dict[dict["BOARD_SECTION"].value.number] = 0
+        actual_dict[dict["BOARD_SECTION"].value.number] += 1
 
     assert actual_dict == expected_dict
 
@@ -121,13 +121,13 @@ def test_card_slot_valid(card_slot: str, values: list[int]) -> None:
         ("card_slot_3")
     ]
 )
-def test_board_slot_match(card_slot: str) -> None:
+def test_BOARD_SECTION_match(card_slot: str) -> None:
 
     for _, dict in cards.items():
         if dict[card_slot]["slot_number"] is None:
             assert True
         else:
-            assert getattr(dict["board_slot"].value, card_slot) == dict[card_slot]["slot_number"]
+            assert getattr(dict["BOARD_SECTION"].value, card_slot) == dict[card_slot]["slot_number"]
 
 
 def test_cards_by_attribute():

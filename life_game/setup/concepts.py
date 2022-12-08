@@ -138,7 +138,7 @@ class Attributes(Enum):
     )
 
 @dataclass
-class BoardSlotInfo:
+class BoardSectionInfo:
     number: int
     body_part: str
     life_stage: str
@@ -146,8 +146,8 @@ class BoardSlotInfo:
     card_slot_2: int
     card_slot_3: Optional[int]
 
-class BoardSlots(Enum):
-    BOARD_SLOT_ONE = BoardSlotInfo(
+class BoardSections(Enum):
+    BOARD_SECTION_ONE = BoardSectionInfo(
         number = 1,
         body_part = "mind",
         life_stage = "child",
@@ -155,7 +155,7 @@ class BoardSlots(Enum):
         card_slot_2 = 2,
         card_slot_3 = 3,
     )
-    BOARD_SLOT_TWO = BoardSlotInfo(
+    BOARD_SECTION_TWO = BoardSectionInfo(
         number = 2,
         body_part = "body",
         life_stage = "child",
@@ -163,7 +163,7 @@ class BoardSlots(Enum):
         card_slot_2 = 5,
         card_slot_3 = 6,
     )
-    BOARD_SLOT_THREE = BoardSlotInfo(
+    BOARD_SECTION_THREE = BoardSectionInfo(
         number = 3,
         body_part = "soul",
         life_stage = "child",
@@ -171,7 +171,7 @@ class BoardSlots(Enum):
         card_slot_2 = 8,
         card_slot_3 = None,
     )
-    BOARD_SLOT_FOUR = BoardSlotInfo(
+    BOARD_SECTION_FOUR = BoardSectionInfo(
         number = 4,
         body_part = "mind",
         life_stage = "adolescent",
@@ -179,7 +179,7 @@ class BoardSlots(Enum):
         card_slot_2 = 10,
         card_slot_3 = 11,
     )
-    BOARD_SLOT_FIVE = BoardSlotInfo(
+    BOARD_SECTION_FIVE = BoardSectionInfo(
         number = 5,
         body_part = "body",
         life_stage = "adolescent",
@@ -187,7 +187,7 @@ class BoardSlots(Enum):
         card_slot_2 = 13,
         card_slot_3 = 14,
     )
-    BOARD_SLOT_SIX = BoardSlotInfo(
+    BOARD_SECTION_SIX = BoardSectionInfo(
         number = 6,
         body_part = "soul",
         life_stage = "adolescent",
@@ -195,7 +195,7 @@ class BoardSlots(Enum):
         card_slot_2 = 16,
         card_slot_3 = None,
     )
-    BOARD_SLOT_SEVEN = BoardSlotInfo(
+    BOARD_SECTION_SEVEN = BoardSectionInfo(
         number = 7,
         body_part = "mind",
         life_stage = "adult",
@@ -203,7 +203,7 @@ class BoardSlots(Enum):
         card_slot_2 = 18,
         card_slot_3 = 19,
     )
-    BOARD_SLOT_EIGHT = BoardSlotInfo(
+    BOARD_SECTION_EIGHT = BoardSectionInfo(
         number = 8,
         body_part = "body",
         life_stage = "adult",
@@ -211,7 +211,7 @@ class BoardSlots(Enum):
         card_slot_2 = 21,
         card_slot_3 = 22,
     )
-    BOARD_SLOT_NINE = BoardSlotInfo(
+    BOARD_SECTION_NINE = BoardSectionInfo(
         number = 9,
         body_part = "soul",
         life_stage = "adult",
