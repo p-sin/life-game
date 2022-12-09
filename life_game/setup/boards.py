@@ -3,6 +3,15 @@ from dataclasses import dataclass
 @dataclass
 class Board:
     """Defines the playerboard"""
+    player: int
+    sociability: int
+    intelligence: int
+    creativity: int	
+    strength: int
+    constitution: int
+    coordination: int
+    empathy: int
+    determination: int
     atrr_slot_1: str
     atrr_slot_2: str
     atrr_slot_3: str
@@ -51,15 +60,3 @@ class Board:
     value_slot_22: int
     value_slot_23: int
     value_slot_24: int
-
-@dataclass
-class PlayerBoard(Board):
-    player: int
-    sociability: int
-    intelligence: int
-    creativity: int	
-    strength: int
-    constitution: int
-    coordination: int
-    empathy: int
-    determination: int

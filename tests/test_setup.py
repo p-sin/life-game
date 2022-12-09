@@ -1,6 +1,7 @@
 import pytest
 from life_game.setup.concepts import Attributes, BoardSections
 from life_game.setup.cards import cards
+from life_game.setup.decks import child_deck, adol_deck, adult_deck
 
 @pytest.mark.parametrize(
     "enum, name, value",
@@ -162,5 +163,43 @@ def test_cards_by_attribute():
             if dict["card_slot_3"]["values"].value.name not in actual_dict.keys():
                 actual_dict[dict["card_slot_3"]["values"].value.name] = 0
             actual_dict[dict["card_slot_3"]["values"].value.name] += dict["card_slot_3"]["values"].value.value
+
+    assert actual_dict == expected_dict
+
+
+def test_deck_by_attribute():
+    expected_dict = {
+        "Sociability": 87,
+        "Intelligence": 87,
+        "Creativity": 87,
+        "Strength": 87,
+        "Constitution": 87,
+        "Co-ordination": 87,
+        "Empathy": 126,
+        "Determination": 126,
+
+    }
+
+    actual_dict = {}
+    decks = child_deck + adol_deck + adult_deck
+
+    for card_num in decks:
+        card = cards[card_num]
+
+        if card["card_slot_1"]["values"] is not None:
+
+            if card["card_slot_1"]["values"].value.name not in actual_dict.keys():
+                actual_dict[card["card_slot_1"]["values"].value.name] = 0
+            actual_dict[card["card_slot_1"]["values"].value.name] += card["card_slot_1"]["values"].value.value
+
+        if card["card_slot_2"]["values"] is not None:
+            if card["card_slot_2"]["values"].value.name not in actual_dict.keys():
+                actual_dict[card["card_slot_2"]["values"].value.name] = 0
+            actual_dict[card["card_slot_2"]["values"].value.name] += card["card_slot_2"]["values"].value.value
+        
+        if card["card_slot_3"]["values"] is not None:
+            if card["card_slot_3"]["values"].value.name not in actual_dict.keys():
+                actual_dict[card["card_slot_3"]["values"].value.name] = 0
+            actual_dict[card["card_slot_3"]["values"].value.name] += card["card_slot_3"]["values"].value.value
 
     assert actual_dict == expected_dict
