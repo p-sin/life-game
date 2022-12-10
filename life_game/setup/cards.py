@@ -1,5 +1,5 @@
 from typing import Union
-from life_game.setup.concepts import BoardSections as B, Attributes as A
+from life_game.setup.components import BoardSections as B, Attributes as A
 
 CARDTYPE = dict[str,Union[B, dict[str, Union[int, A, None]]]]
 

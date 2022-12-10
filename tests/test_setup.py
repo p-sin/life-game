@@ -1,7 +1,6 @@
 import pytest
-from life_game.setup.concepts import Attributes, BoardSections
+from life_game.setup.components import Attributes, BoardSections, child_deck, adol_deck, adult_deck
 from life_game.setup.cards import cards
-from life_game.setup.decks import child_deck, adol_deck, adult_deck
 
 @pytest.mark.parametrize(
     "enum, name, value",
