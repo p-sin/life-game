@@ -1,16 +1,23 @@
+from setup import game
+from setup.components import decks
+
+def __main__ ():
+    #Add configuring of logic
+    player_info, num_players = game.setup_players()
+    game_space = game.GameSpace(player_info)
+
+    for round in decks.keys():
+        game_space = game.deal_cards(game_space, round, num_players)
 
 
-# Setup game 
-# number of players (and other config)
-# Create player board for each player into dict
-# Create player hand for each player
-# Create player class with board and hand (and logic)
-# Create gamespace class with players (and event cards)
+        for p in num_players:
+            print (game_space.player_info[p].hand)
 
 
-def main ():
-    pass
+
+if __name__ == '__main__':
+    __main__ ()
 
 
-if __name__ == 'main':
-    main ()
+
+
