@@ -6,7 +6,7 @@ card_type = dict[str,Union[B, dict[str, Union[str, A, None]]]]
 cards: dict[int, card_type] = {
     1: 
         {
-                "number": 1,
+            "number": 1,
             "board_section": B.BOARD_SECTION_ONE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_ONE.value.card_slot_1,
@@ -1604,7 +1604,7 @@ cards: dict[int, card_type] = {
         }, 
     95: 
         {
-            "number": 1,
+            "number": 95,
             "board_section": B.BOARD_SECTION_FOUR,
             "card_slot_1": {
                 "slot_number": None,
@@ -1621,7 +1621,7 @@ cards: dict[int, card_type] = {
         },
     96: 
         {
-            "number": 1,
+            "number": 96,
             "board_section": B.BOARD_SECTION_FOUR,
             "card_slot_1": {
                 "slot_number": None,
@@ -1638,7 +1638,7 @@ cards: dict[int, card_type] = {
         },
     97: 
         {
-            "number": 1,
+            "number": 97,
             "board_section": B.BOARD_SECTION_FOUR,
             "card_slot_1": {
                 "slot_number": None,
@@ -1655,7 +1655,7 @@ cards: dict[int, card_type] = {
         },
     98: 
         {
-            "number": 1,
+            "number": 98,
             "board_section": B.BOARD_SECTION_FOUR,
             "card_slot_1": {
                 "slot_number": None,
@@ -1672,7 +1672,7 @@ cards: dict[int, card_type] = {
         },
     99: 
         {
-            "number": 1,
+            "number": 99,
             "board_section": B.BOARD_SECTION_FOUR,
             "card_slot_1": {
                 "slot_number": None,
@@ -1689,7 +1689,7 @@ cards: dict[int, card_type] = {
         },
     100: 
         {
-            "number": 1,
+            "number": 100,
             "board_section": B.BOARD_SECTION_FOUR,
             "card_slot_1": {
                 "slot_number": None,
@@ -1706,7 +1706,7 @@ cards: dict[int, card_type] = {
         },
     101: 
         {
-            "number": 1,
+            "number": 101,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1723,7 +1723,7 @@ cards: dict[int, card_type] = {
         },
     102: 
         {
-            "number": 1,
+            "number": 102,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1740,7 +1740,7 @@ cards: dict[int, card_type] = {
         },
     103: 
         {
-            "number": 1,
+            "number": 103,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1757,7 +1757,7 @@ cards: dict[int, card_type] = {
         },
     104: 
         {
-            "number": 1,
+            "number": 104,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1774,7 +1774,7 @@ cards: dict[int, card_type] = {
         },
     105: 
         {
-            "number": 1,
+            "number": 105,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1791,7 +1791,7 @@ cards: dict[int, card_type] = {
         },
     106: 
         {
-            "number": 1,
+            "number": 106,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1808,7 +1808,7 @@ cards: dict[int, card_type] = {
         },
     107: 
         {
-            "number": 1,
+            "number": 107,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1825,7 +1825,7 @@ cards: dict[int, card_type] = {
         },
     108: 
         {
-            "number": 1,
+            "number": 108,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1842,7 +1842,7 @@ cards: dict[int, card_type] = {
         },
     109: 
         {
-            "number": 1,
+            "number": 109,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1859,7 +1859,7 @@ cards: dict[int, card_type] = {
         },
     110: 
         {
-            "number": 1,
+            "number": 110,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1876,7 +1876,7 @@ cards: dict[int, card_type] = {
         },
     111: 
         {
-            "number": 1,
+            "number": 111,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1893,7 +1893,7 @@ cards: dict[int, card_type] = {
         },
     112: 
         {
-            "number": 1,
+            "number": 112,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_FIVE.value.card_slot_1,
@@ -1910,7 +1910,7 @@ cards: dict[int, card_type] = {
         },     
     113: 
         {
-            "number": 1,
+            "number": 113,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": None,
@@ -1927,7 +1927,7 @@ cards: dict[int, card_type] = {
         },
     114: 
         {
-            "number": 1,
+            "number": 114,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": None,
@@ -1944,7 +1944,7 @@ cards: dict[int, card_type] = {
         },
     115: 
         {
-            "number": 1,
+            "number": 115,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": None,
@@ -1961,7 +1961,7 @@ cards: dict[int, card_type] = {
         },
     116: 
         {
-            "number": 1,
+            "number": 116,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": None,
@@ -1978,7 +1978,7 @@ cards: dict[int, card_type] = {
         },
     117: 
         {
-            "number": 1,
+            "number": 117,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": None,
@@ -1995,7 +1995,7 @@ cards: dict[int, card_type] = {
         },
     118: 
         {
-            "number": 1,
+            "number": 118,
             "board_section": B.BOARD_SECTION_FIVE,
             "card_slot_1": {
                 "slot_number": None,
@@ -2012,7 +2012,7 @@ cards: dict[int, card_type] = {
         },   
     119: 
         {
-            "number": 1,
+            "number": 119,
             "board_section": B.BOARD_SECTION_SIX,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SIX.value.card_slot_1,
@@ -2029,7 +2029,7 @@ cards: dict[int, card_type] = {
         },
     120: 
         {
-            "number": 1,
+            "number": 120,
             "board_section": B.BOARD_SECTION_SIX,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SIX.value.card_slot_1,
@@ -2046,7 +2046,7 @@ cards: dict[int, card_type] = {
         },
    121: 
         {
-            "number": 1,
+            "number": 121,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2063,7 +2063,7 @@ cards: dict[int, card_type] = {
         },
     122: 
         {
-            "number": 1,
+            "number": 122,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2080,7 +2080,7 @@ cards: dict[int, card_type] = {
         },
     123: 
         {
-            "number": 1,
+            "number": 123,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2097,7 +2097,7 @@ cards: dict[int, card_type] = {
         },
     124: 
         {
-            "number": 1,
+            "number": 124,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2114,7 +2114,7 @@ cards: dict[int, card_type] = {
         },
     125: 
         {
-            "number": 1,
+            "number": 125,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2131,7 +2131,7 @@ cards: dict[int, card_type] = {
         },
     126: 
         {
-            "number": 1,
+            "number": 126,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2148,7 +2148,7 @@ cards: dict[int, card_type] = {
         },
     127: 
         {
-            "number": 1,
+            "number": 127,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2165,7 +2165,7 @@ cards: dict[int, card_type] = {
         },
     128: 
         {
-            "number": 1,
+            "number": 128,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2182,7 +2182,7 @@ cards: dict[int, card_type] = {
         },
     129: 
         {
-            "number": 1,
+            "number": 129,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2199,7 +2199,7 @@ cards: dict[int, card_type] = {
         },    
     130: 
         {
-            "number": 1,
+            "number": 130,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2216,7 +2216,7 @@ cards: dict[int, card_type] = {
         },
     131: 
         {
-            "number": 1,
+            "number": 131,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2233,7 +2233,7 @@ cards: dict[int, card_type] = {
         },
     132: 
         {
-            "number": 1,
+            "number": 132,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2250,7 +2250,7 @@ cards: dict[int, card_type] = {
         },
     133: 
         {
-            "number": 1,
+            "number": 133,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2267,7 +2267,7 @@ cards: dict[int, card_type] = {
         },
     134: 
         {
-            "number": 1,
+            "number": 134,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2284,7 +2284,7 @@ cards: dict[int, card_type] = {
         },
     135: 
         {
-            "number": 1,
+            "number": 135,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2301,7 +2301,7 @@ cards: dict[int, card_type] = {
         },
     136: 
         {
-            "number": 1,
+            "number": 136,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2318,7 +2318,7 @@ cards: dict[int, card_type] = {
         },
     137: 
         {
-            "number": 1,
+            "number": 137,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2335,7 +2335,7 @@ cards: dict[int, card_type] = {
         },
     138: 
         {
-            "number": 1,
+            "number": 138,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2352,7 +2352,7 @@ cards: dict[int, card_type] = {
         },
     139: 
         {
-            "number": 1,
+            "number": 139,
             "board_section": B.BOARD_SECTION_NINE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_NINE.value.card_slot_1,
@@ -2369,7 +2369,7 @@ cards: dict[int, card_type] = {
         },
     140: 
         {
-            "number": 1,
+            "number": 140,
             "board_section": B.BOARD_SECTION_NINE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_NINE.value.card_slot_1,
@@ -2386,7 +2386,7 @@ cards: dict[int, card_type] = {
         },
     141: 
         {
-            "number": 1,
+            "number": 141,
             "board_section": B.BOARD_SECTION_NINE,
             "card_slot_1": {
                 "slot_number": None,
@@ -2403,7 +2403,7 @@ cards: dict[int, card_type] = {
         },
     142: 
         {
-            "number": 1,
+            "number": 142,
             "board_section": B.BOARD_SECTION_NINE,
             "card_slot_1": {
                 "slot_number": None,
@@ -2420,7 +2420,7 @@ cards: dict[int, card_type] = {
         },
     143: 
         {
-            "number": 1,
+            "number": 143,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2437,7 +2437,7 @@ cards: dict[int, card_type] = {
         },
     144: 
         {
-            "number": 1,
+            "number": 144,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2454,7 +2454,7 @@ cards: dict[int, card_type] = {
         },
     145: 
         {
-            "number": 1,
+            "number": 145,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2471,7 +2471,7 @@ cards: dict[int, card_type] = {
         },
     146: 
         {
-            "number": 1,
+            "number": 146,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2488,7 +2488,7 @@ cards: dict[int, card_type] = {
         },
     147: 
         {
-            "number": 1,
+            "number": 147,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2505,7 +2505,7 @@ cards: dict[int, card_type] = {
         },
     148: 
         {
-            "number": 1,
+            "number": 148,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2522,7 +2522,7 @@ cards: dict[int, card_type] = {
         },
     149: 
         {
-            "number": 1,
+            "number": 149,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2539,7 +2539,7 @@ cards: dict[int, card_type] = {
         },
     150: 
         {
-            "number": 1,
+            "number": 150,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2556,7 +2556,7 @@ cards: dict[int, card_type] = {
         },
     151: 
         {
-            "number": 1,
+            "number": 151,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2573,7 +2573,7 @@ cards: dict[int, card_type] = {
         },
     152: 
         {
-            "number": 1,
+            "number": 152,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2590,7 +2590,7 @@ cards: dict[int, card_type] = {
         },
     153: 
         {
-            "number": 1,
+            "number": 153,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2607,7 +2607,7 @@ cards: dict[int, card_type] = {
         },
     154: 
         {
-            "number": 1,
+            "number": 154,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_SEVEN.value.card_slot_1,
@@ -2624,7 +2624,7 @@ cards: dict[int, card_type] = {
         }, 
     155: 
         {
-            "number": 1,
+            "number": 155,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2641,7 +2641,7 @@ cards: dict[int, card_type] = {
         },
     156: 
         {
-            "number": 1,
+            "number": 156,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2658,7 +2658,7 @@ cards: dict[int, card_type] = {
         },
     157: 
         {
-            "number": 1,
+            "number": 157,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2675,7 +2675,7 @@ cards: dict[int, card_type] = {
         },
     158: 
         {
-            "number": 1,
+            "number": 158,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2692,7 +2692,7 @@ cards: dict[int, card_type] = {
         },
     159: 
         {
-            "number": 1,
+            "number": 159,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2709,7 +2709,7 @@ cards: dict[int, card_type] = {
         },
     160: 
         {
-            "number": 1,
+            "number": 160,
             "board_section": B.BOARD_SECTION_SEVEN,
             "card_slot_1": {
                 "slot_number": None,
@@ -2726,7 +2726,7 @@ cards: dict[int, card_type] = {
         },
     161: 
         {
-            "number": 1,
+            "number": 161,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2743,7 +2743,7 @@ cards: dict[int, card_type] = {
         },
     162: 
         {
-            "number": 1,
+            "number": 162,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2760,7 +2760,7 @@ cards: dict[int, card_type] = {
         },
     163: 
         {
-            "number": 1,
+            "number": 163,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2777,7 +2777,7 @@ cards: dict[int, card_type] = {
         },
     164: 
         {
-            "number": 1,
+            "number": 164,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2794,7 +2794,7 @@ cards: dict[int, card_type] = {
         },
     165: 
         {
-            "number": 1,
+            "number": 165,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2811,7 +2811,7 @@ cards: dict[int, card_type] = {
         },
     166: 
         {
-            "number": 1,
+            "number": 166,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2828,7 +2828,7 @@ cards: dict[int, card_type] = {
         },
     167: 
         {
-            "number": 1,
+            "number": 167,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2845,7 +2845,7 @@ cards: dict[int, card_type] = {
         },
     168: 
         {
-            "number": 1,
+            "number": 168,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2862,7 +2862,7 @@ cards: dict[int, card_type] = {
         },
     169: 
         {
-            "number": 1,
+            "number": 169,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2879,7 +2879,7 @@ cards: dict[int, card_type] = {
         },
     170: 
         {
-            "number": 1,
+            "number": 170,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2896,7 +2896,7 @@ cards: dict[int, card_type] = {
         },
     171: 
         {
-            "number": 1,
+            "number": 171,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2913,7 +2913,7 @@ cards: dict[int, card_type] = {
         },
     172: 
         {
-            "number": 1,
+            "number": 172,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_EIGHT.value.card_slot_1,
@@ -2930,7 +2930,7 @@ cards: dict[int, card_type] = {
         },     
     173: 
         {
-            "number": 1,
+            "number": 173,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2947,7 +2947,7 @@ cards: dict[int, card_type] = {
         },
     174: 
         {
-            "number": 1,
+            "number": 174,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2964,7 +2964,7 @@ cards: dict[int, card_type] = {
         },
     175: 
         {
-            "number": 1,
+            "number": 175,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2981,7 +2981,7 @@ cards: dict[int, card_type] = {
         },
     176: 
         {
-            "number": 1,
+            "number": 176,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -2998,7 +2998,7 @@ cards: dict[int, card_type] = {
         },
     177: 
         {
-            "number": 1,
+            "number": 177,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -3015,7 +3015,7 @@ cards: dict[int, card_type] = {
         },
     178: 
         {
-            "number": 1,
+            "number": 178,
             "board_section": B.BOARD_SECTION_EIGHT,
             "card_slot_1": {
                 "slot_number": None,
@@ -3032,7 +3032,7 @@ cards: dict[int, card_type] = {
         },   
     179: 
         {
-            "number": 1,
+            "number": 179,
             "board_section": B.BOARD_SECTION_NINE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_NINE.value.card_slot_1,
@@ -3049,7 +3049,7 @@ cards: dict[int, card_type] = {
         },
     180: 
         {
-            "number": 1,
+            "number": 180,
             "board_section": B.BOARD_SECTION_NINE,
             "card_slot_1": {
                 "slot_number": B.BOARD_SECTION_NINE.value.card_slot_1,

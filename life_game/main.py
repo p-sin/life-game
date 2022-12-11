@@ -10,11 +10,6 @@ def __main__ ():
         game_space = game.deal_cards(game_space, round, num_players)
 
 
-        for p in num_players:
-            print (game_space.player_info[p].hand)
-
-
-
 if __name__ == '__main__':
     __main__ ()
 

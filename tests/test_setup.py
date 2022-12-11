@@ -1,5 +1,5 @@
 import pytest
-from life_game.setup.components import Attributes, BoardSections, child_deck, adol_deck, adult_deck
+from life_game.setup.core_components import Attributes, BoardSections, child_deck, adol_deck, adult_deck
 from life_game.setup.cards import cards
 
 @pytest.mark.parametrize(
