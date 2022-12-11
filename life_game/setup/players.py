@@ -6,12 +6,12 @@ from dataclasses import dataclass
 from typing import Optional, Tuple
 import random
 
-hand_type = dict[int, Optional[card_type]]
+hand_type = Optional[dict[int, card_type]]
 
 @dataclass
 class Player:
     board: Board
-    hand: Optional[hand_type] = None
+    hand: hand_type = None
     logic: Optional[Logic] = None
 
 
