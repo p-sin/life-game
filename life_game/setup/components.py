@@ -221,99 +221,99 @@ class BoardSections(Enum):
     )
 
 attribute_slots: dict [str, dict[str, Union[str, int]]] = {
-    "atrr_slot_1": {
+    "attr_slot_1": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_2": {
+    "attr_slot_2": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_3": {
+    "attr_slot_3": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_4": {
+    "attr_slot_4": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_5": {
+    "attr_slot_5": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_6": {
+    "attr_slot_6": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_7": {
+    "attr_slot_7": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_8": {
+    "attr_slot_8": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_9": {
+    "attr_slot_9": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_10": {
+    "attr_slot_10": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_11": {
+    "attr_slot_11": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_12": {
+    "attr_slot_12": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_13": {
+    "attr_slot_13": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_14": {
+    "attr_slot_14": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_15": {
+    "attr_slot_15": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_16": {
+    "attr_slot_16": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_17": {
+    "attr_slot_17": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_18": {
+    "attr_slot_18": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_19": {
+    "attr_slot_19": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_20": {
+    "attr_slot_20": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_21": {
+    "attr_slot_21": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_22": {
+    "attr_slot_22": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_23": {
+    "attr_slot_23": {
         "type": "",
         "value": 0,
     },
-    "atrr_slot_24": {
+    "attr_slot_24": {
         "type": "",
         "value": 0,
     },

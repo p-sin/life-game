@@ -21,8 +21,10 @@ def play_card(board: Board, hand: hand_type, card: int) -> Board:
 
     for slot in range (1,4):
         slot_num, slot_value = card_slot_info(card, slot)
-        board.attribute_slots[slot_num]["type"] = slot_value.name
-        board.attribute_slots[slot_num]["vlaue"] = slot_value.value
+
+        if slot_num != None:
+            board.attribute_slots[slot_num]["type"] = slot_value.name
+            board.attribute_slots[slot_num]["value"] = slot_value.value
 
     return board
 

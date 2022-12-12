@@ -9,7 +9,7 @@ def play_round(game_space: GameSpace, round: str, num_players: list[int]) -> Gam
         hand = game_space.player_info[player].hand
         board = game_space.player_info[player].board
 
-        chosen_cards = select_card(hand, player)
+        chosen_cards = select_card(hand)
 
         for card in chosen_cards:
 

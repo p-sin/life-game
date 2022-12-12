@@ -65,6 +65,8 @@ def deal_cards(game_space: GameSpace, round: str, num_players: list[int]) -> Gam
         
         player_cards = select_player_cards(deal, player)
 
+        print (game_space)
+
         game_space.player_info[player].hand = player_cards
 
     return game_space

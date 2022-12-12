@@ -8,12 +8,15 @@ def __main__ ():
     game_space = players.GameSpace(player_info)
 
     for round in decks.keys():
+
+        print (round)
+
         game_space = players.deal_cards(game_space, round, num_players)
 
         game_space = play_round(game_space, round, num_players)
 
 
-
+    print (game_space)
 
 
 if __name__ == '__main__':
