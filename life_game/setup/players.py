@@ -1,6 +1,6 @@
-from setup.components import Board, decks, attribute_slots
-from setup.cards import cards, card_type
-from setup.logic import Logic
+from life_game.setup.components import Board, decks, attribute_slots
+from life_game.setup.cards import cards, card_type
+from life_game.setup.logic import Logic
 
 from dataclasses import dataclass
 from typing import Optional, Tuple
@@ -19,12 +19,10 @@ class Player:
 class GameSpace:
     player_info: dict[int, Player]
 
+def setup_players(total_players: int) -> Tuple[dict[int, Player], list[int]]:
 
- 
-def setup_players() -> Tuple[dict[int, Player], list[int]]:
-
-    def player_count () -> list[int]:
-        return [1,2]
+    def player_count (total_players) -> list[int]:
+        return [x for x in range(1, total_players + 1)]
 
     def create_players(num_players: list[int]) -> dict[int, Player]:
 
@@ -38,7 +36,7 @@ def setup_players() -> Tuple[dict[int, Player], list[int]]:
             
         return player_info
 
-    num_players = player_count()
+    num_players = player_count(total_players)
     player_info = create_players(num_players)
   
     return player_info, num_players

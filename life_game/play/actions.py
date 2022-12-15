@@ -1,5 +1,5 @@
-from setup.players import Board, hand_type, card_type
-from setup.components import Attributes
+from life_game.setup.players import Board, hand_type, card_type
+from life_game.setup.components import Attributes
 import random
 from typing import Tuple
 

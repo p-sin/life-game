@@ -1,15 +1,16 @@
-from setup import players
-from setup.components import decks
-from play.round import play_round
+from life_game.setup import players
+from life_game.setup.components import decks
+from life_game.play.round import play_round
 
 def __main__ ():
     #Add configuring of logic
-    player_info, num_players = players.setup_players()
+
+    total_players = 2
+
+    player_info, num_players = players.setup_players(total_players)
     game_space = players.GameSpace(player_info)
 
     for round in decks.keys():
-
-        print (round)
 
         game_space = players.deal_cards(game_space, round, num_players)
 

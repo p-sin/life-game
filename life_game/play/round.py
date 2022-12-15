@@ -1,5 +1,5 @@
-from setup.players import GameSpace
-from play.actions import select_card, play_card
+from life_game.setup.players import GameSpace
+from life_game.play.actions import select_card, play_card
 
 
 def play_round(game_space: GameSpace, round: str, num_players: list[int]) -> GameSpace:
