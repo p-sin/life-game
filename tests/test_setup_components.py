@@ -1,7 +1,7 @@
 import pytest
-from life_game.setup.components import Attributes, BoardSections, decks
+from life_game.setup.components import Attributes, BoardSections, decks, attribute_slots, Board
 from life_game.setup.cards import cards
-from life_game.setup.players import setup_players, deal_cards, Player
+
 
 @pytest.mark.parametrize(
     "enum, name, value",
@@ -71,108 +71,62 @@ def test_body_slot_enum_defined(enum, number, body, stage, slot_1, slot_2, slot_
         print (e)
         assert False 
 
-
-def test_card_number():
-    """Test the correct number of cards have been defined"""
-    assert len(cards) == 180
-
-    
-def test_board_section_number():
-    """Test that the cards have the correct attributes"""
-
-    expected_dict = {
-        1: 27,
-        2: 27,
-        3: 6,
-        4: 27,
-        5: 27,
-        6: 6,
-        7: 27,
-        8: 27,
-        9: 6,
-    }
-
-    actual_dict = {}
-
-    for _, dict in cards.items():
-        if dict["board_section"].value.number not in actual_dict.keys():
-            actual_dict[dict["board_section"].value.number] = 0
-        actual_dict[dict["board_section"].value.number] += 1
-
-    assert actual_dict == expected_dict
-
 @pytest.mark.parametrize(
-    "card_slot, values",
+    "slot",
     [
-        ("card_slot_1", ["attr_slot_1", "attr_slot_4", "attr_slot_7", "attr_slot_9", "attr_slot_12", "attr_slot_15", "attr_slot_17", "attr_slot_20", "attr_slot_23"]),
-        ("card_slot_2", ["attr_slot_2", "attr_slot_5", "attr_slot_8", "attr_slot_10", "attr_slot_13", "attr_slot_16", "attr_slot_18", "attr_slot_21", "attr_slot_24"]),
-        ("card_slot_3", ["attr_slot_3", "attr_slot_6", "attr_slot_11", "attr_slot_14", "attr_slot_19", "attr_slot_22"])
+        (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),
+        (12),(13),(14),(15),(16),(17),(18),(19),(20),
+        (21),(22),(23),(24)
     ]
 )
-def test_card_slot_valid(card_slot: str, values: list[str]) -> None:
-    """Test each card slot has a valid attribute slot assigned to it"""
 
-    for _, dict in cards.items():
-        if dict[card_slot]["slot_number"] is None:
-            assert True
-        else:
-            assert dict[card_slot]["slot_number"] in values
+def test_attribute_slots_defined(slot: int):
+    """Test that the attribute slots object is correct"""
+    try:
+        slot_key = "attr_slot_" + str(slot)
+        assert attribute_slots[slot_key]["type"] == "" and attribute_slots[slot_key]["value"] == 0
+    except:
+        assert False
+
+@pytest.mark.parametrize(
+    "attribute, value",
+    [
+        ("player", 1), ("attribute_slots", attribute_slots),
+        ("sociability", 0), ("intelligence", 0), 
+        ("creativity", 0), ("strength", 0),
+        ("constitution", 0), ("coordination", 0),
+        ("empathy", 0), ("determination", 0)
+    ]
+
+)
+def test_board_defined(attribute: str, value):
+    """Test that the Board class contains the correct attributes
+    on initialisation"""
+    board = Board(player=1, attribute_slots=attribute_slots)
+
+    try:
+        assert getattr(board, attribute) == value
+    except:
+        assert False
 
 
 @pytest.mark.parametrize(
-    "card_slot",
+    "deck, total",
     [
-        ("card_slot_1"),
-        ("card_slot_2"),
-        ("card_slot_3")
+        ("child", 2864),
+        ("adol", 7664),
+        ("adult", 12464),
     ]
 )
-def test_board_section_match(card_slot: str) -> None:
-
-    for _, dict in cards.items():
-        if dict[card_slot]["slot_number"] is None:
-            assert True
-        else:
-            assert getattr(dict["board_section"].value, card_slot) == dict[card_slot]["slot_number"]
-
-
-def test_cards_by_attribute():
-    expected_dict = {
-        "Sociability": 87,
-        "Intelligence": 87,
-        "Creativity": 87,
-        "Strength": 87,
-        "Constitution": 87,
-        "Co-ordination": 87,
-        "Empathy": 28,
-        "Determination": 28,
-
-    }
-
-    actual_dict = {}
-
-    for _, dict in cards.items():
-
-        if dict["card_slot_1"]["values"] is not None:
-
-            if dict["card_slot_1"]["values"].value.name not in actual_dict.keys():
-                actual_dict[dict["card_slot_1"]["values"].value.name] = 0
-            actual_dict[dict["card_slot_1"]["values"].value.name] += dict["card_slot_1"]["values"].value.value
-
-        if dict["card_slot_2"]["values"] is not None:
-            if dict["card_slot_2"]["values"].value.name not in actual_dict.keys():
-                actual_dict[dict["card_slot_2"]["values"].value.name] = 0
-            actual_dict[dict["card_slot_2"]["values"].value.name] += dict["card_slot_2"]["values"].value.value
-        
-        if dict["card_slot_3"]["values"] is not None:
-            if dict["card_slot_3"]["values"].value.name not in actual_dict.keys():
-                actual_dict[dict["card_slot_3"]["values"].value.name] = 0
-            actual_dict[dict["card_slot_3"]["values"].value.name] += dict["card_slot_3"]["values"].value.value
-
-    assert actual_dict == expected_dict
+def test_total_cards_in_decks(deck: str, total: int):
+    """Test that each deck contains the expected total number of 
+    card IDs"""
+    assert sum(decks[deck]) == total
 
 
 def test_deck_by_attribute():
+    """Test that the cards contained in each deck are correct by extracting the value of each
+    attribute contained on the card"""
     expected_dict = {
         "Sociability": 87,
         "Intelligence": 87,
@@ -208,21 +162,3 @@ def test_deck_by_attribute():
             actual_dict[card["card_slot_3"]["values"].value.name] += card["card_slot_3"]["values"].value.value
 
     assert actual_dict == expected_dict
-
-def test_setup_player_count() -> None:
-    player_info, num_players = setup_players(3)
-
-    assert num_players == [1,2,3]
-
-def test_setup_player_info_count() -> None:
-
-    player_info, num_players = setup_players(2)
-
-    assert list(player_info.keys()) == [1,2]
-
-def test_setup_player_info_type() -> None:
-
-    player_info, num_players = setup_players(1)
-
-    assert isinstance(player_info[1], Player)
-
