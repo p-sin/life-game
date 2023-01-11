@@ -1,6 +1,7 @@
 from life_game.setup.components import Board, decks, attribute_slots
 from life_game.setup.cards import cards, card_type
 from life_game.setup.logic import Logic
+from life_game.setup.setup_exceptions import InvalidPlayerCountRange, InvalidPlayerCountType
 
 from dataclasses import dataclass
 from typing import Optional, Tuple
@@ -36,8 +37,13 @@ def setup_players(total_players: int) -> Tuple[dict[int, Player], list[int]]:
             
         return player_info
 
-    num_players = player_count(total_players)
-    player_info = create_players(num_players)
+    if not isinstance(total_players, int):
+        raise InvalidPlayerCountType(total_players)
+    elif not 0 < total_players < 7:
+        raise InvalidPlayerCountRange(total_players)   
+    else:
+        num_players = player_count(total_players)
+        player_info = create_players(num_players)
   
     return player_info, num_players
 
@@ -62,8 +68,6 @@ def deal_cards(game_space: GameSpace, round: str, num_players: list[int]) -> Gam
     for player in num_players:
         
         player_cards = select_player_cards(deal, player)
-
-        print (game_space)
 
         game_space.player_info[player].hand = player_cards
 

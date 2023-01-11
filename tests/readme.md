@@ -14,3 +14,5 @@ CARD TESTS
 5) Check that the total pool of cards contain the correct total value of attribute values
 
 PLAYER TESTS
+1) Check that setup_players returns a correct list of players
+2) Check that setup_player exceptions trigger for number of players
