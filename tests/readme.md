@@ -16,3 +16,5 @@ CARD TESTS
 PLAYER TESTS
 1) Check that setup_players returns a correct list of players
 2) Check that setup_player exceptions trigger for number of players
+3) Check the correct number of player classes are added to player_info
+4) Check that the contents of player_info is a Player class

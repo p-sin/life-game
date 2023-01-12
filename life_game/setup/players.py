@@ -1,13 +1,17 @@
 from life_game.setup.components import Board, decks, attribute_slots
 from life_game.setup.cards import cards, card_type
 from life_game.setup.logic import Logic
-from life_game.setup.setup_exceptions import InvalidPlayerCountRange, InvalidPlayerCountType
+from life_game.setup.setup_exceptions import (
+    InvalidPlayerCountRange,
+    InvalidPlayerCountType,
+)
 
 from dataclasses import dataclass
 from typing import Optional, Tuple
 import random
 
 hand_type = Optional[dict[int, card_type]]
+
 
 @dataclass
 class Player:
@@ -20,13 +24,12 @@ class Player:
 class GameSpace:
     player_info: dict[int, Player]
 
-def setup_players(total_players: int) -> Tuple[dict[int, Player], list[int]]:
 
-    def player_count (total_players) -> list[int]:
+def setup_players(total_players: int) -> Tuple[GameSpace, list[int]]:
+    def player_count(total_players) -> list[int]:
         return [x for x in range(1, total_players + 1)]
 
-    def create_players(num_players: list[int]) -> dict[int, Player]:
-
+    def create_players(num_players: list[int]) -> GameSpace:
         player_info = {}
 
         for id in num_players:
@@ -34,43 +37,15 @@ def setup_players(total_players: int) -> Tuple[dict[int, Player], list[int]]:
             hand = None
             logic = Logic()
             player_info[id] = Player(board, hand, logic)
-            
-        return player_info
+
+        return GameSpace(player_info)
 
     if not isinstance(total_players, int):
         raise InvalidPlayerCountType(total_players)
     elif not 0 < total_players < 7:
-        raise InvalidPlayerCountRange(total_players)   
+        raise InvalidPlayerCountRange(total_players)
     else:
         num_players = player_count(total_players)
-        player_info = create_players(num_players)
-  
-    return player_info, num_players
+        game_space = create_players(num_players)
 
-
-def deal_cards(game_space: GameSpace, round: str, num_players: list[int]) -> GameSpace:
-
-    def select_player_cards (deal: list[int], player: int) -> dict[int, card_type]:
-
-        start = 0 + (9 * (player - 1))
-        end = 9 + (9 * (player - 1))
-        player_deal = deal[start: end]
-
-        player_cards = {}
-
-        for num, card in enumerate(player_deal):
-            player_cards[num + 1] = cards[card]
-
-        return player_cards
-
-    deal = random.sample(decks[round], len(num_players) * 9)
-
-    for player in num_players:
-        
-        player_cards = select_player_cards(deal, player)
-
-        game_space.player_info[player].hand = player_cards
-
-    return game_space
-
-  
+    return game_space, num_players
