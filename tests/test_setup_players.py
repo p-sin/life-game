@@ -1,31 +1,10 @@
 import pytest
 from life_game.setup.players import setup_players
-from life_game.setup.setup_exceptions import (
-    InvalidPlayerCountRange,
-    InvalidPlayerCountType,
-)
+
 from life_game.setup.components import Board
 from life_game.setup.logic import Logic
 
 from typing import Union
-from contextlib import nullcontext as does_not_raise
-
-
-@pytest.mark.parametrize(
-    "player_num, outcome",
-    [
-        (7, pytest.raises(InvalidPlayerCountRange)),
-        (0, pytest.raises(InvalidPlayerCountRange)),
-        (-1, pytest.raises(InvalidPlayerCountRange)),
-        (5, does_not_raise()),
-        ("text", pytest.raises(InvalidPlayerCountType)),
-        (5.4, pytest.raises(InvalidPlayerCountType)),
-        ([1, 2], pytest.raises(InvalidPlayerCountType)),
-    ],
-)
-def test_setup_player_count_exceptions(player_num: int, outcome: Exception):
-    with outcome:
-        assert setup_players(player_num)
 
 
 @pytest.mark.parametrize(

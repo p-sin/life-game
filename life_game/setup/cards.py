@@ -1,4 +1,3 @@
-from typing import Tuple
 from life_game.setup.components import BoardSections as B, Attributes as A
 
 card_type = dict[str, int | B | dict[str, str | A | None]]

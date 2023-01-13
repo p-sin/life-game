@@ -1,17 +1,19 @@
-from life_game.setup import players
+from life_game.setup.players import create_players
 from life_game.setup.components import rounds
-from life_game.play.round import play_round, deal_cards
+from life_game.play.game_space import Game
+from life_game.setup.deal import deal_cards
 
 
 def __main__():
-    # Add configuring of logic
-
     total_players = 2
 
-    game_space, num_players = players.setup_players(total_players)
+    deals = deal_cards(total_players)
+    players = create_players(total_players, deals)
+
+    game = Game(players)
 
     for round in rounds:
-        game_space = deal_cards(game_space, round, num_players)
+        game.play_round(round)
 
         game_space = play_round(game_space, round, num_players)
 
