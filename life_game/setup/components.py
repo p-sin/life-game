@@ -329,7 +329,6 @@ attribute_slots: dict[str, dict[str, Union[str, int]]] = {
 class Board:
     """Defines the playerboard"""
 
-    player: int
     attribute_slots: dict[str, dict[str, Union[str, int]]]
     sociability: int = 0
     intelligence: int = 0

@@ -1,9 +1,15 @@
 import pytest
-from life_game.setup.players import create_players, hand_type
+from life_game.setup.players import (
+    create_players,
+    select_player_cards,
+    select_player_deal,
+    hand_type,
+)
 
 from life_game.setup.components import Board
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_cards
+from tests.utils import child_deal, adol_deal, adult_deal
 
 from typing import Union
 
@@ -45,5 +51,63 @@ def test_setup_player_info_type(element, type) -> None:
     assert isinstance(getattr(players[1], element), type)
 
 
-# Test that no hand is the same
-# Test contents of hands
+@pytest.mark.parametrize(
+    "player, round, hand",
+    [
+        (1, "child", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+        (1, "adol", [28, 29, 30, 31, 32, 33, 34, 35, 36]),
+        (1, "adult", [10, 11, 12, 13, 14, 15, 16, 17, 18]),
+        (2, "child", [10, 11, 12, 13, 14, 15, 16, 17, 18]),
+        (2, "adol", [37, 38, 39, 40, 41, 42, 43, 44, 45]),
+        (2, "adult", [19, 20, 21, 22, 23, 24, 25, 26, 27]),
+        (3, "child", [19, 20, 21, 22, 23, 24, 25, 26, 27]),
+        (3, "adol", [46, 47, 48, 49, 50, 51, 52, 53, 54]),
+        (3, "adult", [28, 29, 30, 31, 32, 33, 34, 35, 36]),
+        (4, "child", [28, 29, 30, 31, 32, 33, 34, 35, 36]),
+        (4, "adol", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+        (4, "adult", [37, 38, 39, 40, 41, 42, 43, 44, 45]),
+        (5, "child", [37, 38, 39, 40, 41, 42, 43, 44, 45]),
+        (5, "adol", [10, 11, 12, 13, 14, 15, 16, 17, 18]),
+        (5, "adult", [46, 47, 48, 49, 50, 51, 52, 53, 54]),
+        (6, "child", [46, 47, 48, 49, 50, 51, 52, 53, 54]),
+        (6, "adol", [19, 20, 21, 22, 23, 24, 25, 26, 27]),
+        (6, "adult", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+    ],
+)
+def test_player_deal(player, round, hand) -> None:
+    """Tests that the deals object is correctly sliced for each player"""
+    deals = {"child": child_deal, "adol": adol_deal, "adult": adult_deal}
+    out_hand = select_player_deal(deals, player, round)
+
+    assert out_hand == hand
+
+
+player_card_deals = {
+    "child": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "adol": [10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "adult": [19, 20, 21, 22, 23, 24, 25, 26, 27],
+}
+
+
+@pytest.mark.parametrize(
+    "round, numbers",
+    [
+        ("child", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+        ("adol", [10, 11, 12, 13, 14, 15, 16, 17, 18]),
+        ("adult", [19, 20, 21, 22, 23, 24, 25, 26, 27]),
+    ],
+)
+def test_select_player_cards(round, numbers) -> None:
+    child_hand, adol_hand, adult_hand = select_player_cards(player_card_deals, 1)
+
+    test_dict = {
+        "child": child_hand,
+        "adol": adol_hand,
+        "adult": adult_hand,
+    }
+
+    card_nums = []
+    for x in range(9):
+        card_nums.append(test_dict[round][x + 1]["number"])
+
+    assert card_nums == numbers
