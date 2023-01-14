@@ -9,4 +9,4 @@ class Game:
     def card_phase(self, round: str):
         for _, player in self.players.items():
             chosen_cards = player.choose_cards(round)
-            player.play_cards(round, chosen_cards)
+            player.play_cards(chosen_cards)

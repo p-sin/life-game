@@ -1,10 +1,10 @@
-from life_game.setup.components import Board, attribute_slots, rounds
+from life_game.setup.components import Board, attribute_slots, rounds, attribute_type
 from life_game.setup.cards import cards, card_type
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_type
 
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Union
 import random
 
 hand_type = dict[int, card_type]
@@ -12,6 +12,20 @@ hand_type = dict[int, card_type]
 
 def map_round_to_hand(round: str) -> str:
     return round + "_hand"
+
+
+def extract_card_info(
+    card: card_type, card_slot: str
+) -> Tuple[Union[str, None], Union[str, None], Union[int, None]]:
+    if card[card_slot]["values"] is not None:
+        attr_slot = card[card_slot]["slot_number"]
+        value_name = card[card_slot]["values"].value.name
+        value_value = card[card_slot]["values"].value.value
+    else:
+        attr_slot = None
+        value_name = None
+        value_value = None
+    return attr_slot, value_name, value_value
 
 
 @dataclass
@@ -28,8 +42,14 @@ class Player:
 
         return [round_hand[card] for card in chosen_card_nums]
 
-    def play_cards(self, round: str, chosen_cards: list[card_type]):
-        pass
+    def play_cards(self, chosen_cards: list[card_type]):
+        for card in chosen_cards:
+            for card_slot in ["card_slot_1", "card_slot_2", "card_slot_3"]:
+                attr_slot, value_name, value_value = extract_card_info(card, card_slot)
+
+                if value_name is not None:
+                    self.board.attribute_slots[attr_slot]["type"] = value_name
+                    self.board.attribute_slots[attr_slot]["value"] = value_value
 
 
 def select_player_deal(deals: deal_type, player: int, round: str) -> list[int]:
