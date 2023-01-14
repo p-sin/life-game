@@ -1,2 +1,3 @@
-for x in range(9):
-    print(x + 1)
+import random
+
+print(random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9], 2))

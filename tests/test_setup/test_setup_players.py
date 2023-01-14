@@ -3,15 +3,12 @@ from life_game.setup.players import (
     create_players,
     select_player_cards,
     select_player_deal,
-    hand_type,
 )
 
 from life_game.setup.components import Board
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_cards
 from tests.utils import child_deal, adol_deal, adult_deal
-
-from typing import Union
 
 
 @pytest.mark.parametrize(

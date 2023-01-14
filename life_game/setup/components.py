@@ -3,6 +3,10 @@ from dataclasses import dataclass
 from typing import Optional, Union
 
 
+attribute_type = dict[str, dict[str, Union[str, int]]]
+rounds = ["child", "adol", "adult"]
+
+
 @dataclass
 class AttributeInfo:
     name: str
@@ -225,7 +229,7 @@ class BoardSections(Enum):
     )
 
 
-attribute_slots: dict[str, dict[str, Union[str, int]]] = {
+attribute_slots: attribute_type = {
     "attr_slot_1": {
         "type": "",
         "value": 0,
@@ -329,7 +333,7 @@ attribute_slots: dict[str, dict[str, Union[str, int]]] = {
 class Board:
     """Defines the playerboard"""
 
-    attribute_slots: dict[str, dict[str, Union[str, int]]]
+    attribute_slots: attribute_type
     sociability: int = 0
     intelligence: int = 0
     creativity: int = 0
@@ -390,5 +394,3 @@ decks = {
         180,
     ],
 }
-
-rounds = ["child", "adol", "adult"]
