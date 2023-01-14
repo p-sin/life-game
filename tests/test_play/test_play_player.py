@@ -1,6 +1,6 @@
 import pytest
 
-from life_game.setup.players import create_players
+from life_game.play.players import create_players
 
 test_deals = {
     "child": [1, 5, 23, 27, 34, 35, 43, 48, 51],

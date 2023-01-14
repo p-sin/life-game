@@ -1,4 +1,4 @@
-from life_game.setup.components import Board, attribute_slots, rounds, attribute_type
+from life_game.setup.components import Board, attribute_slots, rounds
 from life_game.setup.cards import cards, card_type
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_type
@@ -18,14 +18,13 @@ def extract_card_info(
     card: card_type, card_slot: str
 ) -> Tuple[Union[str, None], Union[str, None], Union[int, None]]:
     if card[card_slot]["values"] is not None:
-        attr_slot = card[card_slot]["slot_number"]
-        value_name = card[card_slot]["values"].value.name
-        value_value = card[card_slot]["values"].value.value
+        return (
+            card[card_slot]["slot_number"],
+            card[card_slot]["values"].value.name,
+            card[card_slot]["values"].value.value,
+        )
     else:
-        attr_slot = None
-        value_name = None
-        value_value = None
-    return attr_slot, value_name, value_value
+        return None, None, None
 
 
 @dataclass

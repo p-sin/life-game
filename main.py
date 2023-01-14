@@ -1,4 +1,4 @@
-from life_game.setup.players import create_players
+from life_game.play.players import create_players
 from life_game.setup.components import rounds
 
 from life_game.play.game import Game

@@ -1,5 +1,5 @@
 import pytest
-from life_game.setup.players import (
+from life_game.play.players import (
     create_players,
     select_player_cards,
     select_player_deal,

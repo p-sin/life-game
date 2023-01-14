@@ -2,7 +2,7 @@ import pytest
 
 from life_game.play.game import Game
 from life_game.setup.deal import deal_cards
-from life_game.setup.players import create_players, Player
+from life_game.play.players import create_players, Player
 
 
 # Test creation of game - structure

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from life_game.setup.players import Player
+from life_game.play.players import Player
 
 
 @dataclass
