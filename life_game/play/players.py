@@ -6,6 +6,7 @@ from life_game.setup.deal import deal_type
 from dataclasses import dataclass
 from typing import Optional, Tuple, Union
 import random
+import copy
 
 hand_type = dict[int, card_type]
 
@@ -17,7 +18,7 @@ def map_round_to_hand(round: str) -> str:
 def extract_card_info(
     card: card_type, card_slot: str
 ) -> Tuple[Union[str, None], Union[str, None], Union[int, None]]:
-    if card[card_slot]["values"] is not None:
+    if card[card_slot]["slot_number"] is not None:
         return (
             card[card_slot]["slot_number"],
             card[card_slot]["values"].value.name,
@@ -75,7 +76,7 @@ def create_players(total_players: int, deals: deal_type) -> dict[int, Player]:
     players = {}
 
     for iter, _ in enumerate(range(total_players)):
-        board = Board(attribute_slots)
+        board = Board(copy.deepcopy(attribute_slots))
         child_hand, adol_hand, adult_hand = select_player_cards(deals, iter + 1)
         logic = Logic()
         players[iter + 1] = Player(board, child_hand, adol_hand, adult_hand, logic)
