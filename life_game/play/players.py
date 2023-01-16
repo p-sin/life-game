@@ -2,6 +2,7 @@ from life_game.setup.components import Board, attribute_slots, rounds
 from life_game.setup.cards import cards, card_type
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_type
+from life_game.play.play_utils import attribute_total_calc
 
 from dataclasses import dataclass
 from typing import Optional, Tuple, Union
@@ -50,6 +51,16 @@ class Player:
                 if value_name is not None:
                     self.board.attribute_slots[attr_slot]["type"] = value_name
                     self.board.attribute_slots[attr_slot]["value"] = value_value
+
+    def calculate_attribute_totals(self) -> None:
+        for slot, stats in self.board.attribute_slots.items():
+            attribute_totals = copy.deepcopy(attribute_total_calc)
+
+            if stats["type"] != "":
+                attribute_totals[stats["type"]] += stats["value"]
+
+        for attribute, total in attribute_totals.items():
+            setattr(self.board, attribute, total)
 
 
 def select_player_deal(deals: deal_type, player: int, round: str) -> list[int]:

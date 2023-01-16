@@ -27,7 +27,6 @@ def RoundControl(
     DealType,
     Testing,
 ):
-
     # First we assign cards to each player to define their hand. We previously 'shuffled' the cards to provide a
     # deck of (players * 9) cards. We can just assign 9 cards to each player.
     # Most of the functions follow the same pattern: We iterate through each player in the game, passing in their
@@ -36,7 +35,6 @@ def RoundControl(
     CurrentPlayer = 1
 
     for x in range(6):
-
         if CurrentPlayer == 1:
             StartCard = 0
             EndCard = 9
@@ -87,11 +85,9 @@ def RoundControl(
     # playing cards (2 cards, 4 times = 8 cards played).
 
     for x in range(4):
-
         CurrentPlayer = 1
 
         for x in range(Players):
-
             if CurrentPlayer == 1:
                 CurrPlayerNums = Player1CardNums
                 CurrPlayerHand = Player1Hand
@@ -162,9 +158,7 @@ def RoundControl(
         CurrentPlayer = 1
 
         for x in range(Players):
-
             if CurrentPlayer == 1:
-
                 PlayerBoard = Player1Board
                 PlayerCard = Player1Card1
                 PlayCards(PlayerBoard, PlayerCard)
@@ -175,7 +169,6 @@ def RoundControl(
                 Player1Board = PlayerBoard
 
             if CurrentPlayer == 2:
-
                 PlayerBoard = Player2Board
                 PlayerCard = Player2Card1
                 PlayCards(PlayerBoard, PlayerCard)
@@ -186,7 +179,6 @@ def RoundControl(
                 Player2Board = PlayerBoard
 
             if CurrentPlayer == 3:
-
                 PlayerBoard = Player3Board
                 PlayerCard = Player3Card1
                 PlayCards(PlayerBoard, PlayerCard)
@@ -197,7 +189,6 @@ def RoundControl(
                 Player3Board = PlayerBoard
 
             if CurrentPlayer == 4:
-
                 PlayerBoard = Player4Board
                 PlayerCard = Player4Card1
                 PlayCards(PlayerBoard, PlayerCard)
@@ -208,7 +199,6 @@ def RoundControl(
                 Player4Board = PlayerBoard
 
             if CurrentPlayer == 5:
-
                 PlayerBoard = Player5Board
                 PlayerCard = Player5Card1
                 PlayCards(PlayerBoard, PlayerCard)
@@ -219,7 +209,6 @@ def RoundControl(
                 Player5Board = PlayerBoard
 
             if CurrentPlayer == 6:
-
                 PlayerBoard = Player6Board
                 PlayerCard = Player6Card1
                 PlayCards(PlayerBoard, PlayerCard)
@@ -293,17 +282,14 @@ def EventControl(
     EventDeal,
     Testing,
 ):
-
     CurrentEvent = 1
 
     for x in range(5):
-
         EventDeal, EventCard = SelectEvent(EventDeck, EventDeal, Testing)
 
         CurrentPlayer = 1
 
         for x in range(Players):
-
             if CurrentPlayer == 1:
                 PlayerBoard = Player1Board
                 Player1Board = ResolveEvent(EventCard, PlayerBoard, CurrentEvent, Stage)
@@ -349,7 +335,6 @@ def EventControl(
 # and end card values passed in (defined for each player to give them 9 unique cards each). Then generates a
 # dataframe by filtering the 'deck' for those 9 card IDs.
 def DealPlayerHands(DealType, DeckType, StartCard, EndCard):
-
     PlayerCardNums = DealType[StartCard:EndCard]
     PlayerHand = DeckType.loc[DeckType["CardID"].isin(PlayerCardNums)]
 
@@ -364,7 +349,6 @@ def DealPlayerHands(DealType, DeckType, StartCard, EndCard):
 
 
 def SelectPlayerCards(CurrPlayerNums, CurrPlayerHand, Testing):
-
     if Testing == "Yes":
         PlayerCard1Num = [CurrPlayerNums[0]]
         CurrPlayerNums.remove(PlayerCard1Num[0])
@@ -401,7 +385,6 @@ def SelectPlayerCards(CurrPlayerNums, CurrPlayerHand, Testing):
 
 
 def PlayCards(PlayerBoard, PlayerCard):
-
     if PlayerCard.iloc[0]["CardType"] == 1:
         CardSlot1 = PlayerCard.iloc[0]["Attr1Slot"]
         CardAttr1 = PlayerCard.iloc[0]["Attr1"]
@@ -430,7 +413,7 @@ def PlayCards(PlayerBoard, PlayerCard):
                 "Creativity",
                 "Strength",
                 "Constitution",
-                "Co-ordination",
+                "Coordination",
                 "Empathy",
                 "Determination",
             ]
@@ -483,7 +466,7 @@ def PlayCards(PlayerBoard, PlayerCard):
                 "Creativity",
                 "Strength",
                 "Constitution",
-                "Co-ordination",
+                "Coordination",
                 "Empathy",
                 "Determination",
             ]
@@ -580,7 +563,6 @@ def SwitchPlayerHands(
 
 
 def SelectEvent(EventDeck, EventDeal, Testing):
-
     if Testing == "Yes":
         EventCardNum = [EventDeal[0]]
         EventCard = EventDeck.loc[EventDeck["EventCardID"].isin(EventCardNum)]
@@ -600,7 +582,6 @@ def SelectEvent(EventDeck, EventDeal, Testing):
 # they are able to achieve. Then takes the best outcome they can achieve and adds this number of points to
 # their score
 def ResolveEvent(EventCard, PlayerBoard, CurrentEvent, Stage):
-
     EventColumn = str(Stage) + "Event" + str(CurrentEvent)
 
     if (
@@ -692,7 +673,6 @@ def CalculateWinner(
     Player5Board,
     Player6Board,
 ):
-
     CombinedPlayerBoard = [
         Player1Board,
         Player2Board,
@@ -708,7 +688,6 @@ def CalculateWinner(
     ]
 
     for x in range(len(VictoriousPlayer)):
-
         Row = x
 
         Outcome = {

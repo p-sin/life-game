@@ -15,7 +15,8 @@ def __main__():
     for round in rounds:
         game.card_phase(round)
 
-    print(game.players[1])
+
+# print(game.players[1])
 
 
 if __name__ == "__main__":

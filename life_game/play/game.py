@@ -10,3 +10,4 @@ class Game:
         for _, player in self.players.items():
             chosen_cards = player.choose_cards(round)
             player.play_cards(chosen_cards)
+            player.calculate_attribute_totals()

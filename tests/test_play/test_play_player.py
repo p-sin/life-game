@@ -95,7 +95,7 @@ def test_player_choose_cards_unique() -> None:
             "Constitution",
             3,
             "attr_slot_13",
-            "Co-ordination",
+            "Coordination",
             3,
             "attr_slot_14",
             "",

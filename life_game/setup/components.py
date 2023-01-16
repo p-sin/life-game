@@ -95,19 +95,19 @@ class Attributes(Enum):
         value=4,
     )
     COORD_ONE = AttributeInfo(
-        name="Co-ordination",
+        name="Coordination",
         value=1,
     )
     COORD_TWO = AttributeInfo(
-        name="Co-ordination",
+        name="Coordination",
         value=2,
     )
     COORD_THREE = AttributeInfo(
-        name="Co-ordination",
+        name="Coordination",
         value=3,
     )
     COORD_FOUR = AttributeInfo(
-        name="Co-ordination",
+        name="Coordination",
         value=4,
     )
     EMPATHY_ONE = AttributeInfo(
@@ -334,14 +334,14 @@ class Board:
     """Defines the playerboard"""
 
     attribute_slots: attribute_slot_type
-    sociability: int = 0
-    intelligence: int = 0
-    creativity: int = 0
-    strength: int = 0
-    constitution: int = 0
-    coordination: int = 0
-    empathy: int = 0
-    determination: int = 0
+    Sociability: int = 0
+    Intelligence: int = 0
+    Creativity: int = 0
+    Strength: int = 0
+    Constitution: int = 0
+    Coordination: int = 0
+    Empathy: int = 0
+    Determination: int = 0
 
 
 decks = {
