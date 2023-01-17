@@ -52,6 +52,9 @@ class Player:
                     self.board.attribute_slots[attr_slot]["type"] = value_name
                     self.board.attribute_slots[attr_slot]["value"] = value_value
 
+    def remove_cards():
+        pass
+
     def calculate_attribute_totals(self) -> None:
         for slot, stats in self.board.attribute_slots.items():
             attribute_totals = copy.deepcopy(attribute_total_calc)
