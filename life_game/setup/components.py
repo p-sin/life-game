@@ -4,7 +4,11 @@ from typing import Optional, Union
 
 
 attribute_slot_type = dict[str, dict[str, Union[str, int]]]
-rounds = ["child", "adol", "adult"]
+rounds = {
+    "child": "child_hand",
+    "adol": "adol_hand",
+    "adult": "adult_hand",
+}
 
 
 @dataclass

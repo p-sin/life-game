@@ -19,7 +19,7 @@ def test_game_card_phase_runs() -> None:
         deals = deal_cards(1)
         players = create_players(1, deals)
         game = Game(players)
-        for round in rounds:
+        for round in rounds.keys():
             game.card_phase(round)
         assert True
     except:

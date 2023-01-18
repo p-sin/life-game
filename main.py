@@ -12,7 +12,7 @@ def __main__():
     players = create_players(total_players, deals)
     game = Game(players)
 
-    for round in rounds:
+    for round in rounds.keys():
         game.card_phase(round)
 
 

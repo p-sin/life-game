@@ -12,10 +12,6 @@ import copy
 hand_type = dict[int, card_type]
 
 
-def map_round_to_hand(round: str) -> str:
-    return round + "_hand"
-
-
 def extract_card_info(
     card: card_type, card_slot: str
 ) -> Tuple[Union[str, None], Union[str, None], Union[int, None]]:
@@ -38,12 +34,13 @@ class Player:
     logic: Optional[Logic] = None
 
     def choose_cards(self, round: str) -> list[card_type]:
-        chosen_card_nums = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)
-        round_hand = getattr(self, map_round_to_hand(round))
+        # HANDLE EACH TURN WITH FEWER CARDS
+        chosen_card_pos = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)
+        round_hand = getattr(self, rounds[round])
 
-        return [round_hand[card] for card in chosen_card_nums]
+        return [round_hand[card] for card in chosen_card_pos]
 
-    def play_cards(self, chosen_cards: list[card_type]):
+    def play_cards(self, chosen_cards: list[card_type]) -> None:
         for card in chosen_cards:
             for card_slot in ["card_slot_1", "card_slot_2", "card_slot_3"]:
                 attr_slot, value_name, value_value = extract_card_info(card, card_slot)
@@ -52,13 +49,22 @@ class Player:
                     self.board.attribute_slots[attr_slot]["type"] = value_name
                     self.board.attribute_slots[attr_slot]["value"] = value_value
 
-    def remove_cards():
-        pass
+    def remove_cards(self, chosen_cards: list[card_type], round: str) -> None:
+        chosen_cards_nums = [chosen_cards[0]["number"], chosen_cards[1]["number"]]
+
+        hand: hand_type = getattr(self, rounds[round])
+        new_hand: hand_type = {}
+        pos = 1
+        for _, card in hand.items():
+            if card["number"] not in chosen_cards_nums:
+                new_hand[pos] = card
+                pos += 1
+
+        setattr(self, rounds[round], new_hand)
 
     def calculate_attribute_totals(self) -> None:
-        for slot, stats in self.board.attribute_slots.items():
-            attribute_totals = copy.deepcopy(attribute_total_calc)
-
+        attribute_totals = copy.deepcopy(attribute_total_calc)
+        for _, stats in self.board.attribute_slots.items():
             if stats["type"] != "":
                 attribute_totals[stats["type"]] += stats["value"]
 
@@ -77,7 +83,7 @@ def select_player_cards(
 ) -> Tuple[dict[int, card_type], dict[int, card_type], dict[int, card_type]]:
     player_cards: dict[str, dict[int, card_type]] = {}
 
-    for round in rounds:
+    for round in rounds.keys():
         player_deal = select_player_deal(deals, player, round)
         player_cards[round] = {}
         for num, card in enumerate(player_deal):

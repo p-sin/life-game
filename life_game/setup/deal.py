@@ -16,7 +16,7 @@ def deal_cards(total_players: int) -> deal_type:
     else:
         deals = {}
 
-        for round in rounds:
+        for round in rounds.keys():
             deal = random.sample(decks[round], total_players * 9)
             deals[round] = deal
 
