@@ -17,7 +17,7 @@ def test_player_choose_cards_is_card() -> None:
     deals = test_deals
     players = create_players(1, deals)
 
-    chosen_cards = players[1].choose_cards("child")
+    chosen_cards = players[1].choose_cards("child", 1)
 
     try:
         chosen_cards[0]["card_slot_1"]["slot_number"]
@@ -51,7 +51,7 @@ def test_player_choose_cards_exist(round, card_range) -> None:
     deals = test_deals
     players = create_players(1, deals)
 
-    chosen_cards = players[1].choose_cards(round)
+    chosen_cards = players[1].choose_cards(round, 1)
 
     for card in chosen_cards:
         assert card["number"] in card_range
@@ -65,11 +65,31 @@ def test_player_choose_cards_unique() -> None:
     unique = True
 
     for _ in range(200):
-        chosen_cards = players[1].choose_cards("child")
+        chosen_cards = players[1].choose_cards("child", 1)
         if chosen_cards[0]["number"] == chosen_cards[1]["number"]:
             unique = False
 
     assert unique == True
+
+
+@pytest.mark.parametrize(
+    "turn, cards_in_scope",
+    [
+        (1, [1, 5, 23, 27, 34, 35, 43, 48, 51]),
+        (2, [1, 5, 23, 27, 34, 35, 43]),
+        (3, [1, 5, 23, 27, 34]),
+        (4, [1, 5, 23]),
+    ],
+)
+def test_player_choose_cards_turn(turn, cards_in_scope) -> None:
+    deals = test_deals
+    players = create_players(1, deals)
+
+    for _ in range(100):
+        chosen_cards = players[1].choose_cards("child", turn)
+
+        for card in chosen_cards:
+            assert card["number"] in cards_in_scope
 
 
 @pytest.mark.parametrize(

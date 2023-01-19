@@ -1,7 +1,4 @@
-from life_game.setup.cards import cards
+players = 6
 
-card = cards[1]
-
-
-if card["card_slot_1"]["slot_number"] is not None:
-    print("IM NOT A FUCKING INTEGER")
+for i in range(6, 0, -1):
+    print(i)

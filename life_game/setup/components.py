@@ -10,6 +10,8 @@ rounds = {
     "adult": "adult_hand",
 }
 
+turns = [1, 2, 3, 4]
+
 
 @dataclass
 class AttributeInfo:

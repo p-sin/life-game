@@ -33,9 +33,9 @@ class Player:
     adult_hand: hand_type
     logic: Optional[Logic] = None
 
-    def choose_cards(self, round: str) -> list[card_type]:
-        # HANDLE EACH TURN WITH FEWER CARDS
-        chosen_card_pos = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)
+    def choose_cards(self, round: str, turn: int) -> list[card_type]:
+        possible_pos = [x for x in range(1, 10 - (2 * (turn - 1)))]
+        chosen_card_pos = random.sample(possible_pos, 2)
         round_hand = getattr(self, rounds[round])
 
         return [round_hand[card] for card in chosen_card_pos]

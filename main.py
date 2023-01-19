@@ -1,5 +1,4 @@
 from life_game.play.players import create_players
-from life_game.setup.components import rounds
 
 from life_game.play.game import Game
 from life_game.setup.deal import deal_cards
@@ -10,10 +9,8 @@ def __main__():
 
     deals = deal_cards(total_players)
     players = create_players(total_players, deals)
-    game = Game(players)
-
-    for round in rounds.keys():
-        game.card_phase(round)
+    game = Game(total_players, players)
+    game.play_game()
 
 
 # print(game.players[1])
