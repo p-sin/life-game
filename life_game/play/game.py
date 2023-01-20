@@ -32,7 +32,7 @@ class Game:
 
     def play_turn(self, round: str, turn: int) -> None:
         self.card_phase(round, turn)
-        self.pass_hand()
+        self.pass_hand(round)
         self.event_phase()
 
     def play_round(self, round: str) -> None:

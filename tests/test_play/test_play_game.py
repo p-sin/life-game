@@ -23,17 +23,10 @@ def test_game_creation_player_structure() -> None:
 
 def test_game_card_phase_runs() -> None:
     try:
-        deals = deal_cards(1)
-        players = create_players(1, deals)
-        game = Game(players)
-        for round in rounds.keys():
-            game.card_phase(round)
+        deals = deal_cards(6)
+        players = create_players(6, deals)
+        game = Game(6, players)
+        game.play_game()
         assert True
     except:
         assert False
-
-
-# Test card phase
-
-# Test choose_cards (player)
-# Test play_cards (player)
