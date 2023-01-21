@@ -17,7 +17,7 @@ def test_player_choose_cards_is_card() -> None:
     deals = test_deals
     players = create_players(1, deals)
 
-    chosen_cards = players[1].choose_cards("child", 1)
+    chosen_cards, _ = players[1].choose_cards("child", 1)
 
     try:
         chosen_cards[0]["card_slot_1"]["slot_number"]
@@ -51,7 +51,7 @@ def test_player_choose_cards_exist(round, card_range) -> None:
     deals = test_deals
     players = create_players(1, deals)
 
-    chosen_cards = players[1].choose_cards(round, 1)
+    chosen_cards, _ = players[1].choose_cards(round, 1)
 
     for card in chosen_cards:
         assert card["number"] in card_range
@@ -65,7 +65,7 @@ def test_player_choose_cards_unique() -> None:
     unique = True
 
     for _ in range(200):
-        chosen_cards = players[1].choose_cards("child", 1)
+        chosen_cards, _ = players[1].choose_cards("child", 1)
         if chosen_cards[0]["number"] == chosen_cards[1]["number"]:
             unique = False
 
@@ -86,7 +86,7 @@ def test_player_choose_cards_turn(turn, cards_in_scope) -> None:
     players = create_players(1, deals)
 
     for _ in range(100):
-        chosen_cards = players[1].choose_cards("child", turn)
+        chosen_cards, _ = players[1].choose_cards("child", turn)
 
         for card in chosen_cards:
             assert card["number"] in cards_in_scope
@@ -250,43 +250,83 @@ test_deals_2 = {
 
 
 @pytest.mark.parametrize(
-    "player, round, hand, card_1, card_2, outcome",
+    "player, round, hand, card_order, outcome_1, outcome_2, outcome_3, outcome_4",
     [
-        (1, "child", "child_hand", 0, 1, [23, 27, 34, 35, 43, 48, 51]),
-        (1, "adol", "adol_hand", 2, 3, [63, 76, 89, 101, 111, 115, 120]),
-        (1, "adult", "adult_hand", 4, 5, [125, 132, 138, 144, 156, 167, 179]),
-        (2, "child", "child_hand", 17, 16, [2, 6, 24, 28, 36, 37, 44]),
-        (2, "adol", "adol_hand", 15, 14, [62, 75, 78, 84, 88, 114, 119]),
-        (2, "adult", "adult_hand", 13, 12, [126, 133, 139, 154, 157, 168, 180]),
+        (
+            1,
+            "child",
+            "child_hand",
+            [6, 7, 2, 7, 1, 2, 2, 3],
+            [1, 5, 23, 27, 34, 48, 51],
+            [1, 23, 27, 34, 48],
+            [27, 34, 48],
+            [27],
+        ),
+        (
+            1,
+            "adol",
+            "adol_hand",
+            [1, 2, 1, 2, 1, 2, 1, 2],
+            [79, 85, 89, 101, 111, 115, 120],
+            [89, 101, 111, 115, 120],
+            [111, 115, 120],
+            [120],
+        ),
+        (
+            2,
+            "adol",
+            "adol_hand",
+            [8, 9, 6, 7, 4, 5, 2, 3],
+            [62, 75, 78, 84, 88, 100, 110],
+            [62, 75, 78, 84, 88],
+            [62, 75, 78],
+            [62],
+        ),
+        (
+            2,
+            "adult",
+            "adult_hand",
+            [5, 4, 5, 4, 5, 4, 3, 1],
+            [126, 133, 139, 154, 157, 168, 180],
+            [126, 133, 139, 168, 180],
+            [126, 133, 139],
+            [133],
+        ),
     ],
 )
-def test_remove_cards_removed(player, round, hand, card_1, card_2, outcome) -> None:
+def test_remove_cards_removed(
+    player, round, hand, card_order, outcome_1, outcome_2, outcome_3, outcome_4
+) -> None:
     players = create_players(2, test_deals_2)
-    chosen_cards = [
-        cards[test_deals_2[round][card_1]],
-        cards[test_deals_2[round][card_2]],
-    ]
 
-    players[player].remove_cards(chosen_cards, round)
+    for card_1, card_2, outcome in zip(
+        [0, 2, 4, 6], [1, 3, 5, 7], [outcome_1, outcome_2, outcome_3, outcome_4]
+    ):
+        chosen_cards = [
+            card_order[card_1],
+            card_order[card_2],
+        ]
 
-    hand = getattr(players[player], hand)
+        players[player].remove_cards(chosen_cards, round)
 
-    card_list = []
+        hand_contents = getattr(players[player], hand)
 
-    for num, card in hand.items():
-        card_list.append(card["number"])
+        card_list = []
 
-    assert card_list == outcome
+        for _, card in hand_contents.items():
+            card_list.append(card["number"])
+
+        assert card_list == outcome
 
 
 @pytest.mark.parametrize(
     "card_1, card_2, card_3, card_4, card_5, card_6, card_7, card_8",
     [
-        (0, 1, 2, 3, 4, 5, 6, 7),
-        (8, 2, 5, 4, 1, 6, 7, 0),
-        (8, 2, 4, 1, 6, 3, 7, 0),
-        (4, 2, 5, 3, 1, 6, 7, 0),
-        (8, 2, 5, 4, 1, 6, 3, 7),
+        (8, 7, 6, 5, 4, 3, 2, 1),
+        (8, 2, 5, 4, 1, 3, 1, 2),
+        (8, 2, 4, 1, 5, 3, 2, 3),
+        (4, 2, 5, 3, 1, 3, 1, 3),
+        (8, 2, 5, 4, 1, 4, 3, 1),
     ],
 )
 def test_remove_cards_deplete(
@@ -297,21 +337,18 @@ def test_remove_cards_deplete(
     card_list = [card_1, card_2, card_3, card_4, card_5, card_6, card_7, card_8]
 
     for x, y in zip([0, 2, 4, 6], [1, 3, 5, 7]):
-        chosen_cards = [
-            cards[test_deals_2["child"][card_list[x]]],
-            cards[test_deals_2["child"][card_list[y]]],
+        chosen_cards_pos = [
+            card_list[x],
+            card_list[y],
         ]
-        players[1].remove_cards(chosen_cards, "child")
+        players[1].remove_cards(chosen_cards_pos, "child")
 
     assert list(players[1].child_hand.keys()) == [1]
 
 
 def test_remove_cards_position() -> None:
     players = create_players(2, test_deals_2)
-    chosen_cards = [
-        cards[test_deals_2["child"][10]],
-        cards[test_deals_2["child"][13]],
-    ]
+    chosen_cards = [7, 3]
     players[2].remove_cards(chosen_cards, "child")
 
     assert list(players[2].child_hand.keys()) == [1, 2, 3, 4, 5, 6, 7]

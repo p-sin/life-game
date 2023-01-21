@@ -10,9 +10,9 @@ class Game:
 
     def card_phase(self, round: str, turn: int):
         for _, player in self.players.items():
-            chosen_cards = player.choose_cards(round, turn)
+            chosen_cards, chosen_cards_pos = player.choose_cards(round, turn)
             player.play_cards(chosen_cards)
-            player.remove_cards(chosen_cards, round)
+            player.remove_cards(chosen_cards_pos, round)
             player.calculate_attribute_totals()
 
     def pass_hand(self, round: str) -> None:

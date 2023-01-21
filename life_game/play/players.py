@@ -33,12 +33,11 @@ class Player:
     adult_hand: hand_type
     logic: Optional[Logic] = None
 
-    def choose_cards(self, round: str, turn: int) -> list[card_type]:
+    def choose_cards(self, round: str, turn: int) -> Tuple[list[card_type], list[int]]:
         possible_pos = [x for x in range(1, 10 - (2 * (turn - 1)))]
-        chosen_card_pos = random.sample(possible_pos, 2)
+        chosen_cards_pos = random.sample(possible_pos, 2)
         round_hand = getattr(self, rounds[round])
-
-        return [round_hand[card] for card in chosen_card_pos]
+        return [round_hand[card] for card in chosen_cards_pos], chosen_cards_pos
 
     def play_cards(self, chosen_cards: list[card_type]) -> None:
         for card in chosen_cards:
@@ -49,16 +48,14 @@ class Player:
                     self.board.attribute_slots[attr_slot]["type"] = value_name
                     self.board.attribute_slots[attr_slot]["value"] = value_value
 
-    def remove_cards(self, chosen_cards: list[card_type], round: str) -> None:
-        chosen_cards_nums = [chosen_cards[0]["number"], chosen_cards[1]["number"]]
-
+    def remove_cards(self, chosen_cards_pos: list[int], round: str) -> None:
         hand: hand_type = getattr(self, rounds[round])
         new_hand: hand_type = {}
-        pos = 1
-        for _, card in hand.items():
-            if card["number"] not in chosen_cards_nums:
-                new_hand[pos] = card
-                pos += 1
+        new_pos = 1
+        for old_pos, (_, card) in enumerate(hand.items()):
+            if (old_pos + 1) not in chosen_cards_pos:
+                new_hand[new_pos] = card
+                new_pos += 1
 
         setattr(self, rounds[round], new_hand)
 
