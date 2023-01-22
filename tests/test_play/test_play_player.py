@@ -3,7 +3,7 @@ import copy
 
 from life_game.setup.components import attribute_slots
 from life_game.play.players import create_players
-from life_game.setup.cards import cards
+from life_game.setup.attr_cards import cards
 
 # Sample deal used for several tests to fix the input
 test_deals = {

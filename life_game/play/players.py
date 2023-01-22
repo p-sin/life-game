@@ -1,5 +1,5 @@
 from life_game.setup.components import Board, attribute_slots, rounds
-from life_game.setup.cards import cards, card_type
+from life_game.setup.attr_cards import cards, card_type
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_type
 from life_game.play.play_utils import attribute_total_calc

@@ -1,5 +1,5 @@
 import pytest
-from life_game.setup.cards import cards
+from life_game.setup.attr_cards import cards
 
 
 def test_card_number():

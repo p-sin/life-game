@@ -6,7 +6,7 @@ from life_game.setup.components import (
     attribute_slots,
     Board,
 )
-from life_game.setup.cards import cards
+from life_game.setup.attr_cards import cards
 
 
 @pytest.mark.parametrize(
