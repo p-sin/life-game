@@ -80,22 +80,27 @@ def test_player_deal(player, round, hand) -> None:
 
 
 player_card_deals = {
-    "child": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    "adol": [10, 11, 12, 13, 14, 15, 16, 17, 18],
-    "adult": [19, 20, 21, 22, 23, 24, 25, 26, 27],
+    "child": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "adol": [10, 11, 12, 13, 14, 15, 16, 17, 18, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "adult": [19, 20, 21, 22, 23, 24, 25, 26, 27, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 }
 
 
 @pytest.mark.parametrize(
-    "round, numbers",
+    "round, player, numbers",
     [
-        ("child", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
-        ("adol", [10, 11, 12, 13, 14, 15, 16, 17, 18]),
-        ("adult", [19, 20, 21, 22, 23, 24, 25, 26, 27]),
+        ("child", 1, [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+        ("adol", 1, [10, 11, 12, 13, 14, 15, 16, 17, 18]),
+        ("adult", 1, [19, 20, 21, 22, 23, 24, 25, 26, 27]),
+        ("child", 2, [10, 11, 12, 13, 14, 15, 16, 17, 18]),
+        ("adol", 2, [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+        ("adult", 2, [1, 2, 3, 4, 5, 6, 7, 8, 9]),
     ],
 )
-def test_select_player_cards(round, numbers) -> None:
-    child_hand, adol_hand, adult_hand = select_player_cards(player_card_deals, 1)
+def test_select_player_cards(round, player, numbers) -> None:
+    """Test that each player has the correct card objects in their hand by checking the number of the
+    card"""
+    child_hand, adol_hand, adult_hand = select_player_cards(player_card_deals, player)
 
     test_dict = {
         "child": child_hand,

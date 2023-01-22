@@ -5,6 +5,7 @@ from life_game.setup.components import attribute_slots
 from life_game.play.players import create_players
 from life_game.setup.cards import cards
 
+# Sample deal used for several tests to fix the input
 test_deals = {
     "child": [1, 5, 23, 27, 34, 35, 43, 48, 51],
     "adol": [63, 76, 79, 85, 89, 101, 111, 115, 120],
@@ -13,13 +14,15 @@ test_deals = {
 
 
 def test_player_choose_cards_is_card() -> None:
-    """Tests that the outputs are card objects"""
+    """Tests that the outputs are card objects by checking they are a dict with a "slot_number" key"""
     deals = test_deals
     players = create_players(1, deals)
 
+    # Choose cards from the fixed deal
     chosen_cards, _ = players[1].choose_cards("child", 1)
 
     try:
+        # The card has a 'slot_number'
         chosen_cards[0]["card_slot_1"]["slot_number"]
         assert True
     except:
@@ -53,6 +56,7 @@ def test_player_choose_cards_exist(round, card_range) -> None:
 
     chosen_cards, _ = players[1].choose_cards(round, 1)
 
+    # Chosen card is one of the cards given in the fixed deal
     for card in chosen_cards:
         assert card["number"] in card_range
 
@@ -65,6 +69,7 @@ def test_player_choose_cards_unique() -> None:
     unique = True
 
     for _ in range(200):
+        # It never chooses the same card
         chosen_cards, _ = players[1].choose_cards("child", 1)
         if chosen_cards[0]["number"] == chosen_cards[1]["number"]:
             unique = False
@@ -82,12 +87,16 @@ def test_player_choose_cards_unique() -> None:
     ],
 )
 def test_player_choose_cards_turn(turn, cards_in_scope) -> None:
+    """Test that the chosen card is one of the 'in scope' cards, which simulates the
+    removal of cards over 4 turns"""
     deals = test_deals
     players = create_players(1, deals)
 
+    # Uses the turn value to reduce the range of cards it can choose from (e.g 9/7/5/3)
     for _ in range(100):
         chosen_cards, _ = players[1].choose_cards("child", turn)
 
+        # It chose a card from the specified range of available cards
         for card in chosen_cards:
             assert card["number"] in cards_in_scope
 
@@ -149,11 +158,12 @@ def test_player_play_card(
     type_3,
     value_3,
 ) -> None:
-    """Test that the chosen cards are correctly applied to the player board"""
+    """Test that the chosen cards are correctly applied to the player board over a single turn"""
     players = create_players(1, test_deals)
     chosen_cards = [cards[card_1], cards[card_2]]
     players[1].play_cards(chosen_cards)
 
+    # Two cards played each time. Updates a test version of board below and compares to actual board
     test_attribute_slots = copy.deepcopy(attribute_slots)
     test_attribute_slots[slot_1]["type"] = type_1
     test_attribute_slots[slot_1]["value"] = value_1
@@ -177,9 +187,10 @@ def test_player_play_card(
     ],
 )
 def test_player_play_card_multiple_plays(player) -> None:
-    """Test that the chosen cards are correctly applied to the player board"""
+    """Test that the chosen cards are correctly applied to the player board over multiple turns"""
     players = create_players(player, test_deals)
 
+    # Same as before, but plays several cards in sequence
     chosen_cards = [cards[1], cards[2]]
     players[player].play_cards(chosen_cards)
     chosen_cards = [cards[7], cards[13]]
@@ -297,11 +308,18 @@ test_deals_2 = {
 def test_remove_cards_removed(
     player, round, hand, card_order, outcome_1, outcome_2, outcome_3, outcome_4
 ) -> None:
+    """Tests that the correct cards are removed from the player's hand across several turns"""
     players = create_players(2, test_deals_2)
 
+    # Simulates turns by having it select different values from the 'card_order'. Each loop
+    # is a new turn and it changes the definition of card_1 and card_2 - functionally just
+    # shifts along the card_order list to simulate 2 new cards being chosen each turn.
+    # Each turn has a different outcome as the remaining cards reduce. The 4 outcomes
+    # match the 4 turns
     for card_1, card_2, outcome in zip(
         [0, 2, 4, 6], [1, 3, 5, 7], [outcome_1, outcome_2, outcome_3, outcome_4]
     ):
+        # Choose the two cards for this turn
         chosen_cards = [
             card_order[card_1],
             card_order[card_2],
@@ -309,10 +327,12 @@ def test_remove_cards_removed(
 
         players[player].remove_cards(chosen_cards, round)
 
+        # Get the new hand generated from removing the cards
         hand_contents = getattr(players[player], hand)
 
         card_list = []
 
+        # Get all the card numbers from the hand and check against the expected outcome for this turn
         for _, card in hand_contents.items():
             card_list.append(card["number"])
 
@@ -332,10 +352,12 @@ def test_remove_cards_removed(
 def test_remove_cards_deplete(
     card_1, card_2, card_3, card_4, card_5, card_6, card_7, card_8
 ) -> None:
+    """Tests that the player's hand is correctly depleted by removing hands"""
     players = create_players(2, test_deals_2)
 
     card_list = [card_1, card_2, card_3, card_4, card_5, card_6, card_7, card_8]
 
+    # Remove cards over 4 'turns'
     for x, y in zip([0, 2, 4, 6], [1, 3, 5, 7]):
         chosen_cards_pos = [
             card_list[x],
@@ -343,10 +365,12 @@ def test_remove_cards_deplete(
         ]
         players[1].remove_cards(chosen_cards_pos, "child")
 
+    # Only one card left
     assert list(players[1].child_hand.keys()) == [1]
 
 
 def test_remove_cards_position() -> None:
+    """Tests that the new hand is correctly indexed with consecutive numbers"""
     players = create_players(2, test_deals_2)
     chosen_cards = [7, 3]
     players[2].remove_cards(chosen_cards, "child")
@@ -410,6 +434,9 @@ def test_remove_cards_position() -> None:
 def test_player_calc_attributes(
     player, card_1, card_2, card_3, card_4, card_5, card_6, attribute, value
 ) -> None:
+    """Tests that each player's attribute totals are correctly updated after playing several cards"""
+    # The test repeats the same process for each player and attribute, but only tests one attribute
+    # on each iteration
     players = create_players(player, test_deals)
     chosen_cards = [cards[card_1], cards[card_2]]
     players[player].play_cards(chosen_cards)

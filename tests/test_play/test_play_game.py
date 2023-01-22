@@ -1,15 +1,44 @@
 import pytest
 from unittest.mock import MagicMock
 
+from main import valid_players
 from life_game.play.game import Game
 from life_game.setup.deal import deal_cards
 from life_game.play.players import create_players, Player
-from life_game.setup.components import rounds
 from tests.utils import child_deal, adol_deal, adult_deal
+from life_game.setup.setup_exceptions import (
+    InvalidPlayerCountRange,
+    InvalidPlayerCountType,
+)
+from contextlib import nullcontext as does_not_raise
+
+
+@pytest.mark.parametrize(
+    "player_num, outcome",
+    [
+        (7, pytest.raises(InvalidPlayerCountRange)),
+        (0, pytest.raises(InvalidPlayerCountRange)),
+        (-1, pytest.raises(InvalidPlayerCountRange)),
+        (1, does_not_raise()),
+        (2, does_not_raise()),
+        (3, does_not_raise()),
+        (4, does_not_raise()),
+        (5, does_not_raise()),
+        (6, does_not_raise()),
+        ("text", pytest.raises(InvalidPlayerCountType)),
+        (5.4, pytest.raises(InvalidPlayerCountType)),
+        ([1, 2], pytest.raises(InvalidPlayerCountType)),
+    ],
+)
+def test_total_player_count_exceptions(player_num: int, outcome: Exception):
+    """Test that invalid total_players values raise the correct exception"""
+    with outcome:
+        assert valid_players(player_num)
 
 
 @pytest.mark.parametrize("component, type", [("total_players", int)])
 def test_game_creation_structure(component, type) -> None:
+    """Tests that the Game object has the correct structure"""
     deals = deal_cards(1)
     players = create_players(1, deals)
     game = Game(1, players)
@@ -17,6 +46,7 @@ def test_game_creation_structure(component, type) -> None:
 
 
 def test_game_creation_player_structure() -> None:
+    """Tests that the player object inside the game is the correct object"""
     deals = deal_cards(1)
     players = create_players(1, deals)
     game = Game(1, players)
@@ -41,6 +71,9 @@ def test_game_creation_player_structure() -> None:
     ],
 )
 def test_game_card_phase_hand(round, hand_str, turn) -> None:
+    """Tests that the card phase method runs correctly by checking that 2 cards have been removed
+    from the player hand (shows the remove_cards process was called). Does not need to test further
+    as the individual method has already been tested"""
     deals = deal_cards(6)
     players = create_players(6, deals)
     game = Game(6, players)
@@ -69,6 +102,9 @@ def test_game_card_phase_hand(round, hand_str, turn) -> None:
     ],
 )
 def test_game_card_phase_attributes(round, turn) -> None:
+    """Tests that the card phase method runs correctly by checking that no player has 0 for all of their
+    attributes. Shows the updating of the attributes process was called. Does not need to test further
+    as the individual method has already been tested"""
     deals = deal_cards(6)
     players = create_players(6, deals)
     game = Game(6, players)
@@ -107,12 +143,15 @@ test_deals = {"child": child_deal, "adol": adol_deal, "adult": adult_deal}
     ],
 )
 def test_pass_hand(player, out_hand) -> None:
+    """Tests the pass_hand method runs corectly by checking that each player has the expected (switched)
+    hand."""
     players = create_players(6, test_deals)
     game = Game(6, players)
     game.pass_hand("child")
 
     card_nums: list[int] = []
 
+    # Constructs a list of the card numbers of their (new) hand
     for _, card in players[player].child_hand.items():
         card_nums.append(card["number"])
 
@@ -125,8 +164,11 @@ def test_pass_event_phase():
 
 @pytest.mark.parametrize("function", [("card_phase"), ("pass_hand"), ("event_phase")])
 def test_play_turn(function) -> None:
+    """Tests that the play turn method calls the correct functions. Mocks the function calls
+    and validates that each one is called"""
     players = create_players(6, test_deals)
     game = Game(6, players)
+    # Create a mock version of the function, which can then be checked to see if it was called
     setattr(game, function, MagicMock())
     game.play_turn("child", 1)
     assert getattr(game, function).called
@@ -134,6 +176,7 @@ def test_play_turn(function) -> None:
 
 @pytest.mark.parametrize("round", [("child"), ("adol"), ("adult")])
 def test_play_round(round) -> None:
+    """Tests that the play_round method correctly calls the play_turn method 4 times"""
     players = create_players(6, test_deals)
     game = Game(6, players)
     game.play_turn = MagicMock()
@@ -142,6 +185,7 @@ def test_play_round(round) -> None:
 
 
 def test_game_play_game() -> None:
+    """Tests that the play_game method correctly calls the play_round method 3 times"""
     players = create_players(6, test_deals)
     game = Game(6, players)
     game.play_round = MagicMock()
