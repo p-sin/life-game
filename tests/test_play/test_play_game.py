@@ -41,7 +41,7 @@ def test_game_creation_structure(component, type) -> None:
     """Tests that the Game object has the correct structure"""
     deals = deal_cards(1)
     players = create_players(1, deals)
-    game = Game(1, players)
+    game = Game(1, players, {})
     assert isinstance(getattr(game, component), type)
 
 
@@ -49,7 +49,7 @@ def test_game_creation_player_structure() -> None:
     """Tests that the player object inside the game is the correct object"""
     deals = deal_cards(1)
     players = create_players(1, deals)
-    game = Game(1, players)
+    game = Game(1, players, {})
     assert isinstance(game.players[1], Player)
 
 
@@ -76,8 +76,9 @@ def test_game_card_phase_hand(round, hand_str, turn) -> None:
     as the individual method has already been tested"""
     deals = deal_cards(6)
     players = create_players(6, deals)
-    game = Game(6, players)
-    game.card_phase(round, turn)
+    game = Game(6, players, {})
+    game.curr_round = round
+    game.card_phase(turn)
 
     for player, _ in players.items():
         hand = getattr(players[player], hand_str)
@@ -107,8 +108,9 @@ def test_game_card_phase_attributes(round, turn) -> None:
     as the individual method has already been tested"""
     deals = deal_cards(6)
     players = create_players(6, deals)
-    game = Game(6, players)
-    game.card_phase(round, turn)
+    game = Game(6, players, {})
+    game.curr_round = round
+    game.card_phase(turn)
 
     for player, _ in players.items():
         attribute_sum = 0
@@ -146,8 +148,8 @@ def test_pass_hand(player, out_hand) -> None:
     """Tests the pass_hand method runs corectly by checking that each player has the expected (switched)
     hand."""
     players = create_players(6, test_deals)
-    game = Game(6, players)
-    game.pass_hand("child")
+    game = Game(6, players, {})
+    game.pass_hand()
 
     card_nums: list[int] = []
 
@@ -167,10 +169,10 @@ def test_play_turn(function) -> None:
     """Tests that the play turn method calls the correct functions. Mocks the function calls
     and validates that each one is called"""
     players = create_players(6, test_deals)
-    game = Game(6, players)
+    game = Game(6, players, {})
     # Create a mock version of the function, which can then be checked to see if it was called
     setattr(game, function, MagicMock())
-    game.play_turn("child", 1)
+    game.play_turn(1)
     assert getattr(game, function).called
 
 
@@ -178,16 +180,17 @@ def test_play_turn(function) -> None:
 def test_play_round(round) -> None:
     """Tests that the play_round method correctly calls the play_turn method 4 times"""
     players = create_players(6, test_deals)
-    game = Game(6, players)
+    game = Game(6, players, {})
+    game.curr_round = round
     game.play_turn = MagicMock()
-    game.play_round(round)
+    game.play_round()
     assert game.play_turn.call_count == 4
 
 
 def test_game_play_game() -> None:
     """Tests that the play_game method correctly calls the play_round method 3 times"""
     players = create_players(6, test_deals)
-    game = Game(6, players)
+    game = Game(6, players, {})
     game.play_round = MagicMock()
     game.play_game()
     assert game.play_round.call_count == 3

@@ -18,51 +18,55 @@ class Game:
     total_players: int
     players: dict[int, Player]
     events: dict[str, dict[int, event_type]]
+    curr_round: str = "child"
 
-    def card_phase(self, round: str, turn: int):
+    def card_phase(self, turn: int):
         """ "The phase of each player choosing and playing cards and updating their board"""
         for _, player in self.players.items():
-            chosen_cards, chosen_cards_pos = player.choose_cards(round, turn)
+            chosen_cards, chosen_cards_pos = player.choose_cards(self.curr_round, turn)
             player.play_cards(chosen_cards)
-            player.remove_cards(chosen_cards_pos, round)
+            player.remove_cards(chosen_cards_pos, self.curr_round)
             player.calculate_attribute_totals()
 
-    def pass_hand(self, round: str) -> None:
+    def pass_hand(self) -> None:
         """Passing each players hand on to the next player"""
         # Whoever the last player is, passes their card to a dummy player
-        dummy_hand: hand_type = getattr(self.players[self.total_players], rounds[round])
+        dummy_hand: hand_type = getattr(
+            self.players[self.total_players], rounds[self.curr_round]
+        )
 
         # Each player gets the hand of the player before them, except player 1
         for player in range(self.total_players, 1, -1):
             setattr(
                 self.players[player],
-                rounds[round],
-                getattr(self.players[player - 1], rounds[round]),
+                rounds[self.curr_round],
+                getattr(self.players[player - 1], rounds[self.curr_round]),
             )
 
         # Player 1 then gets their hand from the dummy player (originally the hand of the last player)
-        setattr(self.players[1], rounds[round], dummy_hand)
+        setattr(self.players[1], rounds[self.curr_round], dummy_hand)
 
-    def select_events(self, round: str) -> None:
+    def select_events(self) -> None:
         pass
 
-    def event_phase(self, round: str) -> None:
-        events = self.select_events(round)
+    def event_phase(self) -> None:
+        events = self.select_events()
         for _, player in self.players.items():
             player.apply_events(events)
 
-    def play_turn(self, round: str, turn: int) -> None:
+    def play_turn(self, turn: int) -> None:
         """Control flow for a turn"""
-        self.card_phase(round, turn)
-        self.pass_hand(round)
-        self.event_phase(round)
+        self.card_phase(turn)
+        self.pass_hand()
+        self.event_phase()
 
-    def play_round(self, round: str) -> None:
+    def play_round(self) -> None:
         """Control flow for a round"""
         for turn in turns:
-            self.play_turn(round, turn)
+            self.play_turn(turn)
 
     def play_game(self) -> None:
         """Control flow for a game"""
         for round in rounds:
-            self.play_round(round)
+            self.curr_round = round
+            self.play_round()

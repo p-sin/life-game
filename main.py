@@ -24,7 +24,7 @@ def __main__():
         if valid_players(total_players):
             deals = deal_cards(total_players)
             players = create_players(total_players, deals)
-            game = Game(total_players, players)
+            game = Game(total_players, players, {})
             game.play_game()
         else:
             pass
