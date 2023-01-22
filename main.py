@@ -18,15 +18,16 @@ def valid_players(total_players: int) -> bool:
 
 
 def __main__():
-    total_players = 2
+    total_players = 6
 
-    if valid_players(total_players):
-        deals = deal_cards(total_players)
-        players = create_players(total_players, deals)
-        game = Game(total_players, players)
-        game.play_game()
-    else:
-        pass
+    for x in range(10000):
+        if valid_players(total_players):
+            deals = deal_cards(total_players)
+            players = create_players(total_players, deals)
+            game = Game(total_players, players)
+            game.play_game()
+        else:
+            pass
 
 
 if __name__ == "__main__":

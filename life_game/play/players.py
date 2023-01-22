@@ -82,6 +82,9 @@ class Player:
         for attribute, total in attribute_totals.items():
             setattr(self.board, attribute, total)
 
+    def apply_events(self, events) -> None:
+        pass
+
 
 def select_player_deal(deals: deal_type, player: int, round: str) -> list[int]:
     """Slice the deal (list of ints) for 9 cards, which 9 cards is determined by the player number"""

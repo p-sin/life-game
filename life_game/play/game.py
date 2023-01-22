@@ -1,6 +1,14 @@
 from dataclasses import dataclass
 from life_game.play.players import Player, hand_type
 from life_game.setup.components import rounds, turns
+from life_game.setup.event_cards import event_type
+
+{
+    "child": {
+        1: {},
+        2: {},
+    }
+}
 
 
 @dataclass
@@ -9,6 +17,7 @@ class Game:
 
     total_players: int
     players: dict[int, Player]
+    events: dict[str, dict[int, event_type]]
 
     def card_phase(self, round: str, turn: int):
         """ "The phase of each player choosing and playing cards and updating their board"""
@@ -34,14 +43,19 @@ class Game:
         # Player 1 then gets their hand from the dummy player (originally the hand of the last player)
         setattr(self.players[1], rounds[round], dummy_hand)
 
-    def event_phase(self) -> None:
+    def select_events(self, round: str) -> None:
         pass
+
+    def event_phase(self, round: str) -> None:
+        events = self.select_events(round)
+        for _, player in self.players.items():
+            player.apply_events(events)
 
     def play_turn(self, round: str, turn: int) -> None:
         """Control flow for a turn"""
         self.card_phase(round, turn)
         self.pass_hand(round)
-        self.event_phase()
+        self.event_phase(round)
 
     def play_round(self, round: str) -> None:
         """Control flow for a round"""
