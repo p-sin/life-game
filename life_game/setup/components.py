@@ -350,7 +350,7 @@ class Board:
     Determination: int = 0
 
 
-decks = {
+attr_decks = {
     "child": [x for x in range(1, 61)]
     + [19, 20, 21, 22, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 60, 60, 60],
     "adol": [x for x in range(61, 121)]
@@ -399,4 +399,10 @@ decks = {
         180,
         180,
     ],
+}
+
+event_decks = {
+    "child": [x for x in range(1, 22)],
+    "adol": [x for x in range(22, 43)],
+    "adult": [x for x in range(43, 64)],
 }

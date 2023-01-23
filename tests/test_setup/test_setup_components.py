@@ -2,7 +2,7 @@ import pytest
 from life_game.setup.components import (
     Attributes,
     BoardSections,
-    decks,
+    attr_decks,
     attribute_slots,
     Board,
 )
@@ -228,7 +228,7 @@ def test_board_defined(attribute: str, value):
 def test_total_cards_in_decks(deck: str, total: int):
     """Test that each deck contains the expected total number of
     card IDs"""
-    assert sum(decks[deck]) == total
+    assert sum(attr_decks[deck]) == total
 
 
 def test_deck_by_attribute():
@@ -246,7 +246,7 @@ def test_deck_by_attribute():
     }
 
     actual_dict = {}
-    deck = decks["child"] + decks["adol"] + decks["adult"]
+    deck = attr_decks["child"] + attr_decks["adol"] + attr_decks["adult"]
 
     for card_num in deck:
         card = cards[card_num]

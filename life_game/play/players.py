@@ -3,6 +3,8 @@ from life_game.setup.attr_cards import cards, card_type
 from life_game.setup.logic import Logic
 from life_game.setup.deal import deal_type
 from life_game.play.play_utils import attribute_total_calc
+from life_game.setup.event_cards import event_type
+from life_game.play.events import resolve_event
 
 from dataclasses import dataclass
 from typing import Optional, Tuple, Union
@@ -37,6 +39,7 @@ class Player:
     adol_hand: hand_type
     adult_hand: hand_type
     logic: Optional[Logic] = None
+    points: int = 0
 
     def choose_cards(self, round: str, turn: int) -> Tuple[list[card_type], list[int]]:
         """Apply the players logic module to select two cards to play"""
@@ -82,8 +85,9 @@ class Player:
         for attribute, total in attribute_totals.items():
             setattr(self.board, attribute, total)
 
-    def apply_events(self, events) -> None:
-        pass
+    def apply_events(self, events: dict[int, event_type]) -> None:
+        for _, event in events.items():
+            self.points = resolve_event(self.board, event)
 
 
 def select_player_deal(deals: deal_type, player: int, round: str) -> list[int]:

@@ -1,6 +1,6 @@
 from typing import Union
 
-condition_type = dict[str, Union[int, list[str]]]
+condition_type = dict[str, Union[Union[str, int], list[str]]]
 outcome_type = dict[str, dict[str, Union[str, int, condition_type]]]
 event_type = dict[str, Union[str, outcome_type]]
 event_cards: dict[int, event_type] = {
@@ -13,7 +13,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 2,
+                    "attribute": "Intelligence",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -21,7 +22,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 2,
+                    "attribute": "Constitution",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -29,7 +31,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Strength"],
+                    "attributes": ["Sociability", "Strength"],
                     "total": 4,
                     "min": 1,
                 },
@@ -45,7 +47,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 2,
+                    "attribute": "Strength",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -53,7 +56,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 2,
+                    "attribute": "Empathy",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -61,7 +65,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Constitution"],
+                    "attributes": ["Sociability", "Constitution"],
                     "total": 4,
                     "min": 1,
                 },
@@ -77,7 +81,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 2,
+                    "attribute": "Creativity",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -85,7 +90,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 2,
+                    "attribute": "Determination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -93,7 +99,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Coordination"],
+                    "attributes": ["Sociability", "Coordination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -109,7 +115,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 2,
+                    "attribute": "Coordination",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -117,7 +124,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 2,
+                    "attribute": "Intelligence",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -125,7 +133,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Empathy"],
+                    "attributes": ["Sociability", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -141,7 +149,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 2,
+                    "attribute": "Sociability",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -149,7 +158,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 2,
+                    "attribute": "Creativity",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -157,7 +167,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Determination"],
+                    "attributes": ["Sociability", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -173,7 +183,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 2,
+                    "attribute": "Sociability",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -181,7 +192,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 2,
+                    "attribute": "Constitution",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -189,7 +201,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Strength"],
+                    "attributes": ["Intelligence", "Strength"],
                     "total": 4,
                     "min": 1,
                 },
@@ -205,7 +217,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 2,
+                    "attribute": "Creativity",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -213,7 +226,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 2,
+                    "attribute": "Determination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -221,7 +235,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Constitution"],
+                    "attributes": ["Intelligence", "Constitution"],
                     "total": 4,
                     "min": 1,
                 },
@@ -237,7 +251,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 2,
+                    "attribute": "Intelligence",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -245,7 +260,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 2,
+                    "attribute": "Coordination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -253,7 +269,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Coordination"],
+                    "attributes": ["Intelligence", "Coordination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -269,7 +285,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 2,
+                    "attribute": "Strength",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -277,7 +294,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 2,
+                    "attribute": "Coordination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -285,7 +303,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Empathy"],
+                    "attributes": ["Intelligence", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -301,7 +319,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 2,
+                    "attribute": "Constitution",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -309,7 +328,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 2,
+                    "attribute": "Empathy",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -317,7 +337,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Determination"],
+                    "attributes": ["Intelligence", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -333,7 +353,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 2,
+                    "attribute": "Coordination",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -341,7 +362,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 2,
+                    "attribute": "Empathy",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -349,7 +371,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Strength"],
+                    "attributes": ["Creativity", "Strength"],
                     "total": 4,
                     "min": 1,
                 },
@@ -365,7 +387,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 2,
+                    "attribute": "Sociability",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -373,7 +396,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 2,
+                    "attribute": "Strength",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -381,7 +405,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Constitution"],
+                    "attributes": ["Creativity", "Constitution"],
                     "total": 4,
                     "min": 1,
                 },
@@ -397,7 +421,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 2,
+                    "attribute": "Strength",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -405,7 +430,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 2,
+                    "attribute": "Constitution",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -413,7 +439,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Coordination"],
+                    "attributes": ["Creativity", "Coordination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -429,7 +455,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 2,
+                    "attribute": "Creativity",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -437,7 +464,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 2,
+                    "attribute": "Determination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -445,7 +473,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Empathy"],
+                    "attributes": ["Creativity", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -461,7 +489,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 2,
+                    "attribute": "Intelligence",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -469,7 +498,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 2,
+                    "attribute": "Determination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -477,7 +507,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Determination"],
+                    "attributes": ["Creativity", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -493,7 +523,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 2,
+                    "attribute": "Intelligence",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -501,7 +532,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 2,
+                    "attribute": "Determination",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -509,7 +541,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Determination"],
+                    "attributes": ["Creativity", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -525,7 +557,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 2,
+                    "attribute": "Creativity",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -533,7 +566,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 2,
+                    "attribute": "Strength",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -541,7 +575,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Strength, Determination"],
+                    "attributes": ["Strength", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -557,7 +591,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 2,
+                    "attribute": "Intelligence",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -565,7 +600,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 2,
+                    "attribute": "Constitution",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -573,7 +609,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution, Empathy"],
+                    "attributes": ["Constitution", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -589,7 +625,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 2,
+                    "attribute": "Coordination",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -597,7 +634,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 2,
+                    "attribute": "Empathy",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -605,7 +643,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution, Determination"],
+                    "attributes": ["Constitution", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -621,7 +659,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 2,
+                    "attribute": "Sociability",
+                    "value": 2,
                 },
             },
             "outcome_2": {
@@ -629,7 +668,8 @@ event_cards: dict[int, event_type] = {
                 "points": 1,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 2,
+                    "attribute": "Empathy",
+                    "value": 2,
                 },
             },
             "outcome_3": {
@@ -637,7 +677,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination, Empathy"],
+                    "attributes": ["Coordination", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -669,7 +709,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination, Determination"],
+                    "attributes": ["Coordination", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -685,7 +725,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 4,
+                    "attribute": "Intelligence",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -693,7 +734,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 4,
+                    "attribute": "Constitution",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -701,7 +743,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Strength"],
+                    "attributes": ["Sociability", "Strength"],
                     "total": 8,
                     "min": 2,
                 },
@@ -717,7 +759,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 4,
+                    "attribute": "Strength",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -725,7 +768,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 4,
+                    "attribute": "Empathy",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -733,7 +777,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Constitution"],
+                    "attributes": ["Sociability", "Constitution"],
                     "total": 8,
                     "min": 2,
                 },
@@ -749,7 +793,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 4,
+                    "attribute": "Creativity",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -757,7 +802,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 4,
+                    "attribute": "Determination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -765,7 +811,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Coordination"],
+                    "attributes": ["Sociability", "Coordination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -781,7 +827,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 4,
+                    "attribute": "Coordination",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -789,7 +836,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 4,
+                    "attribute": "Intelligence",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -797,7 +845,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Empathy"],
+                    "attributes": ["Sociability", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -813,7 +861,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 4,
+                    "attribute": "Sociability",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -821,7 +870,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 4,
+                    "attribute": "Creativity",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -829,7 +879,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Determination"],
+                    "attributes": ["Sociability", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -845,7 +895,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 4,
+                    "attribute": "Sociability",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -853,7 +904,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 4,
+                    "attribute": "Constitution",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -861,7 +913,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Strength"],
+                    "attributes": ["Intelligence", "Strength"],
                     "total": 8,
                     "min": 2,
                 },
@@ -877,7 +929,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 4,
+                    "attribute": "Creativity",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -885,7 +938,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 4,
+                    "attribute": "Determination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -893,7 +947,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Constitution"],
+                    "attributes": ["Intelligence", "Constitution"],
                     "total": 8,
                     "min": 2,
                 },
@@ -909,7 +963,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 4,
+                    "attribute": "Intelligence",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -917,7 +972,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 4,
+                    "attribute": "Coordination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -925,7 +981,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Coordination"],
+                    "attributes": ["Intelligence", "Coordination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -941,7 +997,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 4,
+                    "attribute": "Strength",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -949,7 +1006,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 4,
+                    "attribute": "Coordination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -957,7 +1015,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Empathy"],
+                    "attributes": ["Intelligence", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -973,7 +1031,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 4,
+                    "attribute": "Constitution",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -981,7 +1040,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 4,
+                    "attribute": "Empathy",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -989,7 +1049,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Determination"],
+                    "attributes": ["Intelligence", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1005,7 +1065,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 4,
+                    "attribute": "Coordination",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1013,7 +1074,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 4,
+                    "attribute": "Empathy",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1021,7 +1083,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Strength"],
+                    "attributes": ["Creativity", "Strength"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1037,7 +1099,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 4,
+                    "attribute": "Sociability",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1045,7 +1108,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 4,
+                    "attribute": "Strength",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1053,7 +1117,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Constitution"],
+                    "attributes": ["Creativity", "Constitution"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1069,7 +1133,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 4,
+                    "attribute": "Strength",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1077,7 +1142,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 4,
+                    "attribute": "Constitution",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1085,7 +1151,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Coordination"],
+                    "attributes": ["Creativity", "Coordination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1101,7 +1167,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 4,
+                    "attribute": "Creativity",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1109,7 +1176,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 4,
+                    "attribute": "Determination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1117,7 +1185,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Empathy"],
+                    "attributes": ["Creativity", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1133,7 +1201,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 4,
+                    "attribute": "Intelligence",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1141,7 +1210,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 4,
+                    "attribute": "Determination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1149,7 +1219,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Determination"],
+                    "attributes": ["Creativity", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1165,7 +1235,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 4,
+                    "attribute": "Intelligence",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1173,7 +1244,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 4,
+                    "attribute": "Determination",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1181,7 +1253,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Determination"],
+                    "attributes": ["Creativity", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1197,7 +1269,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 4,
+                    "attribute": "Creativity",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1205,7 +1278,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 4,
+                    "attribute": "Strength",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1213,7 +1287,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Strength, Determination"],
+                    "attributes": ["Strength", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1229,7 +1303,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 4,
+                    "attribute": "Intelligence",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1237,7 +1312,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 4,
+                    "attribute": "Constitution",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1245,7 +1321,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution, Empathy"],
+                    "attributes": ["Constitution", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1261,7 +1337,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 4,
+                    "attribute": "Coordination",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1269,7 +1346,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 4,
+                    "attribute": "Empathy",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1277,7 +1355,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution, Determination"],
+                    "attributes": ["Constitution", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1293,7 +1371,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 4,
+                    "attribute": "Sociability",
+                    "value": 4,
                 },
             },
             "outcome_2": {
@@ -1301,7 +1380,8 @@ event_cards: dict[int, event_type] = {
                 "points": 4,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 4,
+                    "attribute": "Empathy",
+                    "value": 4,
                 },
             },
             "outcome_3": {
@@ -1309,7 +1389,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination, Empathy"],
+                    "attributes": ["Coordination", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1341,7 +1421,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination, Determination"],
+                    "attributes": ["Coordination", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1357,7 +1437,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 6,
+                    "attribute": "Intelligence",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1365,7 +1446,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 6,
+                    "attribute": "Constitution",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1373,7 +1455,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Strength"],
+                    "attributes": ["Sociability", "Strength"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1389,7 +1471,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 6,
+                    "attribute": "Strength",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1397,7 +1480,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 6,
+                    "attribute": "Empathy",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1405,7 +1489,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Constitution"],
+                    "attributes": ["Sociability", "Constitution"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1421,7 +1505,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 6,
+                    "attribute": "Creativity",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1429,7 +1514,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 6,
+                    "attribute": "Determination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1437,7 +1523,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Coordination"],
+                    "attributes": ["Sociability", "Coordination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1453,7 +1539,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 6,
+                    "attribute": "Coordination",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1461,7 +1548,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 6,
+                    "attribute": "Intelligence",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1469,7 +1557,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Empathy"],
+                    "attributes": ["Sociability", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1485,7 +1573,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 6,
+                    "attribute": "Sociability",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1493,7 +1582,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 6,
+                    "attribute": "Creativity",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1501,7 +1591,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability, Determination"],
+                    "attributes": ["Sociability", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1517,7 +1607,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 6,
+                    "attribute": "Sociability",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1525,7 +1616,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 6,
+                    "attribute": "Constitution",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1533,7 +1625,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Strength"],
+                    "attributes": ["Intelligence", "Strength"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1549,7 +1641,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 6,
+                    "attribute": "Creativity",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1557,7 +1650,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 6,
+                    "attribute": "Determination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1565,7 +1659,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Constitution"],
+                    "attributes": ["Intelligence", "Constitution"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1581,7 +1675,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 6,
+                    "attribute": "Intelligence",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1589,7 +1684,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 6,
+                    "attribute": "Coordination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1597,7 +1693,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Coordination"],
+                    "attributes": ["Intelligence", "Coordination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1613,7 +1709,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 6,
+                    "attribute": "Strength",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1621,7 +1718,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 6,
+                    "attribute": "Coordination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1629,7 +1727,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Empathy"],
+                    "attributes": ["Intelligence", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1645,7 +1743,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 6,
+                    "attribute": "Constitution",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1653,7 +1752,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 6,
+                    "attribute": "Empathy",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1661,7 +1761,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence, Determination"],
+                    "attributes": ["Intelligence", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1677,7 +1777,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 6,
+                    "attribute": "Coordination",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1685,7 +1786,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 6,
+                    "attribute": "Empathy",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1693,7 +1795,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Strength"],
+                    "attributes": ["Creativity", "Strength"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1709,7 +1811,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 6,
+                    "attribute": "Sociability",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1717,7 +1820,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 6,
+                    "attribute": "Strength",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1725,7 +1829,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Constitution"],
+                    "attributes": ["Creativity", "Constitution"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1741,7 +1845,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 6,
+                    "attribute": "Strength",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1749,7 +1854,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 6,
+                    "attribute": "Constitution",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1757,7 +1863,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Coordination"],
+                    "attributes": ["Creativity", "Coordination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1773,7 +1879,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 6,
+                    "attribute": "Creativity",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1781,7 +1888,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 6,
+                    "attribute": "Determination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1789,7 +1897,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Empathy"],
+                    "attributes": ["Creativity", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1805,7 +1913,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 6,
+                    "attribute": "Intelligence",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1813,7 +1922,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 6,
+                    "attribute": "Determination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1821,7 +1931,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Determination"],
+                    "attributes": ["Creativity", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1837,7 +1947,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 6,
+                    "attribute": "Intelligence",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1845,7 +1956,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Determination": 6,
+                    "attribute": "Determination",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1853,7 +1965,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity, Determination"],
+                    "attributes": ["Creativity", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1869,7 +1981,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Creativity": 6,
+                    "attribute": "Creativity",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1877,7 +1990,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Strength": 6,
+                    "attribute": "Strength",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1885,7 +1999,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Strength, Determination"],
+                    "attributes": ["Strength", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1901,7 +2015,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Intelligence": 6,
+                    "attribute": "Intelligence",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1909,7 +2024,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Constitution": 6,
+                    "attribute": "Constitution",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1917,7 +2033,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution, Empathy"],
+                    "attributes": ["Constitution", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1933,7 +2049,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Coordination": 6,
+                    "attribute": "Coordination",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1941,7 +2058,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 6,
+                    "attribute": "Empathy",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1949,7 +2067,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution, Determination"],
+                    "attributes": ["Constitution", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1965,7 +2083,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Sociability": 6,
+                    "attribute": "Sociability",
+                    "value": 6,
                 },
             },
             "outcome_2": {
@@ -1973,7 +2092,8 @@ event_cards: dict[int, event_type] = {
                 "points": 6,
                 "type": "single_total",
                 "condition": {
-                    "Empathy": 6,
+                    "attribute": "Empathy",
+                    "value": 6,
                 },
             },
             "outcome_3": {
@@ -1981,7 +2101,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination, Empathy"],
+                    "attributes": ["Coordination", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -2013,7 +2133,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination, Determination"],
+                    "attributes": ["Coordination", "Determination"],
                     "total": 12,
                     "min": 4,
                 },

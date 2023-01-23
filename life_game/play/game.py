@@ -3,13 +3,6 @@ from life_game.play.players import Player, hand_type
 from life_game.setup.components import rounds, turns
 from life_game.setup.event_cards import event_type
 
-{
-    "child": {
-        1: {},
-        2: {},
-    }
-}
-
 
 @dataclass
 class Game:
@@ -46,13 +39,10 @@ class Game:
         # Player 1 then gets their hand from the dummy player (originally the hand of the last player)
         setattr(self.players[1], rounds[self.curr_round], dummy_hand)
 
-    def select_events(self) -> None:
-        pass
-
     def event_phase(self) -> None:
-        events = self.select_events()
+        """Control flow for the resolving of events"""
         for _, player in self.players.items():
-            player.apply_events(events)
+            player.apply_events(self.events[self.curr_round])
 
     def play_turn(self, turn: int) -> None:
         """Control flow for a turn"""
