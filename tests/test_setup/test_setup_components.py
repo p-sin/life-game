@@ -3,10 +3,12 @@ from life_game.setup.components import (
     Attributes,
     BoardSections,
     attr_decks,
+    event_decks,
     attribute_slots,
     Board,
 )
 from life_game.setup.attr_cards import cards
+from life_game.setup.event_cards import event_cards
 
 
 @pytest.mark.parametrize(
@@ -83,7 +85,7 @@ def test_attribute_enum_defined(enum, name, value):
             "BOARD_SECTION_FOUR",
             4,
             "mind",
-            "adolescent",
+            "adol",
             "attr_slot_9",
             "attr_slot_10",
             "attr_slot_11",
@@ -92,7 +94,7 @@ def test_attribute_enum_defined(enum, name, value):
             "BOARD_SECTION_FIVE",
             5,
             "body",
-            "adolescent",
+            "adol",
             "attr_slot_12",
             "attr_slot_13",
             "attr_slot_14",
@@ -101,7 +103,7 @@ def test_attribute_enum_defined(enum, name, value):
             "BOARD_SECTION_SIX",
             6,
             "soul",
-            "adolescent",
+            "adol",
             "attr_slot_15",
             "attr_slot_16",
             None,
@@ -273,3 +275,24 @@ def test_deck_by_attribute():
             ]["values"].value.value
 
     assert actual_dict == expected_dict
+
+
+@pytest.mark.parametrize(
+    "round, total", [("child", 231), ("adol", 672), ("adult", 1113)]
+)
+def test_event_deck_total(round, total) -> None:
+    """Test the total of each card number is correct for each round"""
+    assert sum(event_decks[round]) == total
+
+
+def test_event_deck_num_cards() -> None:
+    """Test the number of cards in each event deck"""
+    for _, deck in event_decks.items():
+        assert len(deck) == 21
+
+
+@pytest.mark.parametrize("round", [("child"), ("adol"), ("adult")])
+def test_event_deck_correct_round(round) -> None:
+    """Test that each event deck has only cards belonging to that round"""
+    for card_num in event_decks[round]:
+        assert event_cards[card_num]["life_stage"] == round

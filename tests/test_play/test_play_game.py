@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 
 from main import valid_players
 from life_game.play.game import Game
-from life_game.setup.deal import deal_cards
+from life_game.setup.deal import deal_cards, deal_events
 from life_game.play.players import create_players, Player
 from tests.utils import child_deal, adol_deal, adult_deal
 from life_game.setup.setup_exceptions import (
@@ -36,12 +36,15 @@ def test_total_player_count_exceptions(player_num: int, outcome: Exception):
         assert valid_players(player_num)
 
 
-@pytest.mark.parametrize("component, type", [("total_players", int)])
+@pytest.mark.parametrize(
+    "component, type", [("total_players", int), ("curr_round", str)]
+)
 def test_game_creation_structure(component, type) -> None:
     """Tests that the Game object has the correct structure"""
     deals = deal_cards(1)
     players = create_players(1, deals)
-    game = Game(1, players, {})
+    events = deal_events()
+    game = Game(1, players, events)
     assert isinstance(getattr(game, component), type)
 
 
@@ -49,8 +52,19 @@ def test_game_creation_player_structure() -> None:
     """Tests that the player object inside the game is the correct object"""
     deals = deal_cards(1)
     players = create_players(1, deals)
-    game = Game(1, players, {})
+    events = deal_events()
+    game = Game(1, players, events)
     assert isinstance(game.players[1], Player)
+
+
+def test_game_creation_event_structure() -> None:
+    """Tests that the event object inside the game is the correct object"""
+    deals = deal_cards(1)
+    players = create_players(1, deals)
+    events = deal_events()
+    game = Game(1, players, events)
+
+    assert isinstance(game.events["child"][1]["flav_text"], str)
 
 
 @pytest.mark.parametrize(

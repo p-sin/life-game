@@ -188,7 +188,7 @@ class BoardSections(Enum):
     BOARD_SECTION_FOUR = BoardSectionInfo(
         number=4,
         body_part="mind",
-        life_stage="adolescent",
+        life_stage="adol",
         card_slot_1="attr_slot_9",
         card_slot_2="attr_slot_10",
         card_slot_3="attr_slot_11",
@@ -196,7 +196,7 @@ class BoardSections(Enum):
     BOARD_SECTION_FIVE = BoardSectionInfo(
         number=5,
         body_part="body",
-        life_stage="adolescent",
+        life_stage="adol",
         card_slot_1="attr_slot_12",
         card_slot_2="attr_slot_13",
         card_slot_3="attr_slot_14",
@@ -204,7 +204,7 @@ class BoardSections(Enum):
     BOARD_SECTION_SIX = BoardSectionInfo(
         number=6,
         body_part="soul",
-        life_stage="adolescent",
+        life_stage="adol",
         card_slot_1="attr_slot_15",
         card_slot_2="attr_slot_16",
         card_slot_3=None,
