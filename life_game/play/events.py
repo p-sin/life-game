@@ -3,19 +3,19 @@ from life_game.setup.components import Board
 
 
 def single_total(board: Board, condition: condition_type) -> bool:
-    return getattr(board, condition["attribute"]) == condition["value"]
+    return getattr(board, condition["attribute"]) >= condition["value"]
 
 
 def min_total(board: Board, condition: condition_type) -> bool:
     total_value = 0
 
-    for attribute in condition["attributes"]:
-        if getattr(board, attribute) >= 1:
+    for attribute in condition["attribute"]:
+        if getattr(board, attribute) >= condition["min"]:
             total_value += getattr(board, attribute)
         else:
             return False
 
-    return total_value >= 4
+    return total_value >= condition["total"]
 
 
 def max_value(board: Board, condition: condition_type) -> bool:

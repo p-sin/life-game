@@ -31,7 +31,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Strength"],
+                    "attribute": ["Sociability", "Strength"],
                     "total": 4,
                     "min": 1,
                 },
@@ -65,7 +65,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Constitution"],
+                    "attribute": ["Sociability", "Constitution"],
                     "total": 4,
                     "min": 1,
                 },
@@ -99,7 +99,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Coordination"],
+                    "attribute": ["Sociability", "Coordination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -133,7 +133,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Empathy"],
+                    "attribute": ["Sociability", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -167,7 +167,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Determination"],
+                    "attribute": ["Sociability", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -201,7 +201,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Strength"],
+                    "attribute": ["Intelligence", "Strength"],
                     "total": 4,
                     "min": 1,
                 },
@@ -235,7 +235,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Constitution"],
+                    "attribute": ["Intelligence", "Constitution"],
                     "total": 4,
                     "min": 1,
                 },
@@ -269,7 +269,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Coordination"],
+                    "attribute": ["Intelligence", "Coordination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -303,7 +303,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Empathy"],
+                    "attribute": ["Intelligence", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -337,7 +337,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Determination"],
+                    "attribute": ["Intelligence", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -371,7 +371,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Strength"],
+                    "attribute": ["Creativity", "Strength"],
                     "total": 4,
                     "min": 1,
                 },
@@ -405,7 +405,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Constitution"],
+                    "attribute": ["Creativity", "Constitution"],
                     "total": 4,
                     "min": 1,
                 },
@@ -439,7 +439,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Coordination"],
+                    "attribute": ["Creativity", "Coordination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -473,7 +473,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Empathy"],
+                    "attribute": ["Creativity", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -507,7 +507,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Determination"],
+                    "attribute": ["Creativity", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -541,7 +541,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Determination"],
+                    "attribute": ["Creativity", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -575,7 +575,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Strength", "Determination"],
+                    "attribute": ["Strength", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -609,7 +609,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution", "Empathy"],
+                    "attribute": ["Constitution", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -643,7 +643,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution", "Determination"],
+                    "attribute": ["Constitution", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -677,7 +677,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination", "Empathy"],
+                    "attribute": ["Coordination", "Empathy"],
                     "total": 4,
                     "min": 1,
                 },
@@ -709,7 +709,7 @@ event_cards: dict[int, event_type] = {
                 "points": 3,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination", "Determination"],
+                    "attribute": ["Coordination", "Determination"],
                     "total": 4,
                     "min": 1,
                 },
@@ -743,7 +743,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Strength"],
+                    "attribute": ["Sociability", "Strength"],
                     "total": 8,
                     "min": 2,
                 },
@@ -777,7 +777,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Constitution"],
+                    "attribute": ["Sociability", "Constitution"],
                     "total": 8,
                     "min": 2,
                 },
@@ -811,7 +811,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Coordination"],
+                    "attribute": ["Sociability", "Coordination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -845,7 +845,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Empathy"],
+                    "attribute": ["Sociability", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -879,7 +879,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Determination"],
+                    "attribute": ["Sociability", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -913,7 +913,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Strength"],
+                    "attribute": ["Intelligence", "Strength"],
                     "total": 8,
                     "min": 2,
                 },
@@ -947,7 +947,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Constitution"],
+                    "attribute": ["Intelligence", "Constitution"],
                     "total": 8,
                     "min": 2,
                 },
@@ -981,7 +981,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Coordination"],
+                    "attribute": ["Intelligence", "Coordination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1015,7 +1015,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Empathy"],
+                    "attribute": ["Intelligence", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1049,7 +1049,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Determination"],
+                    "attribute": ["Intelligence", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1083,7 +1083,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Strength"],
+                    "attribute": ["Creativity", "Strength"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1117,7 +1117,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Constitution"],
+                    "attribute": ["Creativity", "Constitution"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1151,7 +1151,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Coordination"],
+                    "attribute": ["Creativity", "Coordination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1185,7 +1185,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Empathy"],
+                    "attribute": ["Creativity", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1219,7 +1219,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Determination"],
+                    "attribute": ["Creativity", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1253,7 +1253,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Determination"],
+                    "attribute": ["Creativity", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1287,7 +1287,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Strength", "Determination"],
+                    "attribute": ["Strength", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1321,7 +1321,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution", "Empathy"],
+                    "attribute": ["Constitution", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1355,7 +1355,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution", "Determination"],
+                    "attribute": ["Constitution", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1389,7 +1389,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination", "Empathy"],
+                    "attribute": ["Coordination", "Empathy"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1421,7 +1421,7 @@ event_cards: dict[int, event_type] = {
                 "points": 8,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination", "Determination"],
+                    "attribute": ["Coordination", "Determination"],
                     "total": 8,
                     "min": 2,
                 },
@@ -1455,7 +1455,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Strength"],
+                    "attribute": ["Sociability", "Strength"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1489,7 +1489,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Constitution"],
+                    "attribute": ["Sociability", "Constitution"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1523,7 +1523,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Coordination"],
+                    "attribute": ["Sociability", "Coordination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1557,7 +1557,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Empathy"],
+                    "attribute": ["Sociability", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1591,7 +1591,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Sociability", "Determination"],
+                    "attribute": ["Sociability", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1625,7 +1625,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Strength"],
+                    "attribute": ["Intelligence", "Strength"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1659,7 +1659,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Constitution"],
+                    "attribute": ["Intelligence", "Constitution"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1693,7 +1693,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Coordination"],
+                    "attribute": ["Intelligence", "Coordination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1727,7 +1727,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Empathy"],
+                    "attribute": ["Intelligence", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1761,7 +1761,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Intelligence", "Determination"],
+                    "attribute": ["Intelligence", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1795,7 +1795,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Strength"],
+                    "attribute": ["Creativity", "Strength"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1829,7 +1829,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Constitution"],
+                    "attribute": ["Creativity", "Constitution"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1863,7 +1863,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Coordination"],
+                    "attribute": ["Creativity", "Coordination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1897,7 +1897,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Empathy"],
+                    "attribute": ["Creativity", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1931,7 +1931,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Determination"],
+                    "attribute": ["Creativity", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1965,7 +1965,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Creativity", "Determination"],
+                    "attribute": ["Creativity", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -1999,7 +1999,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Strength", "Determination"],
+                    "attribute": ["Strength", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -2033,7 +2033,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution", "Empathy"],
+                    "attribute": ["Constitution", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -2067,7 +2067,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Constitution", "Determination"],
+                    "attribute": ["Constitution", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
@@ -2101,7 +2101,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination", "Empathy"],
+                    "attribute": ["Coordination", "Empathy"],
                     "total": 12,
                     "min": 4,
                 },
@@ -2133,7 +2133,7 @@ event_cards: dict[int, event_type] = {
                 "points": 15,
                 "type": "min_total",
                 "condition": {
-                    "attributes": ["Coordination", "Determination"],
+                    "attribute": ["Coordination", "Determination"],
                     "total": 12,
                     "min": 4,
                 },
