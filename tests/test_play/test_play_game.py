@@ -162,7 +162,8 @@ def test_pass_hand(player, out_hand) -> None:
     """Tests the pass_hand method runs corectly by checking that each player has the expected (switched)
     hand."""
     players = create_players(6, test_deals)
-    game = Game(6, players, {})
+    events = deal_events()
+    game = Game(6, players, events)
     game.pass_hand()
 
     card_nums: list[int] = []
@@ -174,8 +175,38 @@ def test_pass_hand(player, out_hand) -> None:
     assert card_nums == out_hand
 
 
-def test_pass_event_phase():
-    assert True
+@pytest.mark.parametrize(
+    "player_num",
+    [
+        (1),
+        (2),
+        (3),
+        (4),
+        (5),
+        (6),
+    ],
+)
+def test_event_phase(player_num):
+    players = create_players(6, test_deals)
+    events = deal_events()
+    game = Game(6, players, events)
+
+    for _, player in players.items():
+        for attribute in [
+            "Constitution",
+            "Coordination",
+            "Creativity",
+            "Determination",
+            "Empathy",
+            "Intelligence",
+            "Sociability",
+            "Strength",
+        ]:
+            setattr(player.board, attribute, 20)
+
+    game.event_phase()
+
+    assert players[player_num].points != 0
 
 
 @pytest.mark.parametrize("function", [("card_phase"), ("pass_hand"), ("event_phase")])
@@ -183,7 +214,8 @@ def test_play_turn(function) -> None:
     """Tests that the play turn method calls the correct functions. Mocks the function calls
     and validates that each one is called"""
     players = create_players(6, test_deals)
-    game = Game(6, players, {})
+    events = deal_events()
+    game = Game(6, players, events)
     # Create a mock version of the function, which can then be checked to see if it was called
     setattr(game, function, MagicMock())
     game.play_turn(1)
@@ -194,7 +226,8 @@ def test_play_turn(function) -> None:
 def test_play_round(round) -> None:
     """Tests that the play_round method correctly calls the play_turn method 4 times"""
     players = create_players(6, test_deals)
-    game = Game(6, players, {})
+    events = deal_events()
+    game = Game(6, players, events)
     game.curr_round = round
     game.play_turn = MagicMock()
     game.play_round()
@@ -204,7 +237,8 @@ def test_play_round(round) -> None:
 def test_game_play_game() -> None:
     """Tests that the play_game method correctly calls the play_round method 3 times"""
     players = create_players(6, test_deals)
-    game = Game(6, players, {})
+    events = deal_events()
+    game = Game(6, players, events)
     game.play_round = MagicMock()
     game.play_game()
     assert game.play_round.call_count == 3

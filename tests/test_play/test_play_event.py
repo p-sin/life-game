@@ -3,7 +3,7 @@ import pytest
 from typing import Tuple, Union
 
 from life_game.setup.components import Board, attribute_slots
-from life_game.play.events import single_total, min_total, max_value
+from life_game.play.events import single_total, min_total, max_value, resolve_event
 from life_game.setup.event_cards import event_cards, condition_type
 
 
@@ -129,6 +129,42 @@ def test_max_value_correct_eval(event_num, outcome_num, value, outcome) -> None:
     assert max_value(board, condition) == outcome
 
 
-def test_resolve_event_correct_map() -> None:
+@pytest.mark.parametrize(
+    "event_num, attributes, value, exp_points",
+    [
+        (1, ["Intelligence"], 2, 1),
+        (1, ["Constitution"], 2, 1),
+        (1, ["Sociability", "Strength"], 2, 3),
+        (1, ["Determination"], 2, 0),
+        (1, ["Intelligence"], 1, 0),
+        (21, ["Creativity", "Constitution", "Determination"], 2, 1),
+        (21, ["Creativity", "Constitution", "Determination"], 3, 0),
+        (21, ["Coordination", "Constitution", "Determination"], 3, 3),
+        (43, ["Intelligence"], 6, 6),
+        (43, ["Constitution"], 6, 6),
+        (43, ["Sociability", "Strength"], 6, 15),
+        (43, ["Determination"], 7, 0),
+        (43, ["Intelligence"], 1, 0),
+        (63, ["Creativity", "Constitution", "Determination"], 2, 6),
+        (63, ["Creativity", "Constitution", "Determination"], 7, 0),
+        (63, ["Coordination", "Constitution", "Determination"], 6, 15),
+        # Meets multiple criteria
+        (1, ["Intelligence", "Strength", "Sociability"], 2, 3),
+        (63, ["Creativity", "Coordination", "Constitution", "Determination"], 6, 15),
+    ],
+)
+def test_resolve_event_correct_points(event_num, attributes, value, exp_points) -> None:
+    board = Board(attribute_slots)
 
-def test_resolve_event_correct_points() -> None:
+    for attribute in attributes:
+        setattr(board, attribute, value)
+
+    assert resolve_event(board, event_cards[event_num]) == exp_points
+
+
+# @pytest.mark.parametrize(
+
+
+# )
+
+# def test_resolve_event_correct_map(event_num, outcome_num, function) -> None:

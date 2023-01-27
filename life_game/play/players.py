@@ -87,7 +87,7 @@ class Player:
 
     def apply_events(self, events: dict[int, event_type]) -> None:
         for _, event in events.items():
-            self.points = resolve_event(self.board, event)
+            self.points += resolve_event(self.board, event)
 
 
 def select_player_deal(deals: deal_type, player: int, round: str) -> list[int]:

@@ -1,9 +1,10 @@
 import pytest
 import copy
 
-from life_game.setup.components import attribute_slots
+from life_game.setup.components import attribute_slots, Board
 from life_game.play.players import create_players
 from life_game.setup.attr_cards import cards
+from life_game.setup.event_cards import event_cards
 
 # Sample deal used for several tests to fix the input
 test_deals = {
@@ -447,3 +448,35 @@ def test_player_calc_attributes(
     players[player].calculate_attribute_totals()
 
     assert getattr(players[player].board, attribute) == value
+
+
+@pytest.mark.parametrize(
+    "event_nums, attr_1, val_1, attr_2, val_2, attr_3, val_3, exp_points",
+    [
+        ([1, 2, 3, 4, 5], "Intelligence", 2, "Sociability", 2, "Constitution", 2, 6),
+        ([1, 2, 3, 4, 5], "Intelligence", 0, "Sociability", 0, "Constitution", 0, 0),
+        ([1, 2, 3, 4, 5], "Strength", 2, "Sociability", 2, "Constitution", 2, 7),
+        ([1, 2, 3, 4, 5], "Empathy", 2, "Sociability", 0, "Constitution", 0, 1),
+        ([19, 20, 21], "Empathy", 1, "Sociability", 1, "Constitution", 1, 1),
+        ([19, 20, 21], "Empathy", 1, "Sociability", 0, "Constitution", 0, 1),
+        ([19, 20, 21], "Empathy", 0, "Sociability", 0, "Constitution", 0, 1),
+        ([19, 20, 21], "Empathy", 2, "Sociability", 2, "Constitution", 2, 3),
+    ],
+)
+def test_player_apply_event(
+    event_nums, attr_1, val_1, attr_2, val_2, attr_3, val_3, exp_points
+) -> None:
+    events = {}
+    round_events = {}
+    for num, event in enumerate(event_nums):
+        round_events[num] = event_cards[event]
+    events["child"] = round_events
+
+    players = create_players(1, test_deals)
+
+    for attr, val in zip([attr_1, attr_2, attr_3], [val_1, val_2, val_3]):
+        setattr(players[1].board, attr, val)
+
+    players[1].apply_events(events["child"])
+
+    assert players[1].points == exp_points
