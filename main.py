@@ -1,6 +1,5 @@
-from life_game.play.players import create_players
-
 from life_game.play.game import Game
+from life_game.play.players import create_players
 from life_game.setup.deal import deal_cards, deal_events
 from life_game.setup.setup_exceptions import (
     InvalidPlayerCountRange,
@@ -17,7 +16,7 @@ def valid_players(total_players: int) -> bool:
         return True
 
 
-def __main__():
+def __main__() -> None:
     total_players = 6
 
     for _ in range(10000):

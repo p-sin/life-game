@@ -1,21 +1,21 @@
-from life_game.setup.event_cards import event_type, condition_type
 from life_game.setup.components import Board
+from life_game.setup.event_cards import condition_type, event_type
 
 
 def single_total(board: Board, condition: condition_type) -> bool:
-    return getattr(board, condition["attribute"]) >= condition["value"]
+    return getattr(board, condition["attribute"]) >= condition["value"]  # type: ignore
 
 
 def min_total(board: Board, condition: condition_type) -> bool:
     total_value = 0
 
-    for attribute in condition["attribute"]:
+    for attribute in condition["attribute"]:  # type: ignore
         if getattr(board, attribute) >= condition["min"]:
             total_value += getattr(board, attribute)
         else:
             return False
 
-    return total_value >= condition["total"]
+    return total_value >= condition["total"]  # type: ignore
 
 
 def max_value(board: Board, condition: condition_type) -> bool:
@@ -34,7 +34,7 @@ def max_value(board: Board, condition: condition_type) -> bool:
         if getattr(board, attribute) > final_max:
             final_max = getattr(board, attribute)
 
-    return final_max <= condition["max_value"]
+    return final_max <= condition["max_value"]  # type: ignore
 
 
 event_map = {
@@ -47,9 +47,9 @@ event_map = {
 def resolve_event(board: Board, event: event_type) -> int:
     final_points = 0
 
-    for _, outcome in event["outcomes"].items():
-        if event_map[outcome["type"]](board, outcome["condition"]):
-            if outcome["points"] > final_points:
-                final_points = outcome["points"]
+    for _, outcome in event["outcomes"].items():  # type: ignore
+        if event_map[outcome["type"]](board, outcome["condition"]):  # type: ignore
+            if outcome["points"] > final_points:  # type: ignore
+                final_points = outcome["points"]  # type: ignore
 
     return final_points

@@ -1,4 +1,5 @@
-from life_game.setup.components import BoardSections as B, Attributes as A
+from life_game.setup.components import Attributes as A
+from life_game.setup.components import BoardSections as B
 
 card_type = dict[str, int | B | dict[str, str | A | None]]
 

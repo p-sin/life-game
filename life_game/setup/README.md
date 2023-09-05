@@ -26,17 +26,17 @@ Defines the 'card_type', which is admittedly so complex that it just breaks mypy
 Each 'card' is then defined as a dictionary item
 
 {
-    Card_number - consecutive integer generating a unique id for each card type.  
+    Card_number - consecutive integer generating a unique id for each card type.
                   Duplicates of individual cards are allowed inside the game
         {
             number - consecutive integer mirroring the unique id
-            board_section - BOARD_SECTION enum for the section of the board the card 
+            board_section - BOARD_SECTION enum for the section of the board the card
                             is played in
             card_slot_X - Definition of the three slots on an individual card
                 {
-                    slot_number: integer drawn from the corresponding BOARD_SECTION 
+                    slot_number: integer drawn from the corresponding BOARD_SECTION
                                  enum defining which slot of the board the card slots into (3 slots on a card, match to 3 consecutive slots on a board)
-                    values: Attribute enum containing the name and value of the 
+                    values: Attribute enum containing the name and value of the
                             attribute residing in that card slot
                 }
         }

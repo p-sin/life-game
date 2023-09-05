@@ -1,4 +1,5 @@
 import random
+
 from life_game.setup.components import attr_decks, event_decks, rounds
 from life_game.setup.event_cards import event_cards, event_type
 
@@ -6,7 +7,8 @@ deal_type = dict[str, list[int]]
 
 
 def deal_cards(total_players: int) -> deal_type:
-    """Randomly take 9 * number of players integers from the deck of cards for each round.
+    """Randomly take 9 * number of players integers from the deck of cards
+    for each round.
     This will provide 9 cards for each player"""
     deals = {}
 

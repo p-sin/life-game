@@ -1,4 +1,5 @@
-# Temp object to hold the calculated attribute totals for each player. To then be set as the actual values in the player's board object
+# Temp object to hold the calculated attribute totals for each player.
+# To then be set as the actual values in the player's board object
 attribute_total_calc: dict[str, int] = {
     "Sociability": 0,
     "Intelligence": 0,

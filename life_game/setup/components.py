@@ -1,7 +1,6 @@
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
 from typing import Optional, Union
-
 
 attribute_slot_type = dict[str, dict[str, Union[str, int]]]
 rounds = {
