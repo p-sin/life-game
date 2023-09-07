@@ -2,14 +2,13 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 
-attribute_slot_type = dict[str, dict[str, Union[str, int]]]
-rounds = {
+ROUNDS = {
     "child": "child_hand",
     "adol": "adol_hand",
     "adult": "adult_hand",
 }
 
-turns = [1, 2, 3, 4]
+TURNS = [1, 2, 3, 4]
 
 
 @dataclass
@@ -150,7 +149,7 @@ class Attributes(Enum):
 
 
 @dataclass
-class BoardSectionInfo:
+class BoardSlotInfo:
     number: int
     body_part: str
     life_stage: str
@@ -159,8 +158,8 @@ class BoardSectionInfo:
     card_slot_3: Optional[str] = None
 
 
-class BoardSections(Enum):
-    BOARD_SECTION_ONE = BoardSectionInfo(
+class BoardSlots(Enum):
+    BOARD_SLOT_ONE = BoardSlotInfo(
         number=1,
         body_part="mind",
         life_stage="child",
@@ -168,7 +167,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_2",
         card_slot_3="attr_slot_3",
     )
-    BOARD_SECTION_TWO = BoardSectionInfo(
+    BOARD_SLOT_TWO = BoardSlotInfo(
         number=2,
         body_part="body",
         life_stage="child",
@@ -176,7 +175,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_5",
         card_slot_3="attr_slot_6",
     )
-    BOARD_SECTION_THREE = BoardSectionInfo(
+    BOARD_SLOT_THREE = BoardSlotInfo(
         number=3,
         body_part="soul",
         life_stage="child",
@@ -184,7 +183,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_8",
         card_slot_3=None,
     )
-    BOARD_SECTION_FOUR = BoardSectionInfo(
+    BOARD_SLOT_FOUR = BoardSlotInfo(
         number=4,
         body_part="mind",
         life_stage="adol",
@@ -192,7 +191,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_10",
         card_slot_3="attr_slot_11",
     )
-    BOARD_SECTION_FIVE = BoardSectionInfo(
+    BOARD_SLOT_FIVE = BoardSlotInfo(
         number=5,
         body_part="body",
         life_stage="adol",
@@ -200,7 +199,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_13",
         card_slot_3="attr_slot_14",
     )
-    BOARD_SECTION_SIX = BoardSectionInfo(
+    BOARD_SLOT_SIX = BoardSlotInfo(
         number=6,
         body_part="soul",
         life_stage="adol",
@@ -208,7 +207,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_16",
         card_slot_3=None,
     )
-    BOARD_SECTION_SEVEN = BoardSectionInfo(
+    BOARD_SLOT_SEVEN = BoardSlotInfo(
         number=7,
         body_part="mind",
         life_stage="adult",
@@ -216,7 +215,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_18",
         card_slot_3="attr_slot_19",
     )
-    BOARD_SECTION_EIGHT = BoardSectionInfo(
+    BOARD_SLOT_EIGHT = BoardSlotInfo(
         number=8,
         body_part="body",
         life_stage="adult",
@@ -224,7 +223,7 @@ class BoardSections(Enum):
         card_slot_2="attr_slot_21",
         card_slot_3="attr_slot_22",
     )
-    BOARD_SECTION_NINE = BoardSectionInfo(
+    BOARD_SLOT_NINE = BoardSlotInfo(
         number=9,
         body_part="soul",
         life_stage="adult",
@@ -234,6 +233,7 @@ class BoardSections(Enum):
     )
 
 
+attribute_slot_type = dict[str, dict[str, Union[str, int]]]
 attribute_slots: attribute_slot_type = {
     "attr_slot_1": {
         "type": "",
