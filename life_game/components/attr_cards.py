@@ -1,725 +1,725 @@
-from life_game.setup.components import Attributes as A
-from life_game.setup.components import BoardSlots as B
+from life_game.components.components import Attributes as A
+from life_game.components.components import BoardSlots as B
 
-cards: dict[int, dict[str, B | list[A | None]]] = {
+card_config: dict[int, dict[str, B | list[A]]] = {
     1: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.SOCIAL_TWO, None, None],
+        "values": [A.SOCIAL_TWO, A.NONE, A.NONE],
     },
     2: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.INTEL_TWO, None, None],
+        "values": [A.INTEL_TWO, A.NONE, A.NONE],
     },
     3: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.CREATE_TWO, None, None],
+        "values": [A.CREATE_TWO, A.NONE, A.NONE],
     },
     4: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.SOCIAL_TWO, None],
+        "values": [A.NONE, A.SOCIAL_TWO, A.NONE],
     },
     5: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.INTEL_TWO, None],
+        "values": [A.NONE, A.INTEL_TWO, A.NONE],
     },
     6: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.CREATE_TWO, None],
+        "values": [A.NONE, A.CREATE_TWO, A.NONE],
     },
     7: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, None, A.SOCIAL_TWO],
+        "values": [A.NONE, A.NONE, A.SOCIAL_TWO],
     },
     8: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, None, A.INTEL_TWO],
+        "values": [A.NONE, A.NONE, A.INTEL_TWO],
     },
     9: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, None, A.CREATE_TWO],
+        "values": [A.NONE, A.NONE, A.CREATE_TWO],
     },
     10: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.STRENGTH_TWO, None, None],
+        "values": [A.STRENGTH_TWO, A.NONE, A.NONE],
     },
     11: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.CONST_TWO, None, None],
+        "values": [A.CONST_TWO, A.NONE, A.NONE],
     },
     12: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.COORD_TWO, None, None],
+        "values": [A.COORD_TWO, A.NONE, A.NONE],
     },
     13: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.STRENGTH_TWO, None],
+        "values": [A.NONE, A.STRENGTH_TWO, A.NONE],
     },
     14: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.CONST_TWO, None],
+        "values": [A.NONE, A.CONST_TWO, A.NONE],
     },
     15: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.COORD_TWO, None],
+        "values": [A.NONE, A.COORD_TWO, A.NONE],
     },
     16: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, None, A.STRENGTH_TWO],
+        "values": [A.NONE, A.NONE, A.STRENGTH_TWO],
     },
     17: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, None, A.CONST_TWO],
+        "values": [A.NONE, A.NONE, A.CONST_TWO],
     },
     18: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, None, A.COORD_TWO],
+        "values": [A.NONE, A.NONE, A.COORD_TWO],
     },
     19: {
         "board_slot": B.BOARD_SLOT_THREE,
-        "values": [A.EMPATHY_TWO, None, None],
+        "values": [A.EMPATHY_TWO, A.NONE, A.NONE],
     },
     20: {
         "board_slot": B.BOARD_SLOT_THREE,
-        "values": [A.DETERM_TWO, None, None],
+        "values": [A.DETERM_TWO, A.NONE, A.NONE],
     },
     21: {
         "board_slot": B.BOARD_SLOT_THREE,
-        "values": [None, A.EMPATHY_TWO, None],
+        "values": [A.NONE, A.EMPATHY_TWO, A.NONE],
     },
     22: {
         "board_slot": B.BOARD_SLOT_THREE,
-        "values": [None, A.DETERM_TWO, None],
+        "values": [A.NONE, A.DETERM_TWO, A.NONE],
     },
     23: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.SOCIAL_ONE, A.INTEL_ONE, None],
+        "values": [A.SOCIAL_ONE, A.INTEL_ONE, A.NONE],
     },
     24: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.SOCIAL_ONE, A.CREATE_ONE, None],
+        "values": [A.SOCIAL_ONE, A.CREATE_ONE, A.NONE],
     },
     25: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.INTEL_ONE, A.SOCIAL_ONE, None],
+        "values": [A.INTEL_ONE, A.SOCIAL_ONE, A.NONE],
     },
     26: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.INTEL_ONE, A.CREATE_ONE, None],
+        "values": [A.INTEL_ONE, A.CREATE_ONE, A.NONE],
     },
     27: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.CREATE_ONE, A.SOCIAL_ONE, None],
+        "values": [A.CREATE_ONE, A.SOCIAL_ONE, A.NONE],
     },
     28: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.CREATE_ONE, A.INTEL_ONE, None],
+        "values": [A.CREATE_ONE, A.INTEL_ONE, A.NONE],
     },
     29: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.SOCIAL_ONE, None, A.INTEL_ONE],
+        "values": [A.SOCIAL_ONE, A.NONE, A.INTEL_ONE],
     },
     30: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.SOCIAL_ONE, None, A.CREATE_ONE],
+        "values": [A.SOCIAL_ONE, A.NONE, A.CREATE_ONE],
     },
     31: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.INTEL_ONE, None, A.SOCIAL_ONE],
+        "values": [A.INTEL_ONE, A.NONE, A.SOCIAL_ONE],
     },
     32: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.INTEL_ONE, None, A.CREATE_ONE],
+        "values": [A.INTEL_ONE, A.NONE, A.CREATE_ONE],
     },
     33: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.CREATE_ONE, None, A.SOCIAL_ONE],
+        "values": [A.CREATE_ONE, A.NONE, A.SOCIAL_ONE],
     },
     34: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [A.CREATE_ONE, None, A.INTEL_ONE],
+        "values": [A.CREATE_ONE, A.NONE, A.INTEL_ONE],
     },
     35: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.SOCIAL_ONE, A.INTEL_ONE],
+        "values": [A.NONE, A.SOCIAL_ONE, A.INTEL_ONE],
     },
     36: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.SOCIAL_ONE, A.CREATE_ONE],
+        "values": [A.NONE, A.SOCIAL_ONE, A.CREATE_ONE],
     },
     37: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.INTEL_ONE, A.SOCIAL_ONE],
+        "values": [A.NONE, A.INTEL_ONE, A.SOCIAL_ONE],
     },
     38: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.INTEL_ONE, A.CREATE_ONE],
+        "values": [A.NONE, A.INTEL_ONE, A.CREATE_ONE],
     },
     39: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.CREATE_ONE, A.SOCIAL_ONE],
+        "values": [A.NONE, A.CREATE_ONE, A.SOCIAL_ONE],
     },
     40: {
         "board_slot": B.BOARD_SLOT_ONE,
-        "values": [None, A.CREATE_ONE, A.INTEL_ONE],
+        "values": [A.NONE, A.CREATE_ONE, A.INTEL_ONE],
     },
     41: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.STRENGTH_ONE, A.CONST_ONE, None],
+        "values": [A.STRENGTH_ONE, A.CONST_ONE, A.NONE],
     },
     42: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.STRENGTH_ONE, A.COORD_ONE, None],
+        "values": [A.STRENGTH_ONE, A.COORD_ONE, A.NONE],
     },
     43: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.CONST_ONE, A.STRENGTH_ONE, None],
+        "values": [A.CONST_ONE, A.STRENGTH_ONE, A.NONE],
     },
     44: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.CONST_ONE, A.COORD_ONE, None],
+        "values": [A.CONST_ONE, A.COORD_ONE, A.NONE],
     },
     45: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.COORD_ONE, A.STRENGTH_ONE, None],
+        "values": [A.COORD_ONE, A.STRENGTH_ONE, A.NONE],
     },
     46: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.COORD_ONE, A.CONST_ONE, None],
+        "values": [A.COORD_ONE, A.CONST_ONE, A.NONE],
     },
     47: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.STRENGTH_ONE, None, A.CONST_ONE],
+        "values": [A.STRENGTH_ONE, A.NONE, A.CONST_ONE],
     },
     48: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.STRENGTH_ONE, None, A.COORD_ONE],
+        "values": [A.STRENGTH_ONE, A.NONE, A.COORD_ONE],
     },
     49: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.CONST_ONE, None, A.STRENGTH_ONE],
+        "values": [A.CONST_ONE, A.NONE, A.STRENGTH_ONE],
     },
     50: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.CONST_ONE, None, A.COORD_ONE],
+        "values": [A.CONST_ONE, A.NONE, A.COORD_ONE],
     },
     51: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.COORD_ONE, None, A.STRENGTH_ONE],
+        "values": [A.COORD_ONE, A.NONE, A.STRENGTH_ONE],
     },
     52: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [A.COORD_ONE, None, A.CONST_ONE],
+        "values": [A.COORD_ONE, A.NONE, A.CONST_ONE],
     },
     53: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.STRENGTH_ONE, A.CONST_ONE],
+        "values": [A.NONE, A.STRENGTH_ONE, A.CONST_ONE],
     },
     54: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.STRENGTH_ONE, A.COORD_ONE],
+        "values": [A.NONE, A.STRENGTH_ONE, A.COORD_ONE],
     },
     55: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.CONST_ONE, A.STRENGTH_ONE],
+        "values": [A.NONE, A.CONST_ONE, A.STRENGTH_ONE],
     },
     56: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.CONST_ONE, A.COORD_ONE],
+        "values": [A.NONE, A.CONST_ONE, A.COORD_ONE],
     },
     57: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.COORD_ONE, A.STRENGTH_ONE],
+        "values": [A.NONE, A.COORD_ONE, A.STRENGTH_ONE],
     },
     58: {
         "board_slot": B.BOARD_SLOT_TWO,
-        "values": [None, A.COORD_ONE, A.CONST_ONE],
+        "values": [A.NONE, A.COORD_ONE, A.CONST_ONE],
     },
     59: {
         "board_slot": B.BOARD_SLOT_THREE,
-        "values": [A.DETERM_ONE, A.EMPATHY_ONE, None],
+        "values": [A.DETERM_ONE, A.EMPATHY_ONE, A.NONE],
     },
     60: {
         "board_slot": B.BOARD_SLOT_THREE,
-        "values": [A.EMPATHY_ONE, A.DETERM_ONE, None],
+        "values": [A.EMPATHY_ONE, A.DETERM_ONE, A.NONE],
     },
     61: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.SOCIAL_THREE, None, None],
+        "values": [A.SOCIAL_THREE, A.NONE, A.NONE],
     },
     62: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.INTEL_THREE, None, None],
+        "values": [A.INTEL_THREE, A.NONE, A.NONE],
     },
     63: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.CREATE_THREE, None, None],
+        "values": [A.CREATE_THREE, A.NONE, A.NONE],
     },
     64: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.SOCIAL_THREE, None],
+        "values": [A.NONE, A.SOCIAL_THREE, A.NONE],
     },
     65: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.INTEL_THREE, None],
+        "values": [A.NONE, A.INTEL_THREE, A.NONE],
     },
     66: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.CREATE_THREE, None],
+        "values": [A.NONE, A.CREATE_THREE, A.NONE],
     },
     67: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, None, A.SOCIAL_THREE],
+        "values": [A.NONE, A.NONE, A.SOCIAL_THREE],
     },
     68: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, None, A.INTEL_THREE],
+        "values": [A.NONE, A.NONE, A.INTEL_THREE],
     },
     69: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, None, A.CREATE_THREE],
+        "values": [A.NONE, A.NONE, A.CREATE_THREE],
     },
     70: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.STRENGTH_THREE, None, None],
+        "values": [A.STRENGTH_THREE, A.NONE, A.NONE],
     },
     71: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.CONST_THREE, None, None],
+        "values": [A.CONST_THREE, A.NONE, A.NONE],
     },
     72: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.COORD_THREE, None, None],
+        "values": [A.COORD_THREE, A.NONE, A.NONE],
     },
     73: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.STRENGTH_THREE, None],
+        "values": [A.NONE, A.STRENGTH_THREE, A.NONE],
     },
     74: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.CONST_THREE, None],
+        "values": [A.NONE, A.CONST_THREE, A.NONE],
     },
     75: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.COORD_THREE, None],
+        "values": [A.NONE, A.COORD_THREE, A.NONE],
     },
     76: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, None, A.STRENGTH_THREE],
+        "values": [A.NONE, A.NONE, A.STRENGTH_THREE],
     },
     77: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, None, A.CONST_THREE],
+        "values": [A.NONE, A.NONE, A.CONST_THREE],
     },
     78: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, None, A.COORD_THREE],
+        "values": [A.NONE, A.NONE, A.COORD_THREE],
     },
     79: {
         "board_slot": B.BOARD_SLOT_SIX,
-        "values": [A.EMPATHY_THREE, None, None],
+        "values": [A.EMPATHY_THREE, A.NONE, A.NONE],
     },
     80: {
         "board_slot": B.BOARD_SLOT_SIX,
-        "values": [A.DETERM_THREE, None, None],
+        "values": [A.DETERM_THREE, A.NONE, A.NONE],
     },
     81: {
         "board_slot": B.BOARD_SLOT_SIX,
-        "values": [None, A.EMPATHY_THREE, None],
+        "values": [A.NONE, A.EMPATHY_THREE, A.NONE],
     },
     82: {
         "board_slot": B.BOARD_SLOT_SIX,
-        "values": [None, A.DETERM_THREE, None],
+        "values": [A.NONE, A.DETERM_THREE, A.NONE],
     },
     83: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.SOCIAL_TWO, A.INTEL_TWO, None],
+        "values": [A.SOCIAL_TWO, A.INTEL_TWO, A.NONE],
     },
     84: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.SOCIAL_TWO, A.CREATE_TWO, None],
+        "values": [A.SOCIAL_TWO, A.CREATE_TWO, A.NONE],
     },
     85: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.INTEL_TWO, A.SOCIAL_TWO, None],
+        "values": [A.INTEL_TWO, A.SOCIAL_TWO, A.NONE],
     },
     86: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.INTEL_TWO, A.CREATE_TWO, None],
+        "values": [A.INTEL_TWO, A.CREATE_TWO, A.NONE],
     },
     87: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.CREATE_TWO, A.SOCIAL_TWO, None],
+        "values": [A.CREATE_TWO, A.SOCIAL_TWO, A.NONE],
     },
     88: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.CREATE_TWO, A.INTEL_TWO, None],
+        "values": [A.CREATE_TWO, A.INTEL_TWO, A.NONE],
     },
     89: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.SOCIAL_TWO, None, A.INTEL_TWO],
+        "values": [A.SOCIAL_TWO, A.NONE, A.INTEL_TWO],
     },
     90: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.SOCIAL_TWO, None, A.CREATE_TWO],
+        "values": [A.SOCIAL_TWO, A.NONE, A.CREATE_TWO],
     },
     91: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.INTEL_TWO, None, A.SOCIAL_TWO],
+        "values": [A.INTEL_TWO, A.NONE, A.SOCIAL_TWO],
     },
     92: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.INTEL_TWO, None, A.CREATE_TWO],
+        "values": [A.INTEL_TWO, A.NONE, A.CREATE_TWO],
     },
     93: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.CREATE_TWO, None, A.SOCIAL_TWO],
+        "values": [A.CREATE_TWO, A.NONE, A.SOCIAL_TWO],
     },
     94: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [A.CREATE_TWO, None, A.INTEL_TWO],
+        "values": [A.CREATE_TWO, A.NONE, A.INTEL_TWO],
     },
     95: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.SOCIAL_TWO, A.INTEL_TWO],
+        "values": [A.NONE, A.SOCIAL_TWO, A.INTEL_TWO],
     },
     96: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.SOCIAL_TWO, A.CREATE_TWO],
+        "values": [A.NONE, A.SOCIAL_TWO, A.CREATE_TWO],
     },
     97: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.INTEL_TWO, A.SOCIAL_TWO],
+        "values": [A.NONE, A.INTEL_TWO, A.SOCIAL_TWO],
     },
     98: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.INTEL_TWO, A.CREATE_TWO],
+        "values": [A.NONE, A.INTEL_TWO, A.CREATE_TWO],
     },
     99: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.CREATE_TWO, A.SOCIAL_TWO],
+        "values": [A.NONE, A.CREATE_TWO, A.SOCIAL_TWO],
     },
     100: {
         "board_slot": B.BOARD_SLOT_FOUR,
-        "values": [None, A.CREATE_TWO, A.INTEL_TWO],
+        "values": [A.NONE, A.CREATE_TWO, A.INTEL_TWO],
     },
     101: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.STRENGTH_TWO, A.CONST_TWO, None],
+        "values": [A.STRENGTH_TWO, A.CONST_TWO, A.NONE],
     },
     102: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.STRENGTH_TWO, A.COORD_TWO, None],
+        "values": [A.STRENGTH_TWO, A.COORD_TWO, A.NONE],
     },
     103: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.CONST_TWO, A.STRENGTH_TWO, None],
+        "values": [A.CONST_TWO, A.STRENGTH_TWO, A.NONE],
     },
     104: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.CONST_TWO, A.COORD_TWO, None],
+        "values": [A.CONST_TWO, A.COORD_TWO, A.NONE],
     },
     105: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.COORD_TWO, A.STRENGTH_TWO, None],
+        "values": [A.COORD_TWO, A.STRENGTH_TWO, A.NONE],
     },
     106: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.COORD_TWO, A.CONST_TWO, None],
+        "values": [A.COORD_TWO, A.CONST_TWO, A.NONE],
     },
     107: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.STRENGTH_TWO, None, A.CONST_TWO],
+        "values": [A.STRENGTH_TWO, A.NONE, A.CONST_TWO],
     },
     108: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.STRENGTH_TWO, None, A.COORD_TWO],
+        "values": [A.STRENGTH_TWO, A.NONE, A.COORD_TWO],
     },
     109: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.CONST_TWO, None, A.STRENGTH_TWO],
+        "values": [A.CONST_TWO, A.NONE, A.STRENGTH_TWO],
     },
     110: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.CONST_TWO, None, A.COORD_TWO],
+        "values": [A.CONST_TWO, A.NONE, A.COORD_TWO],
     },
     111: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.COORD_TWO, None, A.STRENGTH_TWO],
+        "values": [A.COORD_TWO, A.NONE, A.STRENGTH_TWO],
     },
     112: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [A.COORD_TWO, None, A.CONST_TWO],
+        "values": [A.COORD_TWO, A.NONE, A.CONST_TWO],
     },
     113: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.STRENGTH_TWO, A.CONST_TWO],
+        "values": [A.NONE, A.STRENGTH_TWO, A.CONST_TWO],
     },
     114: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.STRENGTH_TWO, A.COORD_TWO],
+        "values": [A.NONE, A.STRENGTH_TWO, A.COORD_TWO],
     },
     115: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.CONST_TWO, A.STRENGTH_TWO],
+        "values": [A.NONE, A.CONST_TWO, A.STRENGTH_TWO],
     },
     116: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.CONST_TWO, A.COORD_TWO],
+        "values": [A.NONE, A.CONST_TWO, A.COORD_TWO],
     },
     117: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.COORD_TWO, A.STRENGTH_TWO],
+        "values": [A.NONE, A.COORD_TWO, A.STRENGTH_TWO],
     },
     118: {
         "board_slot": B.BOARD_SLOT_FIVE,
-        "values": [None, A.COORD_TWO, A.CONST_TWO],
+        "values": [A.NONE, A.COORD_TWO, A.CONST_TWO],
     },
     119: {
         "board_slot": B.BOARD_SLOT_SIX,
-        "values": [A.DETERM_TWO, A.EMPATHY_TWO, None],
+        "values": [A.DETERM_TWO, A.EMPATHY_TWO, A.NONE],
     },
     120: {
         "board_slot": B.BOARD_SLOT_SIX,
-        "values": [A.EMPATHY_TWO, A.DETERM_TWO, None],
+        "values": [A.EMPATHY_TWO, A.DETERM_TWO, A.NONE],
     },
     121: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.SOCIAL_FOUR, None, None],
+        "values": [A.SOCIAL_FOUR, A.NONE, A.NONE],
     },
     122: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.INTEL_FOUR, None, None],
+        "values": [A.INTEL_FOUR, A.NONE, A.NONE],
     },
     123: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.CREATE_FOUR, None, None],
+        "values": [A.CREATE_FOUR, A.NONE, A.NONE],
     },
     124: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.SOCIAL_FOUR, None],
+        "values": [A.NONE, A.SOCIAL_FOUR, A.NONE],
     },
     125: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.INTEL_FOUR, None],
+        "values": [A.NONE, A.INTEL_FOUR, A.NONE],
     },
     126: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.CREATE_FOUR, None],
+        "values": [A.NONE, A.CREATE_FOUR, A.NONE],
     },
     127: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, None, A.SOCIAL_FOUR],
+        "values": [A.NONE, A.NONE, A.SOCIAL_FOUR],
     },
     128: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, None, A.INTEL_FOUR],
+        "values": [A.NONE, A.NONE, A.INTEL_FOUR],
     },
     129: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, None, A.CREATE_FOUR],
+        "values": [A.NONE, A.NONE, A.CREATE_FOUR],
     },
     130: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.STRENGTH_FOUR, None, None],
+        "values": [A.STRENGTH_FOUR, A.NONE, A.NONE],
     },
     131: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.CONST_FOUR, None, None],
+        "values": [A.CONST_FOUR, A.NONE, A.NONE],
     },
     132: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.COORD_FOUR, None, None],
+        "values": [A.COORD_FOUR, A.NONE, A.NONE],
     },
     133: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.STRENGTH_FOUR, None],
+        "values": [A.NONE, A.STRENGTH_FOUR, A.NONE],
     },
     134: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.CONST_FOUR, None],
+        "values": [A.NONE, A.CONST_FOUR, A.NONE],
     },
     135: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.COORD_FOUR, None],
+        "values": [A.NONE, A.COORD_FOUR, A.NONE],
     },
     136: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, None, A.STRENGTH_FOUR],
+        "values": [A.NONE, A.NONE, A.STRENGTH_FOUR],
     },
     137: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, None, A.CONST_FOUR],
+        "values": [A.NONE, A.NONE, A.CONST_FOUR],
     },
     138: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, None, A.COORD_FOUR],
+        "values": [A.NONE, A.NONE, A.COORD_FOUR],
     },
     139: {
         "board_slot": B.BOARD_SLOT_NINE,
-        "values": [A.EMPATHY_FOUR, None, None],
+        "values": [A.EMPATHY_FOUR, A.NONE, A.NONE],
     },
     140: {
         "board_slot": B.BOARD_SLOT_NINE,
-        "values": [A.DETERM_FOUR, None, None],
+        "values": [A.DETERM_FOUR, A.NONE, A.NONE],
     },
     141: {
         "board_slot": B.BOARD_SLOT_NINE,
-        "values": [None, A.EMPATHY_FOUR, None],
+        "values": [A.NONE, A.EMPATHY_FOUR, A.NONE],
     },
     142: {
         "board_slot": B.BOARD_SLOT_NINE,
-        "values": [None, A.DETERM_FOUR, None],
+        "values": [A.NONE, A.DETERM_FOUR, A.NONE],
     },
     143: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.SOCIAL_TWO, A.INTEL_TWO, None],
+        "values": [A.SOCIAL_TWO, A.INTEL_TWO, A.NONE],
     },
     144: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.SOCIAL_TWO, A.CREATE_TWO, None],
+        "values": [A.SOCIAL_TWO, A.CREATE_TWO, A.NONE],
     },
     145: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.INTEL_TWO, A.SOCIAL_TWO, None],
+        "values": [A.INTEL_TWO, A.SOCIAL_TWO, A.NONE],
     },
     146: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.INTEL_TWO, A.CREATE_TWO, None],
+        "values": [A.INTEL_TWO, A.CREATE_TWO, A.NONE],
     },
     147: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.CREATE_TWO, A.SOCIAL_TWO, None],
+        "values": [A.CREATE_TWO, A.SOCIAL_TWO, A.NONE],
     },
     148: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.CREATE_TWO, A.INTEL_TWO, None],
+        "values": [A.CREATE_TWO, A.INTEL_TWO, A.NONE],
     },
     149: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.SOCIAL_TWO, None, A.INTEL_TWO],
+        "values": [A.SOCIAL_TWO, A.NONE, A.INTEL_TWO],
     },
     150: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.SOCIAL_TWO, None, A.CREATE_TWO],
+        "values": [A.SOCIAL_TWO, A.NONE, A.CREATE_TWO],
     },
     151: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.INTEL_TWO, None, A.SOCIAL_TWO],
+        "values": [A.INTEL_TWO, A.NONE, A.SOCIAL_TWO],
     },
     152: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.INTEL_TWO, None, A.CREATE_TWO],
+        "values": [A.INTEL_TWO, A.NONE, A.CREATE_TWO],
     },
     153: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.CREATE_TWO, None, A.SOCIAL_TWO],
+        "values": [A.CREATE_TWO, A.NONE, A.SOCIAL_TWO],
     },
     154: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [A.CREATE_TWO, None, A.INTEL_TWO],
+        "values": [A.CREATE_TWO, A.NONE, A.INTEL_TWO],
     },
     155: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.SOCIAL_TWO, A.INTEL_TWO],
+        "values": [A.NONE, A.SOCIAL_TWO, A.INTEL_TWO],
     },
     156: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.SOCIAL_TWO, A.CREATE_TWO],
+        "values": [A.NONE, A.SOCIAL_TWO, A.CREATE_TWO],
     },
     157: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.INTEL_TWO, A.SOCIAL_TWO],
+        "values": [A.NONE, A.INTEL_TWO, A.SOCIAL_TWO],
     },
     158: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.INTEL_TWO, A.CREATE_TWO],
+        "values": [A.NONE, A.INTEL_TWO, A.CREATE_TWO],
     },
     159: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.CREATE_TWO, A.SOCIAL_TWO],
+        "values": [A.NONE, A.CREATE_TWO, A.SOCIAL_TWO],
     },
     160: {
         "board_slot": B.BOARD_SLOT_SEVEN,
-        "values": [None, A.CREATE_TWO, A.INTEL_TWO],
+        "values": [A.NONE, A.CREATE_TWO, A.INTEL_TWO],
     },
     161: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.STRENGTH_TWO, A.CONST_TWO, None],
+        "values": [A.STRENGTH_TWO, A.CONST_TWO, A.NONE],
     },
     162: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.STRENGTH_TWO, A.COORD_TWO, None],
+        "values": [A.STRENGTH_TWO, A.COORD_TWO, A.NONE],
     },
     163: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.CONST_TWO, A.STRENGTH_TWO, None],
+        "values": [A.CONST_TWO, A.STRENGTH_TWO, A.NONE],
     },
     164: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.CONST_TWO, A.COORD_TWO, None],
+        "values": [A.CONST_TWO, A.COORD_TWO, A.NONE],
     },
     165: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.COORD_TWO, A.STRENGTH_TWO, None],
+        "values": [A.COORD_TWO, A.STRENGTH_TWO, A.NONE],
     },
     166: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.COORD_TWO, A.CONST_TWO, None],
+        "values": [A.COORD_TWO, A.CONST_TWO, A.NONE],
     },
     167: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.STRENGTH_TWO, None, A.CONST_TWO],
+        "values": [A.STRENGTH_TWO, A.NONE, A.CONST_TWO],
     },
     168: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.STRENGTH_TWO, None, A.COORD_TWO],
+        "values": [A.STRENGTH_TWO, A.NONE, A.COORD_TWO],
     },
     169: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.CONST_TWO, None, A.STRENGTH_TWO],
+        "values": [A.CONST_TWO, A.NONE, A.STRENGTH_TWO],
     },
     170: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.CONST_TWO, None, A.COORD_TWO],
+        "values": [A.CONST_TWO, A.NONE, A.COORD_TWO],
     },
     171: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.COORD_TWO, None, A.STRENGTH_TWO],
+        "values": [A.COORD_TWO, A.NONE, A.STRENGTH_TWO],
     },
     172: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [A.COORD_TWO, None, A.CONST_TWO],
+        "values": [A.COORD_TWO, A.NONE, A.CONST_TWO],
     },
     173: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.STRENGTH_TWO, A.CONST_TWO],
+        "values": [A.NONE, A.STRENGTH_TWO, A.CONST_TWO],
     },
     174: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.STRENGTH_TWO, A.COORD_TWO],
+        "values": [A.NONE, A.STRENGTH_TWO, A.COORD_TWO],
     },
     175: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.CONST_TWO, A.STRENGTH_TWO],
+        "values": [A.NONE, A.CONST_TWO, A.STRENGTH_TWO],
     },
     176: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.CONST_TWO, A.COORD_TWO],
+        "values": [A.NONE, A.CONST_TWO, A.COORD_TWO],
     },
     177: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.COORD_TWO, A.STRENGTH_TWO],
+        "values": [A.NONE, A.COORD_TWO, A.STRENGTH_TWO],
     },
     178: {
         "board_slot": B.BOARD_SLOT_EIGHT,
-        "values": [None, A.COORD_TWO, A.CONST_TWO],
+        "values": [A.NONE, A.COORD_TWO, A.CONST_TWO],
     },
     179: {
         "board_slot": B.BOARD_SLOT_NINE,
-        "values": [A.DETERM_TWO, A.EMPATHY_TWO, None],
+        "values": [A.DETERM_TWO, A.EMPATHY_TWO, A.NONE],
     },
     180: {
         "board_slot": B.BOARD_SLOT_NINE,
-        "values": [A.EMPATHY_TWO, A.DETERM_TWO, None],
+        "values": [A.EMPATHY_TWO, A.DETERM_TWO, A.NONE],
     },
 }
