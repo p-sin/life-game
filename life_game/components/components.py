@@ -18,6 +18,7 @@ class AttributeInfo:
 
 
 class Attributes(Enum):
+    NONE = AttributeInfo(name="", value=0)
     SOCIAL_ONE = AttributeInfo(
         name="Sociability",
         value=1,
@@ -350,54 +351,12 @@ class Board:
 
 
 attr_decks = {
-    "child": [x for x in range(1, 61)]
-    + [19, 20, 21, 22, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 60, 60, 60],
-    "adol": [x for x in range(61, 121)]
-    + [
-        79,
-        80,
-        81,
-        82,
-        119,
-        119,
-        119,
-        119,
-        119,
-        119,
-        119,
-        119,
-        120,
-        120,
-        120,
-        120,
-        120,
-        120,
-        120,
-        120,
-    ],
+    "child": [x for x in range(1, 61)] + [19, 20, 21, 22] + [59] * 8 + [60] * 8,
+    "adol": [x for x in range(61, 121)] + [79, 80, 81, 82] + [119] * 8 + [120] * 8,
     "adult": [x for x in range(121, 181)]
-    + [
-        139,
-        140,
-        141,
-        142,
-        179,
-        179,
-        179,
-        179,
-        179,
-        179,
-        179,
-        179,
-        180,
-        180,
-        180,
-        180,
-        180,
-        180,
-        180,
-        180,
-    ],
+    + [139, 140, 141, 142]
+    + [179] * 8
+    + [180] * 8,
 }
 
 event_decks = {
