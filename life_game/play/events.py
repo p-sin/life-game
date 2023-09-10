@@ -1,5 +1,5 @@
-from life_game.setup.components import Board
-from life_game.setup.event_cards import condition_type, event_type
+from life_game.components.components import Board
+from life_game.components.event_cards import condition_type, event_type
 
 
 def single_total(board: Board, condition: condition_type) -> bool:
