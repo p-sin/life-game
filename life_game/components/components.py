@@ -10,6 +10,17 @@ ROUNDS = {
 
 TURNS = [1, 2, 3, 4]
 
+ATTRIBUTES = [
+    "Sociability",
+    "Intelligence",
+    "Creativity",
+    "Strength",
+    "Constitution",
+    "Coordination",
+    "Empathy",
+    "Determination",
+]
+
 
 @dataclass
 class AttributeInfo:
