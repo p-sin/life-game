@@ -1,11 +1,11 @@
 import random
 from dataclasses import dataclass, field
-from typing import Literal
 
 from pydantic import BaseModel
 
-from life_game.components.components import ROUNDS, attr_decks, event_decks
+from life_game.components.components import ATTRIBUTES, ROUNDS, event_decks
 from life_game.components.event_cards import event_cards
+from life_game.setup.players import Board
 
 
 @dataclass
@@ -13,8 +13,8 @@ class SingleCondition(BaseModel):
     attribute: str
     value: int
 
-    def check_condition(self) -> None:
-        pass
+    def evaluate(self, board: Board) -> bool:
+        return getattr(board, self.attribute) >= self.value
 
 
 @dataclass
@@ -23,8 +23,14 @@ class MinCondition(BaseModel):
     total: int
     min: int
 
-    def check_condition(self) -> None:
-        pass
+    def evaluate(self, board: Board) -> bool:
+        total_value = 0
+
+        for attribute in self.attribute:
+            attr_value = getattr(board, attribute)
+            total_value += attr_value if attr_value >= self.min else 0
+
+        return total_value >= self.total
 
 
 @dataclass
@@ -32,8 +38,11 @@ class MaxCondition(BaseModel):
     attribute: list[str]
     max_value: int
 
-    def check_condition(self) -> None:
-        pass
+    def evaluate(self, board: Board) -> bool:
+        for attribute in ATTRIBUTES:
+            if getattr(board, attribute) > self.max_value:
+                return False
+        return True
 
 
 @dataclass
@@ -43,12 +52,25 @@ class Outcome(BaseModel):
     cond_type: str
     condition: SingleCondition | MinCondition | MaxCondition
 
+    def check_condition(self, board: Board) -> bool:
+        return self.condition.evaluate(board)
+
 
 @dataclass
 class Event:
     flav_text: str
     life_stage: str
     outcomes: dict[str, Outcome]
+
+    def resolve_event(self, board: Board) -> int:
+        final_points = 0
+
+        for _, outcome in self.outcomes.items():
+            if outcome.check_condition(board):
+                if outcome.points > final_points:
+                    final_points = outcome.points
+
+        return final_points
 
 
 @dataclass
