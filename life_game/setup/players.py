@@ -1,6 +1,7 @@
+import random
 from dataclasses import dataclass, field
 
-# from life_game.play.actions import Action
+from life_game.components.components import ATTRIBUTES
 from life_game.setup.cards import Card
 
 
@@ -23,15 +24,10 @@ class Board:
     Coordination: int = 0
     Empathy: int = 0
     Determination: int = 0
-    attribute_slots: dict[int, AttributeSlot] = field(init=False, default_factory=dict)
+    attr_slots: dict[int, AttributeSlot] = field(init=False, default_factory=dict)
 
     def __post_init__(self) -> None:
-        self.attribute_slots = {number: AttributeSlot(number) for number in range(25)}
-
-
-@dataclass
-class Hand:
-    hand: dict[int, Card]
+        self.attr_slots = {number: AttributeSlot(number) for number in range(25)}
 
 
 @dataclass
@@ -41,13 +37,37 @@ class Player:
     The methods in the player object are used to drive much of the activity in the game
     """
 
-    board: Board = Board()
     points: int = 0
-    child_hand: Hand = field(init=False)
-    adol_hand: Hand = field(init=False)
-    adult_hand: Hand = field(init=False)
-    # action: Action = Action()
+    hand: dict[str, dict[int, Card]] = field(init=False, default_factory=dict)
+    board: Board = field(init=False)
     # logic: Optional[Logic] = None
+
+    def __post_init__(self) -> None:
+        self.board = Board()
+
+    def choose_cards(self, round: str) -> None:
+        self.chosen_cards_num = random.sample(list(self.hand[round]), 2)
+        self.chosen_cards = [self.hand[round][num] for num in self.chosen_cards_num]
+
+    def play_cards(self) -> None:
+        for card in self.chosen_cards:
+            for _, stat in card.sections.items():
+                if stat.attribute is not None:
+                    self.board.attr_slots[stat.attr_slot].name = stat.attribute
+                    self.board.attr_slots[stat.attr_slot].value = stat.value
+
+    def remove_cards(self, round: str) -> None:
+        for card in self.chosen_cards_num:
+            del self.hand[round][card]
+
+    def calculate_attribute_totals(self) -> None:
+        for attribute in ATTRIBUTES:
+            value = 0
+            for _, slot in self.board.attr_slots.items():
+                if attribute == slot.name:
+                    value += slot.value
+
+            setattr(self.board, attribute, value)
 
 
 @dataclass
