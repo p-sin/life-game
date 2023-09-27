@@ -7,7 +7,7 @@ from life_game.components.components import ROUNDS, attr_decks
 
 @dataclass
 class CardStat:
-    attribute_slot: int
+    attr_slot: int
     attribute: str
     value: int
 
@@ -15,9 +15,7 @@ class CardStat:
 @dataclass
 class Card:
     board_slot: int
-    section_1: CardStat
-    section_2: CardStat
-    section_3: CardStat
+    sections: dict[int, CardStat]
 
 
 @dataclass
@@ -28,21 +26,23 @@ class Cards:
         for number, config in card_config.items():
             card = Card(
                 board_slot=config["board_slot"].value.number,  # type: ignore
-                section_1=CardStat(
-                    attribute_slot=config["board_slot"].value.card_slot_1,  # type: ignore
-                    attribute=config["values"][0].value.name,  # type: ignore
-                    value=config["values"][0].value.value,  # type: ignore
-                ),
-                section_2=CardStat(
-                    attribute_slot=config["board_slot"].value.card_slot_2,  # type: ignore
-                    attribute=config["values"][2].value.name,  # type: ignore
-                    value=config["values"][2].value.value,  # type: ignore
-                ),
-                section_3=CardStat(
-                    attribute_slot=config["board_slot"].value.card_slot_3,  # type: ignore
-                    attribute=config["values"][2].value.name,  # type: ignore
-                    value=config["values"][2].value.value,  # type: ignore
-                ),
+                sections={
+                    1: CardStat(
+                        attr_slot=config["board_slot"].value.card_slot_1,  # type: ignore
+                        attribute=config["values"][0].value.name,  # type: ignore
+                        value=config["values"][0].value.value,  # type: ignore
+                    ),
+                    2: CardStat(
+                        attr_slot=config["board_slot"].value.card_slot_2,  # type: ignore
+                        attribute=config["values"][2].value.name,  # type: ignore
+                        value=config["values"][2].value.value,  # type: ignore
+                    ),
+                    3: CardStat(
+                        attr_slot=config["board_slot"].value.card_slot_3,  # type: ignore
+                        attribute=config["values"][2].value.name,  # type: ignore
+                        value=config["values"][2].value.value,  # type: ignore
+                    ),
+                },
             )
 
             self.cards[number] = card
