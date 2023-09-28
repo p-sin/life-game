@@ -12,7 +12,7 @@ def __main__() -> None:
     for _ in range(1):
         cards = Cards()
         events = Events()
-        players = Players()
+        players = Players(total_players)
         game = Game(total_players, players, cards, events)
         game.play_game()
 

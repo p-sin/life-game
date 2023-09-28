@@ -75,5 +75,5 @@ class Players:
     total_players: int
     players: dict[int, Player] = field(init=False, default_factory=dict)
 
-    def __init__(self) -> None:
+    def __post_init__(self) -> None:
         self.players = {number: Player() for number in range(self.total_players)}
