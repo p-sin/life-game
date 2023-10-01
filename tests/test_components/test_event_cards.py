@@ -65,8 +65,10 @@ def test_points_correct() -> None:
 
     for event in event_cards.values():
         for outcome in event["outcomes"].values():  # type: ignore
-            assert outcome["points"] == points_map[event["life_stage"]]  # type: ignore
-            [outcome["type"]]
+            assert (
+                outcome["points"]
+                == points_map[event["life_stage"]][outcome["type"]]  # type: ignore
+            )
 
 
 @pytest.mark.parametrize("outcome_type, exp_amount", [("single", 168), ("min", 84)])
