@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 from pydantic import BaseModel
 
-from life_game.components.components import ATTRIBUTES, ROUNDS, event_decks
+from life_game.components.constants import ATTRIBUTES, ROUNDS, event_decks
 from life_game.components.event_cards import event_cards
 from life_game.setup.players import Board
 

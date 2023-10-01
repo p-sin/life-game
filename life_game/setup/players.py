@@ -1,7 +1,7 @@
 import random
 from dataclasses import dataclass, field
 
-from life_game.components.components import ATTRIBUTES
+from life_game.components.constants import ATTRIBUTES
 from life_game.setup.cards import Card
 
 

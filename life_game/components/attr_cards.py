@@ -1,5 +1,5 @@
-from life_game.components.components import Attributes as A
-from life_game.components.components import BoardSlots as B
+from life_game.components.constants import Attributes as A
+from life_game.components.constants import BoardSlots as B
 
 card_config: dict[int, dict[str, B | list[A]]] = {
     1: {

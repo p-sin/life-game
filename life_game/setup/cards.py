@@ -2,7 +2,7 @@ import random
 from dataclasses import dataclass, field
 
 from life_game.components.attr_cards import card_config
-from life_game.components.components import ROUNDS, attr_decks
+from life_game.components.constants import ROUNDS, attr_decks
 
 
 @dataclass

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from life_game.components.components import ROUNDS, TURNS
+from life_game.components.constants import ROUNDS, TURNS
 from life_game.play.play_utils import card_num_start_end
 from life_game.setup.cards import Cards
 from life_game.setup.events import Events
