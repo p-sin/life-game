@@ -232,9 +232,6 @@ def test_deck_by_attribute() -> None:
     for card_num in deck:
         card = cards.cards[card_num].sections
 
-        if cards.cards[card_num].board_slot in (3, 6, 9):
-            print(cards.cards[card_num].sections)
-
         if card[1].value != 0:
             actual_dict[card[1].attribute] += card[1].value
 
@@ -249,11 +246,11 @@ def test_deck_by_attribute() -> None:
 
 @pytest.mark.parametrize("stage", [("child"), ("adol"), ("adult")])
 def test_num_events_in_deck(stage: str) -> None:
-    assert len(c.event_decks[stage]) == 21
+    assert len(c.event_decks[stage]) == 28
 
 
 @pytest.mark.parametrize(
-    "stage, total", [("child", 231), ("adol", 672), ("adult", 1113)]
+    "stage, total", [("child", 406), ("adol", 1190), ("adult", 1974)]
 )
 def test_correct_events_in_deck(stage: str, total: int) -> None:
     """Test the total of each card number is correct for each stage"""

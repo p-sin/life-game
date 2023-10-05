@@ -255,7 +255,7 @@ attr_decks = {
 }
 
 event_decks = {
-    "child": [x for x in range(1, 22)],
-    "adol": [x for x in range(22, 43)],
-    "adult": [x for x in range(43, 64)],
+    "child": [x for x in range(1, 29)],
+    "adol": [x for x in range(29, 57)],
+    "adult": [x for x in range(57, 85)],
 }

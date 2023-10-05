@@ -1,7 +1,5 @@
 from typing import Any
 
-import pytest
-
 from life_game.components.attr_cards import card_config
 from life_game.components.constants import Attributes as A
 from life_game.components.constants import BoardSlots as B
