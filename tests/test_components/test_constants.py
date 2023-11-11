@@ -1,10 +1,11 @@
+import json
 from typing import Any, Optional
 
 import pytest
 
 from life_game.components import constants as c
-from life_game.setup.cards import Cards
-from life_game.setup.events import Events
+from life_game.components.attr_cards import card_config
+from life_game.paths import Paths
 
 
 def test_rounds() -> None:
@@ -227,19 +228,24 @@ def test_deck_by_attribute() -> None:
     }
 
     deck = c.attr_decks["child"] + c.attr_decks["adol"] + c.attr_decks["adult"]
-    cards = Cards()
 
     for card_num in deck:
-        card = cards.cards[card_num].sections
+        card = card_config[card_num]
 
-        if card[1].value != 0:
-            actual_dict[card[1].attribute] += card[1].value
+        if card["values"][0].value.value != 0:  # type: ignore
+            actual_dict[card["values"][0].value.name] += card["values"][  # type: ignore
+                0
+            ].value.value
 
-        if card[2].value != 0:
-            actual_dict[card[2].attribute] += card[2].value
+        if card["values"][1].value.value != 0:  # type: ignore
+            actual_dict[card["values"][1].value.name] += card["values"][  # type: ignore
+                1
+            ].value.value
 
-        if card[3].value != 0:
-            actual_dict[card[3].attribute] += card[3].value
+        if card["values"][2].value.value != 0:  # type: ignore
+            actual_dict[card["values"][2].value.name] += card["values"][  # type: ignore
+                2
+            ].value.value
 
     assert actual_dict == expected_dict
 
@@ -260,6 +266,8 @@ def test_correct_events_in_deck(stage: str, total: int) -> None:
 @pytest.mark.parametrize("round", [("child"), ("adol"), ("adult")])
 def test_event_deck_correct_round(round: str) -> None:
     """Test that each event deck has only cards belonging to that round"""
-    events = Events()
+    with open(Paths.EVENT_CARDS, mode="r", encoding="utf-8") as f:
+        events = json.load(f)
+
     for card_num in c.event_decks[round]:
-        assert events.events[card_num].life_stage == round
+        assert events[str(card_num)]["life_stage"] == round
