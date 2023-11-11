@@ -1,17 +1,24 @@
-from typing import List, Union
+import json
+from typing import Any, List, Union
 
 import pytest
 
-from life_game.components.event_cards import event_cards
+from life_game.paths import Paths
 
 
-def test_number_of_events() -> None:
+@pytest.fixture(name="event_cards")
+def load_event_cards() -> dict[str, Any]:
+    with open(Paths.EVENT_CARDS, mode="r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def test_number_of_events(event_cards: dict[str, Any]) -> None:
     """Test the correct number of cards have been defined"""
     assert len(event_cards) == 84
 
 
 @pytest.mark.parametrize("stage", [("child"), ("adol"), ("adult")])
-def test_number_events_per_stage(stage: str) -> None:
+def test_number_events_per_stage(stage: str, event_cards: dict[str, Any]) -> None:
     """Test that the event cards are correctly distrubted across
     the three life stages"""
 
@@ -21,7 +28,7 @@ def test_number_events_per_stage(stage: str) -> None:
     assert stage_count == 28
 
 
-def test_attributes_appear_exp_amount() -> None:
+def test_attributes_appear_exp_amount(event_cards: dict[str, Any]) -> None:
     """Test that attributes appear in the event cards the
     expected number of times"""
 
@@ -39,8 +46,8 @@ def test_attributes_appear_exp_amount() -> None:
     act_amount = {attribute: 0 for attribute in exp_amount.keys()}
 
     for event in event_cards.values():
-        for outcome in event["outcomes"].values():  # type: ignore
-            if outcome["type"] != "max":
+        for outcome in event["outcomes"]:  # type: ignore
+            if outcome["cond_type"] != "max":
                 attributes: Union[str, List[str]] = outcome["condition"][
                     "attribute"  # type: ignore
                 ]
@@ -53,7 +60,7 @@ def test_attributes_appear_exp_amount() -> None:
     assert act_amount == exp_amount
 
 
-def test_points_correct() -> None:
+def test_points_correct(event_cards: dict[str, Any]) -> None:
     """Tests that the points for each outcome match the life
     stage and type of outcome"""
 
@@ -64,27 +71,29 @@ def test_points_correct() -> None:
     }
 
     for event in event_cards.values():
-        for outcome in event["outcomes"].values():  # type: ignore
+        for outcome in event["outcomes"]:  # type: ignore
             assert (
                 outcome["points"]
-                == points_map[event["life_stage"]][outcome["type"]]  # type: ignore
+                == points_map[event["life_stage"]][outcome["cond_type"]]  # type: ignore
             )
 
 
 @pytest.mark.parametrize("outcome_type, exp_amount", [("single", 168), ("min", 84)])
-def test_occurence_types(outcome_type: str, exp_amount: int) -> None:
+def test_occurence_types(
+    outcome_type: str, exp_amount: int, event_cards: dict[str, Any]
+) -> None:
     """Test that each occurence type occurs the expected number
     of times"""
     count = sum(
         1  # type: ignore
         for event in event_cards.values()
-        for outcome in event["outcomes"].values()  # type: ignore
-        if outcome["type"] == outcome_type
+        for outcome in event["outcomes"]  # type: ignore
+        if outcome["cond_type"] == outcome_type
     )
     assert count == exp_amount
 
 
-def test_condition_values_req() -> None:
+def test_condition_values_req(event_cards: dict[str, Any]) -> None:
     """Tests that the value threshold for each test is as expected"""
 
     values_map: dict[str, dict[str, Union[int, list[int]]]] = {
@@ -94,16 +103,22 @@ def test_condition_values_req() -> None:
     }
 
     for event in event_cards.values():
-        for outcome in event["outcomes"].values():  # type: ignore
-            if outcome["type"] == "single":
+        for outcome in event["outcomes"]:  # type: ignore
+            if outcome["cond_type"] == "single":
                 assert (
                     outcome["condition"]["value"]  # type: ignore
-                    == values_map[event["life_stage"]][outcome["type"]]  # type: ignore
+                    == values_map[event["life_stage"]][  # type: ignore
+                        outcome["cond_type"]  # type: ignore
+                    ]
                 )
             else:
                 assert (
                     outcome["condition"]["total"]  # type: ignore
-                    == values_map[event["life_stage"]][outcome["type"]][0]  # type: ignore
+                    == values_map[event["life_stage"]][  # type: ignore
+                        outcome["cond_type"]  # type: ignore
+                    ][0]
                     and outcome["condition"]["min"]  # type: ignore
-                    == values_map[event["life_stage"]][outcome["type"]][1]  # type: ignore
+                    == values_map[event["life_stage"]][  # type: ignore
+                        outcome["cond_type"]  # type: ignore
+                    ][1]
                 )
